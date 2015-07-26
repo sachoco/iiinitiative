@@ -54,68 +54,7 @@
                 </ul>
             </nav>
         </section>
-        <section class="background">
-            <ul class="rslides">
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-1.jpg" alt=""></li>
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-2.jpg" alt=""></li>
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-3.jpg" alt=""></li>
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-4.jpg" alt=""></li>
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-5.jpg" alt=""></li>
-                 <li><img src="<?php echo bloginfo('template_url'); ?>/images/resized/image-6.jpg" alt=""></li>
 
-<!--                 <li><img src="images/Cinechine_01.jpg" alt=""></li>
-                <li><img src="images/cinechine_02.jpg" alt=""></li>
-                <li><img src="images/cinechine_03.jpg" alt=""></li>
-                <li><img src="images/cinechine_04.jpg" alt=""></li>
-                <li><img src="images/CitySondols_Amsterdam_BARTHEEMSKERK_01.jpg" alt=""></li>
-                <li><img src="images/CitySondols_Amsterdam_BARTHEEMSKERK_02.jpg" alt=""></li>
-                <li><img src="images/CitySondols_Angel.jpg" alt=""></li>
-                <li><img src="images/CitySondols01.jpg" alt=""></li>
-                <li><img src="images/CitySondols02.jpg" alt=""></li>
-                <li><img src="images/CitySondolsToronto_airport.jpg" alt=""></li>
-                <li><img src="images/CitySondolsToronto_StClare.jpg" alt=""></li>
-                <li><img src="images/Echo_Moire_FE_01.jpg" alt=""></li>
-                <li><img src="images/Echo_Moire_FE_02.jpg" alt=""></li>
-                <li><img src="images/Echo_Moire_FE_03.jpg" alt=""></li>
-                <li><img src="images/Ground_10.jpg" alt=""></li>
-                <li><img src="images/Ground02.jpg" alt=""></li>
-                <li><img src="images/Ground03.jpg" alt=""></li>
-                <li><img src="images/integration04_1.jpg" alt=""></li>
-                <li><img src="images/integration04_2.jpg" alt=""></li>
-                <li><img src="images/integration04_3.jpg" alt=""></li>
-                <li><img src="images/integration04_4.jpg" alt=""></li>
-                <li><img src="images/Kulunka.jpg" alt=""></li>
-                <li><img src="images/Lampyridae02.jpg" alt=""></li>
-                <li><img src="images/leeway01.jpg" alt=""></li>
-                <li><img src="images/leeway02.jpg" alt=""></li>
-                <li><img src="images/leeway03.jpg" alt=""></li>
-                <li><img src="images/LumisonicRotera setup.jpg" alt=""></li>
-                <li><img src="images/LumisonicRotera white.jpg" alt=""></li>
-                <li><img src="images/LumisonicRotera_01s.jpg" alt=""></li>
-                <li><img src="images/LumisonicRotera.jpg" alt=""></li>
-                <li><img src="images/Murmur_01.jpg" alt=""></li>
-                <li><img src="images/Murmur_02.jpg" alt=""></li>
-                <li><img src="images/Murmur_03.jpg" alt=""></li>
-                <li><img src="images/murmur-compilatie.jpg" alt=""></li>
-                <li><img src="images/Notesaaz.jpg" alt=""></li>
-                <li><img src="images/NotesaazTrio_EJ.jpg" alt=""></li>
-                <li><img src="images/OHHO_01.jpg" alt=""></li>
-                <li><img src="images/OHHO_02.jpg" alt=""></li>
-                <li><img src="images/QuietBeforeTheStorm01.jpg" alt=""></li>
-                <li><img src="images/QuietBeforeTheStorm02.jpg" alt=""></li>
-                <li><img src="images/QuietBeforeTheStorm03.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet_03.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet_04.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet_BARTHEEMSKERK_01.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet_BARTHEEMSKERK_02.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet01_EJ.jpg" alt=""></li>
-                <li><img src="images/ShadowPuppet02_ej.jpg" alt=""></li>
-                <li><img src="images/SpineSpinning_EJ.jpg" alt=""></li>
-                <li><img src="images/submerged.jpg" alt=""></li>
-                <li><img src="images/WandelendeTak_01.jpg" alt=""></li>
-                <li><img src="images/WandelendeTak_02.jpg" alt=""></li> -->
-            </ul>
-        </section>
 
 
         
