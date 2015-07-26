@@ -1,0 +1,567 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+section.main:after, footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+section.main, footer {
+  box-sizing: border-box;
+}
+
+section.main article, footer article, footer .copyright {
+  display: inline-block;
+  min-height: 1px;
+  box-sizing: border-box;
+}
+
+/**
+ * Str replace
+ *
+ * @param {string}  $string    String that you want to replace
+ * @param {string}  $substr    String that is to be replaced by `$newsubstr`
+ * @param {string}  $newsubstr String that replaces `$substr`
+ * @param {number*} $all       Flag for replaceing all (1+) or not (0)
+ * @return {string}
+ */
+/**
+ * Map set
+ *
+ * @param 	Map 	$map 		The map to use
+ * @param 	String 	$key 		The key to update
+ * @param 	Mixed 	$value 		The new value
+ * @return 	Map 			The new map
+ */
+/**
+ * Get the column width in percent for the global or a specific context
+ *
+ * @param 	int 		$columns 					The number of columns to calculate
+ * @param 	int 		$context : $gridle-columns-count 	 	The context to use
+ * @return 	percentage 							The width in percent
+ */
+/**
+ *  Get a state map
+ *
+ * @param 	string 		$name 		The name of the state to get
+ * @return 	map 				A state map object
+ */
+/**
+ * Check if a state exist :
+ *
+ * @param 	string 		$name 		The name of the state to check
+ * @return 	Boolean 			true is exist
+ */
+/**
+ * Get the media queries variables :
+ *
+ * @param 	int 		$index 	 	The media query indes
+ * @param 	String 		$var 		The media query variable name
+ * @return 	String|int 			The variable value
+ */
+/**
+ * Get a variable
+ *
+ * @param 	String 		$varName 				The variable name
+ * @param  	String 		$stateMap-or-stateName 	 	The state name or a map state value
+ * @return 	Mixed 							The finded value
+ */
+/**
+ * Set a variable in a state
+ * @param 	Mixed $stateName-or-stateIndex 	The state name of state index
+ * @param  	String $var                    		Variable name to assign
+ * @param  	Mixed $newValue          		The new value to assign
+ * @return 	List                         			The states list (full)
+ */
+/**
+ * Generate a column
+ *
+ * @param 	String 		$name 			The column name (often count)
+ * @param 	int 		$columns 		The column count that the column will take
+ * @param 	int 		$context 		The context on witch the with will be calculed
+ * @param 	Boolean 	$generateClasses 	Set if the column has to be generated in css
+ */
+/**
+ * Generate classname
+ *
+ * @param 	List 		$parrern 	The pattern to use to generate classname
+ * @param 	String 		$state 		The state
+ * @param 	int 		$count 		The column count
+ */
+/**
+ * Get the media query for a particular state, or with, etc...
+ *
+ * @param 	Mixed 		$state-or-min-width 		The state name of the min with
+ * @param 	Mixed 		$max-width 			The max width if first param is a min width
+ * @return 	String 						The media query string without the @media
+ */
+/**
+ * Get states count
+ * 
+ * @return 	int 	The number of states defined
+ */
+/**
+ * Setup
+ */
+/**
+ *  Register a clear each class
+ */
+/**
+ * Register a special class
+ */
+/**
+ * Register default states
+ */
+/**
+ * Register default mobile first states :
+ */
+/**
+ * Set the debug device (not used for now)
+ * 
+ * @param 	String 		$state 		The state to update
+ * @para m 	String 		$device 	The device to use (iphone, etc...)
+ */
+/**
+ * Parent clear each
+ */
+/**
+ * Vertical align :
+ */
+/**
+ * Show inline
+ *
+ * @param 	String 		$state 		The state name
+ */
+/**
+ * Generate a custom class for all the states
+ *
+ * @param 	list 	$pattern 		The name pattern of the class
+ * @param 	list 	$statesNames 		The states names to generate
+ */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  position: relative;
+  font-size: 16px;
+  font-family: "Maven Pro", sans-serif;
+  color: #555;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Gafata", sans-serif;
+  font-weight: normal;
+}
+
+.h3 {
+  font-size: 1.3em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: #555;
+  text-decoration: none;
+}
+
+button {
+  font-family: "Maven Pro", sans-serif;
+}
+
+.wrap {
+  max-width: 1600px;
+  margin: auto;
+  padding: 2em;
+}
+
+section.header {
+  position: absolute;
+  background-color: white;
+  height: 60px;
+  width: 100%;
+}
+section.header nav {
+  position: absolute;
+  width: 100%;
+  top: 1em;
+  text-align: center;
+  z-index: 999;
+}
+section.header nav ul {
+  position: absolute;
+}
+section.header nav ul.nav-left {
+  right: -webkit-calc(50% + 40px);
+  right: calc(50% + 40px);
+  top: 0;
+}
+section.header nav ul.nav-right {
+  left: -webkit-calc(50% + 40px);
+  left: calc(50% + 40px);
+  top: 0;
+}
+section.header nav ul li {
+  display: inline-block;
+  margin: 0 0.3em;
+}
+section.header nav .logo {
+  display: inline-block;
+  margin-top: -8px;
+  cursor: pointer;
+}
+
+section.background {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  background-color: black;
+}
+section.background .rslides:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  bottom: 0;
+  display: list-item;
+  z-index: 9;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&amp;0+0,1+100 */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, black));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, transparent 0%, black 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to bottom, transparent 0%, black 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+  /* IE6-8 */
+}
+
+.viewport {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.viewport .overlay--left {
+  cursor: pointer;
+  position: absolute;
+  top: 60px;
+  left: -1px;
+  width: 150px;
+  min-height: 100%;
+  z-index: 999;
+}
+.viewport .overlay--left:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgIDxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.7)), color-stop(40%, rgba(0, 0, 0, 0.4)), color-stop(99%, transparent), color-stop(100%, transparent));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 99%, transparent 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 99%, transparent 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 );
+  /* IE6-8 */
+}
+.viewport .overlay--right {
+  cursor: pointer;
+  position: absolute;
+  top: 60px;
+  right: -1px;
+  width: 150px;
+  min-height: 100%;
+  z-index: 999;
+}
+.viewport .overlay--right:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(1%, transparent), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, transparent 0%, transparent 1%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.7) 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to right, transparent 0%, transparent 1%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.7) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000',GradientType=1 );
+  /* IE6-8 */
+}
+
+section.home {
+  width: -webkit-calc(100% - 300px);
+  width: calc(100% - 300px);
+  position: relative;
+  padding-bottom: 45%;
+  margin: auto;
+  top: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+section.home .intro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-width: 400px;
+  color: white;
+  text-align: center;
+}
+
+.page {
+  position: absolute;
+  width: -webkit-calc(100% - 300px);
+  width: calc(100% - 300px);
+  min-height: 100%;
+  top: 0;
+  z-index: 9;
+  left: 50%;
+  border-left: 1px solid;
+  -webkit-transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
+          transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
+}
+.page__header {
+  height: 60px;
+  background-color: white;
+  position: relative;
+}
+.page__header:before {
+  content: "";
+  position: absolute;
+  background: url(images/arrow.svg) no-repeat left center;
+  width: 18px;
+  height: 100%;
+  margin-left: 0.5em;
+}
+.page__header .title {
+  padding: 1em 2em 0;
+}
+.page__body {
+  border-top: 1px solid;
+}
+.page.current {
+  background-color: white;
+  border-color: rgba(255, 255, 255, 0);
+}
+.page .col, .page .wpb_column {
+  border-left: 1px solid;
+  padding: 25px;
+}
+.page .col:nth-child(odd), .page .wpb_column:nth-child(odd) {
+  border: none;
+}
+.page article {
+  clear: both;
+  padding-top: 3em;
+}
+.page article h3 {
+  font-size: 2em;
+  margin-bottom: 0.7em;
+}
+.page article p {
+  margin: 1em 0;
+}
+.page article img {
+  width: 100%;
+}
+.page article img.featured_image {
+  width: 100%;
+  max-width: 600px;
+}
+.page article img.align-left {
+  text-align: left;
+  margin: 0 1em 1em 0;
+  float: left;
+}
+.page .vc_column_container h3 {
+  font-size: 2em;
+  margin-bottom: 0.7em;
+  clear: both;
+}
+.page .vc_column_container p {
+  margin: 1em 0;
+}
+.page .vc_column_container .vc_single_image-wrapper img {
+  width: 100%;
+  max-width: 600px;
+}
+.page .vc_column_container img.featured_image {
+  width: 100%;
+  max-width: 600px;
+}
+.page .vc_column_container img.alignleft {
+  text-align: left;
+  margin: 0 1em 1em 0;
+  float: left;
+}
+
+section.next {
+  cursor: pointer;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+section.next.hover {
+  background-color: white;
+  margin-left: -50px;
+}
+
+section.prev {
+  border-right: 1px solid;
+  cursor: pointer;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  z-index: 19;
+}
+section.prev.hover {
+  background-color: white;
+  margin-left: 50px;
+}
+
+section.main {
+  background-color: white;
+  border-top: 1px solid;
+}
+section.main article {
+  float: left;
+  direction: ltr;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 33.33333%;
+}
+@media screen and (max-width: 480px) {
+  section.main article {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+section.main article h2 {
+  font-size: 1.7em;
+}
+section.main article h3, section.main article h4 {
+  margin-bottom: 0.5em;
+}
+section.main article img {
+  margin-bottom: 0.5em;
+}
+section.main .wpb_wrapper h2 {
+  font-size: 1.7em;
+}
+section.main .wpb_wrapper h3, section.main .wpb_wrapper h4 {
+  margin-bottom: 0.5em;
+}
+section.main .wpb_wrapper img {
+  margin-bottom: 0.5em;
+}
+section.main .item {
+  float: left;
+  width: 50%;
+  padding-right: 1em;
+}
+section.main .item img {
+  max-width: 100%;
+}
+
+footer {
+  background-color: #EDEDED;
+}
+footer article {
+  float: left;
+  direction: ltr;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 33.33333%;
+}
+@media screen and (max-width: 480px) {
+  footer article {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+footer .copyright {
+  float: left;
+  direction: ltr;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 100%;
+  margin-top: 100px;
+}
+@media screen and (max-width: 480px) {
+  footer .copyright {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
