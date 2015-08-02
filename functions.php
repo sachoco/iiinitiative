@@ -1,6 +1,7 @@
 <?php
 	function register_my_menu() {
-	  register_nav_menu('main-menu',__( 'Main Menu' ));
+	  register_nav_menu('main-menu-left',__( 'Main Menu Left' ));
+	  register_nav_menu('main-menu-right',__( 'Main Menu Right' ));
 	}
 	add_action( 'init', 'register_my_menu' );
 	/**
@@ -16,6 +17,8 @@
 		// register main script
 		wp_register_script( 'main-script', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), '', true );
 		wp_enqueue_script( 'main-script' );
+
+		wp_register_script( 'front-page-script', get_stylesheet_directory_uri() . '/js/front-page.js', array('jquery'), '', true );
 		// register main stylesheet
 		wp_register_style( 'main-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
 		wp_enqueue_style( 'main-css' );
@@ -25,6 +28,11 @@
 
 		wp_register_style( 'responsive-slides-css', get_stylesheet_directory_uri() . '/bower_components/jquery.responsive-slides/jquery.responsive-slides.css', array('main-css'), '', 'all' );
 		wp_enqueue_style( 'responsive-slides-css' );
+
+		// comment reply script for threaded comments
+		if ( is_front_page()) {
+			wp_enqueue_script( 'front-page-script' );
+		}		
 
 	}
 
@@ -95,7 +103,7 @@ function custom_post_event() {
 			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
 			'menu_icon' => 'dashicons-calendar', /* the icon for the custom post type menu */
 			'rewrite'	=> array( 'slug' => 'event', 'with_front' => false ), /* you can specify its url slug */
-			'has_archive' => 'event', /* you can rename the slug here */
+			'has_archive' => 'agenda', /* you can rename the slug here */
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */

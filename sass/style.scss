@@ -3,6 +3,7 @@
 @import 'settings';
 
 $bg-color: #fff;
+$bg-color-grey: #EDEDED;
 $base-font-size: 16px;
 // $font-family: 'Open Sans', sans-serif;
 $font-weight: normal;
@@ -27,6 +28,9 @@ $header-height: 60px;
 $font-color: #555;
 * {
 	box-sizing: border-box;
+}
+html {
+	background-color: $bg-color-grey;
 }
 html, body {
 	// height: 100%;
@@ -104,6 +108,7 @@ section.background {
 	position: absolute;
 	z-index: -1;
 	width: 100%;
+	overflow: hidden;
 	// top: 61px;
 	// height: calc(100% - 61px);
 	top: 0;
@@ -136,6 +141,7 @@ section.background {
 	// padding-bottom: 55%;
 	overflow: hidden;
 	.overlay {
+
 		&--left {
 			cursor: pointer;
 			position: absolute;
@@ -144,6 +150,7 @@ section.background {
 			width: 150px;
 			min-height: 100%;
 			z-index: 999;
+			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 			&:before {
 				content: "";
 				position: absolute;
@@ -168,6 +175,7 @@ section.background {
 			width: 150px;
 			min-height: 100%;
 			z-index: 999;
+			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 			&:before {
 				content: "";
 				position: absolute;
@@ -185,71 +193,6 @@ section.background {
 			}
 		}
 	}
-}
-section.home {
-	width: calc(100% - 300px);
-	// max-width: 1200px;
-	position: relative;
-	// padding-bottom: 55%;
-	padding-bottom: 45%;
-	margin: auto;
-	top: $header-height;
-	background-color: rgba(0,0,0,0.5);
-	// overflow: hidden;
-	.intro {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		max-width: 400px;
-		color: white;
-		text-align: center;
-	}
-}
-.page {
-	position: absolute;
-	width: calc(100% - 300px);
-	// max-width: 1200px;
-	min-height: 100%;
-	top: 0;
-	z-index: 9;
-	// background-color: rgba(255,255,255,0.5);
-	// background-color: rgba(255,255,255,1);
-	left: 50%;
-	// transform: translateX(150%);
-	border-left: 1px solid;
-	transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
-
-	&__header {
-		height: $header-height;
-		background-color: white;
-		position: relative;
-		&:before {
-			content: "";
-			position: absolute;
-			background: url(images/arrow.svg) no-repeat left center;
-			width: 18px;
-			height: 100%;
-			margin-left: 0.5em;
-		}
-		.title {
-			padding: 1em 2em 0;
-
-		}
-	}
-	&__body {
-		border-top: 1px solid;
-		// padding: 1em;
-	}
-	// &:first-child{
-	// 	transform: translateX(50%);
-	// }
-	&.current {
-		background-color: rgba(255,255,255,1);
-		border-color: rgba(255,255,255,0);
-		// min-height: 0;
-	}
-
 	.col, .wpb_column{
 		border-left: 1px solid;
 		padding: 25px;
@@ -306,6 +249,85 @@ section.home {
 			float: left;
 		}		
 	}
+}
+body.home .viewport .overlay {
+	&--left, &--right {
+		background: none;
+	}
+}
+section.home {
+	width: calc(100% - 300px);
+	// max-width: 1200px;
+	position: relative;
+	// padding-bottom: 55%;
+	padding-bottom: 45%;
+	margin: auto;
+	top: $header-height;
+	background-color: rgba(0,0,0,0.5);
+	// overflow: hidden;
+	.intro {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		max-width: 400px;
+		color: white;
+		text-align: center;
+	}
+}
+section.page--single {
+	width: calc(100% - 300px);
+	// max-width: 1200px;
+	position: relative;	
+	margin: auto;
+	background-color: white;
+}
+section.page {
+	position: absolute;
+	width: calc(100% - 300px);
+	// max-width: 1200px;
+	min-height: 100%;
+	top: 0;
+	z-index: 9;
+	// background-color: rgba(255,255,255,0.5);
+	// background-color: rgba(255,255,255,1);
+	left: 50%;
+	// transform: translateX(150%);
+	border-left: 1px solid;
+	transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
+
+	&__header {
+		height: $header-height;
+		background-color: white;
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			background: url(images/arrow.svg) no-repeat left center;
+			width: 18px;
+			height: 100%;
+			margin-left: 0.5em;
+		}
+		.title {
+			padding: 1em 2em 0;
+
+		}
+	}
+	&__body {
+		border-top: 1px solid;
+		// padding: 1em;
+	}
+	// &:first-child{
+	// 	transform: translateX(50%);
+	// }
+	&.current {
+		background-color: rgba(255,255,255,1);
+		border-color: rgba(255,255,255,0);
+		// min-height: 0;
+	}
+
+
+
 
 }
 section.next {
@@ -371,7 +393,7 @@ section.main {
 	}
 }
 footer {
-	background-color: #EDEDED;
+	background-color: $bg-color-grey;
 	@include gridle_container();
 	article {
 		@include gridle ( 4 );

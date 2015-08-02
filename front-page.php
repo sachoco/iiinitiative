@@ -54,8 +54,8 @@ iii is an artist run platform for the development of self-made media based in Th
         $dateformatstring = "D d F, Y";
 ?>
         <section class="page">
-            <div class="page__header"><h2 class="title"><?php the_title(); ?></h2></div>
-            <div class="page__body container">
+            <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+            <section class="page__body container">
                 <?php the_content(); ?>
 <!--                 <div class="col grid-5">
                     <article>
@@ -87,7 +87,7 @@ iii is an artist run platform for the development of self-made media based in Th
                     </article>
                 </div> -->
 
-            </div>
+            </section>
         </section>
 
 <?php

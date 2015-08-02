@@ -1,5 +1,4 @@
 <?php include('header.php') ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <section class="background">
     <ul class="rslides">
 <?php 
@@ -18,10 +17,24 @@
 	<div class="overlay--right"></div>
 
 	<section class="page--single">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+        <section class="page__header"><h2 class="title">Agenda</h2></section>
         <section class="page__body container">
-            <?php the_content(); ?>
-
+        <ul>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+        </li>
+<?php endwhile; ?>
+<?php endif; ?>
+        </ul>
+        <?php
+            // Previous/next page navigation.
+            the_posts_pagination( array(
+                'prev_text'          => __( 'Previous page', 'iii' ),
+                'next_text'          => __( 'Next page', 'iii' ),
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'iii' ) . ' </span>',
+            ) );
+        ?>
         </section>
 	</section>
 
@@ -40,8 +53,7 @@
     </div>
 </section> -->
 
-<?php endwhile; ?>
-<?php endif; ?>
+
 
 
 <?php include('footer.php') ?>

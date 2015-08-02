@@ -27,14 +27,22 @@
 <![endif]-->
     </head>
 
-    <body>
+    <body <?php body_class(); ?>>
         <section class="header">
             <nav class="nav" role="navigation">
-                <ul class="nav-left">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Agency</a></li>
-                    <li><a href="#">Agenda</a></li>
-                </ul>
+                <?php wp_nav_menu(array(
+                    'container' => false,                           // remove nav container
+                    'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+                    'menu' => __( 'Main Menu Left', 'iii' ),  // nav name
+                    'menu_class' => 'nav-left nav',               // adding custom nav class
+                    'theme_location' => 'main-menu-left',                 // where it's located in the theme
+                    'before' => '',                                 // before the menu
+                    'after' => '',                                  // after the menu
+                    'link_before' => '',                            // before each link
+                    'link_after' => '',                             // after each link
+                    'depth' => 1,                                   // limit the depth of the nav
+                    'fallback_cb' => ''                             // fallback function (if there is one)
+                )); ?>
                 <h1 class="logo">
                     <svg x="0px" y="0px" width="20px" height="30px" viewBox="0 0 120 152">
                         <g>
@@ -47,11 +55,19 @@
                         </g>
                     </svg>
                 </h1>
-                <ul class="nav-right">
-                    <li><a href="#">Productions</a></li>
-                    <li><a href="#">Residency</a></li>
-                    <li><a href="#">Shop</a></li>
-                </ul>
+                <?php wp_nav_menu(array(
+                    'container' => false,                           // remove nav container
+                    'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+                    'menu' => __( 'Main Menu Right', 'iii' ),  // nav name
+                    'menu_class' => 'nav-right nav',               // adding custom nav class
+                    'theme_location' => 'main-menu-right',                 // where it's located in the theme
+                    'before' => '',                                 // before the menu
+                    'after' => '',                                  // after the menu
+                    'link_before' => '',                            // before each link
+                    'link_after' => '',                             // after each link
+                    'depth' => 1,                                   // limit the depth of the nav
+                    'fallback_cb' => ''                             // fallback function (if there is one)
+                )); ?>
             </nav>
         </section>
 
