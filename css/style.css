@@ -282,6 +282,17 @@ ul.view--grid li:hover .info--overlay {
   filter: alpha(opacity=100);
 }
 
+.sort {
+  text-align: center;
+  margin-top: 2em;
+}
+.sort button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 section.header {
   position: absolute;
   background-color: white;
@@ -538,7 +549,7 @@ section.main article {
   padding-right: 35px;
   width: 33.33333%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   section.main article {
     padding-left: 5px;
     padding-right: 5px;
@@ -617,7 +628,7 @@ footer article {
   padding-right: 35px;
   width: 33.33333%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   footer article {
     padding-left: 5px;
     padding-right: 5px;
@@ -631,7 +642,7 @@ footer .copyright {
   width: 100%;
   margin-top: 100px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   footer .copyright {
     padding-left: 5px;
     padding-right: 5px;

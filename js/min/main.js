@@ -1,1 +1,1 @@
-(function(){jQuery(function(e){return e(".rslides").responsiveSlides({speed:2e3,random:!0,timeout:2e4}),this})}).call(this);
+(function(){jQuery(function(t){return t(".rslides").responsiveSlides({speed:2e3,random:!0,timeout:2e4}),t(".isotope").isotope({itemSelector:"li",layoutMode:"fitRows",getSortData:{name:".name",date:".date"}}),t(".button").on("click",function(){var e;return e=t(this).data("sort-by"),console.log(e),t(".isotope").isotope({sortBy:e})}),this})}).call(this);

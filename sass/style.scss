@@ -118,6 +118,16 @@ ul.view {
 		}
 	}
 }
+.sort {
+	text-align: center;
+	margin-top: 2em;
+	button {
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-size: $base-font-size;
+	}
+}
 section.header {
 	position: absolute;
 	background-color: white;

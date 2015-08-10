@@ -19,9 +19,15 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
-        <ul class="view--grid container">
+        <div class="sort">
+            <p>
+                Order: 
+               <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
+            </p>
+        </div>
+        <ul class="view--grid isotope">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <li class="grid-4">
+        <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">
         <?php if (has_post_thumbnail()): ?>
             <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?>
 
@@ -63,7 +69,7 @@
                         $date=get_post_meta(get_the_ID(), '_date', TRUE);
                         if( ! empty( $date ) ) {
                         //if( false ) { 
-                            echo $date.'<br />';
+                            echo '<span class="date">'.$date.'</span><br />';
                         }
                 
                     ?>
@@ -73,7 +79,7 @@
 
             </a>
         <?php endif; ?>
-            <a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
+            <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
 
         </li>
 
