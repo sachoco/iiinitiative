@@ -1,17 +1,5 @@
 <?php include('header.php') ?>
-<section class="background">
-    <ul class="rslides">
-<?php 
-    $slides = get_field("slideshow", 65);
-    if($slides){
-        foreach($slides as $slide){
-            echo '<li><img src="'. $slide['url'] .'" alt=""></li>';
 
-        }
-    }
-?>
-    </ul>
-</section>
 <div class="viewport">
 	<div class="overlay--left"></div>
 	<div class="overlay--right"></div>

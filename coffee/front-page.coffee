@@ -58,7 +58,8 @@ jQuery ($) ->
 		h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
 		$(".viewport").velocity {height: h}, {duration: 1000}
 
-	$(".logo").on "click", ->
+	$(".logo").on "click", (e) ->
+		e.preventDefault();
 		if curPage isnt null
 			$(allPages[curPage]).removeClass("current").addClass("next")
 			curPage = null

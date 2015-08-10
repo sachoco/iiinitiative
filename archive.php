@@ -1,6 +1,5 @@
 <?php include('header.php') ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<section class="background">
+<!-- <section class="background">
     <ul class="rslides">
 <?php 
     $slides = get_field("slideshow", 65);
@@ -12,26 +11,43 @@
     }
 ?>
     </ul>
-</section>
+</section> -->
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
+    <div class="overlay--left"></div>
+    <div class="overlay--right"></div>
 
-	<section class="page--single">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+    <section class="page--single">
+        <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
-            <?php the_content(); ?>
-
+        <ul class="view--grid container">
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <li class="grid-3">
+        <?php if (has_post_thumbnail()): ?>
+            <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("thumbnail"); ?></a>
+        <?php endif; ?>
+            <a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
+        </li>
+<?php endwhile; ?>
+<?php endif; ?>
+        </ul>
+        <?php
+            // Previous/next page navigation.
+            the_posts_pagination( array(
+                'prev_text'          => __( 'Previous page', 'iii' ),
+                'next_text'          => __( 'Next page', 'iii' ),
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'iii' ) . ' </span>',
+            ) );
+        ?>
         </section>
-	</section>
+    </section>
 
-	<div class="section-wrap">
-
-
+    <div class="section-wrap">
 
 
-	</div>
-	
+
+
+    </div>
+    
 </div>
 
 <!-- <section class="main">
@@ -40,8 +56,7 @@
     </div>
 </section> -->
 
-<?php endwhile; ?>
-<?php endif; ?>
+
 
 
 <?php include('footer.php') ?>

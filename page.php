@@ -1,6 +1,6 @@
 <?php include('header.php') ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<section class="background">
+<!-- <section class="background">
     <ul class="rslides">
 <?php 
     $slides = get_field("slideshow", 65);
@@ -12,7 +12,7 @@
     }
 ?>
     </ul>
-</section>
+</section> -->
 <div class="viewport">
 	<div class="overlay--left"></div>
 	<div class="overlay--right"></div>

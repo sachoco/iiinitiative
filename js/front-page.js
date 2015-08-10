@@ -99,8 +99,9 @@
         duration: 1000
       });
     });
-    $(".logo").on("click", function() {
+    $(".logo").on("click", function(e) {
       var h, l, len2;
+      e.preventDefault();
       if (curPage !== null) {
         $(allPages[curPage]).removeClass("current").addClass("next");
         curPage = null;
