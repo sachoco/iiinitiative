@@ -598,6 +598,18 @@ footer ul li .post-date:before {
   position: absolute;
   margin-left: -0.7em;
 }
+footer #mc_embed_signup {
+  font-size: 0.8em;
+}
+footer #mc_embed_signup input {
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 100%;
+  max-width: 200px;
+}
+footer #mc_embed_signup input.button {
+  width: auto;
+}
 footer article {
   float: left;
   direction: ltr;

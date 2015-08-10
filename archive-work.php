@@ -23,7 +23,7 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li class="grid-4">
         <?php if (has_post_thumbnail()): ?>
-            <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("thumbnail"); ?>
+            <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?>
 
             <div class="info--overlay"><div>
                 <?php

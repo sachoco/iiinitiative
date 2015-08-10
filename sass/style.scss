@@ -489,6 +489,19 @@ footer {
 			}
 		}
 	}
+	#mc_embed_signup {
+		font-size: $font-size-s;
+		input {
+			// font-size: $base-font-size;
+			margin-bottom: 0.5em;
+			padding: 0.5em;
+			width: 100%;
+			max-width: 200px;
+			&.button {
+				width: auto;
+			}
+		}
+	}
 	@include gridle_container();
 	article {
 		@include gridle ( 4 );
