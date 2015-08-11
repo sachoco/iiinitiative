@@ -63,6 +63,9 @@ button {
 .margin-top {
 	margin-top: 2em;
 }
+.align-left {
+	text-align: left;
+}
 .wrap {
 	max-width: 1600px;
 	margin: auto;
@@ -118,6 +121,14 @@ ul.view {
 					}
 				}
 			}
+		}
+	}
+	&--list {
+		margin: 2em 0;
+		float: left;
+		width: 100%;
+		li {
+			// clear: both;
 		}
 	}
 }
