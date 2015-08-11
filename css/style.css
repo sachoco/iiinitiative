@@ -302,7 +302,7 @@ section.header {
 section.header nav {
   position: absolute;
   width: 100%;
-  top: 1em;
+  top: 1.4em;
   text-align: center;
   z-index: 999;
 }
@@ -321,14 +321,25 @@ section.header nav ul.nav-right {
 }
 section.header nav ul li {
   display: inline-block;
+  position: relative;
 }
 section.header nav ul li a {
   padding: 0 0.3em;
 }
 section.header nav ul li .sub-menu {
   text-align: left;
-  width: 300px;
+  min-width: 120px;
   display: none;
+  padding: 0.4em 1em;
+  left: -1em;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+section.header nav ul li .sub-menu li {
+  display: block;
+}
+section.header nav ul li .sub-menu li a {
+  padding: 0.2em;
+  display: block;
 }
 section.header nav ul li:hover .sub-menu {
   display: block;
@@ -386,6 +397,7 @@ section.background .rslides:after {
   min-height: 100%;
   z-index: 999;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  border-top: 1px solid;
 }
 .viewport .overlay--right {
   cursor: pointer;
@@ -396,6 +408,7 @@ section.background .rslides:after {
   min-height: 100%;
   z-index: 999;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  border-top: 1px solid;
 }
 .viewport .col, .viewport .wpb_column {
   border-left: 1px solid;
@@ -508,7 +521,7 @@ section.page__header:before {
   margin-left: 0.5em;
 }
 section.page__header .title {
-  padding: 1em 2em 0;
+  padding: 1.4em 2em 0;
 }
 section.page__body {
   border-top: 1px solid;

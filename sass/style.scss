@@ -136,7 +136,7 @@ section.header {
 	nav {
 		position: absolute;
 		width: 100%;
-		top: 1em;
+		top: 1.4em;
 		text-align: center;
 		z-index: 999;
 		ul {
@@ -151,14 +151,26 @@ section.header {
 			}
 			li {
 				display: inline-block;
+				position: relative;
 				a {
 					padding: 0 0.3em;
 
 				}
 					.sub-menu {
 						text-align: left;
-						width: 300px;
+						// width: 300px;
+						min-width: 120px;
 						display: none;
+						padding: 0.4em 1em;
+						left: -1em;
+						background-color: rgba(255,255,255,0.8);
+						li {
+							display: block;
+							a {
+								padding: 0.2em;
+								display: block;
+							}
+						}
 					}
 					&:hover .sub-menu {
 						display: block;
@@ -226,6 +238,8 @@ section.background {
 			min-height: 100%;
 			z-index: 999;
 			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+			border-top: 1px solid;
+			// border-right: 1px solid;
 			// &:before {
 			// 	content: "";
 			// 	position: absolute;
@@ -251,6 +265,8 @@ section.background {
 			min-height: 100%;
 			z-index: 999;
 			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+			border-top: 1px solid;
+			// border-left: 1px solid;
 			// &:before {
 			// 	content: "";
 			// 	position: absolute;
@@ -384,7 +400,7 @@ section.page {
 			margin-left: 0.5em;
 		}
 		.title {
-			padding: 1em 2em 0;
+			padding: 1.4em 2em 0;
 
 		}
 	}

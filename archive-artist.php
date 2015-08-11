@@ -19,7 +19,7 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
-        <ul class="view--grid">
+        <ul class="view--grid isotope">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li class="grid-3 grid-mobile-12 grid-sm-6 grid-md-4 grid-lg-3 grid-xl-2">
         <?php if (has_post_thumbnail()): ?>
