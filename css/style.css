@@ -231,6 +231,10 @@ button {
   font-family: "Maven Pro", sans-serif;
 }
 
+.margin-top {
+  margin-top: 2em;
+}
+
 .wrap {
   max-width: 1600px;
   margin: auto;
