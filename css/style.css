@@ -290,9 +290,14 @@ ul.view--grid li:hover .info--overlay {
   filter: alpha(opacity=100);
 }
 ul.view--list {
-  margin: 2em 0;
   float: left;
   width: 100%;
+}
+ul.view--list li {
+  margin: 1em 0;
+}
+ul.view--list li h2 {
+  font-size: 1.5em;
 }
 
 .sort {
@@ -506,6 +511,13 @@ section.page--single {
   position: relative;
   margin: auto;
   background-color: white;
+}
+section.page--single .page__body {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+section.page--single .page__body h3 {
+  font-size: 1.5em;
 }
 
 section.page {

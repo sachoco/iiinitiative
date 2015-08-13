@@ -124,10 +124,14 @@ ul.view {
 		}
 	}
 	&--list {
-		margin: 2em 0;
+		// margin: 2em 0;
 		float: left;
 		width: 100%;
 		li {
+			margin: 1em 0;
+			h2 {
+				font-size: 1.5em;
+			}
 			// clear: both;
 		}
 	}
@@ -386,6 +390,14 @@ section.page--single {
 	position: relative;	
 	margin: auto;
 	background-color: white;
+	.page__body {
+		padding-top: 2em;
+		padding-bottom: 2em;
+		h3 {
+			font-size: 1.5em;
+		}		
+	}
+
 }
 section.page {
 	position: absolute;

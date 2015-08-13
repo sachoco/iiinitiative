@@ -25,8 +25,41 @@
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
+        <h3 class="grid-12">Current</h2>
+        <?php
+            $args = array(
+                'post_type' => 'residency',
+                'post_state' => 'publish',
+                'meta_key' => 'date_from',
+                'orderby' => 'meta_value_num',
+                'order' => 'ASC',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'date_from',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '<='
+                    ),
+                    array(
+                        'key' => 'date_until',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '>='
+                    )
+                )
+            );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ) :
+        ?>
         <ul class="view--list">
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+        <?php
+                while ( $the_query->have_posts() ) : $the_query->the_post();
+
+        ?>
         <li class="grid-12 parent grid-mobile-12 ">
             <div class="grid-5 align-left">
         <?php if (has_post_thumbnail()): ?>
@@ -35,13 +68,215 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
                 <p><?php the_excerpt(); ?></p>
             </div>
         </li>
+                <?php
 
-<?php endwhile; ?>
-<?php endif; ?>
+
+                    // $the_query = new WP_Query( $args );
+                    // $col_count = 1;
+                    // $dates = [];
+                    // if ( $the_query->have_posts() ) :
+                    //     while ( $the_query->have_posts() ) : $the_query->the_post();
+
+
+                    //     $unixtimestamp = strtotime(get_field('schedule-date'));
+
+                    //     $month = date_i18n("n", $unixtimestamp);
+                    //     $day = date_i18n("d", $unixtimestamp);
+                    //     $dayofweek = date_i18n("D", $unixtimestamp);
+                    //      array_push($dates, $unixtimestamp*1000);
+
+                    //      $categories = wp_get_object_terms($post->ID, 'category');
+                    //     $cats = [];
+
+                    //      if($categories){
+                    //         foreach($categories as $category){
+                    //             array_push($cats, $category->slug);
+                    //         }
+                    //      }
+                    //      if(!empty($cats)) $cats = implode(" ", $cats);
+
+
+                ?>  
+        <?php
+                endwhile;
+        ?>
         </ul>
+
+        <?php
+            endif;
+            wp_reset_postdata();
+        ?>
+
+
+
+        <h3 class="grid-12">Upcoming</h2>
+        <?php
+            $args = array(
+                'post_type' => 'residency',
+                'post_state' => 'publish',
+                'meta_key' => 'date_from',
+                'orderby' => 'meta_value_num',
+                'order' => 'ASC',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'date_from',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '>'
+                    )
+                )
+            );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ) :
+        ?>
+        <ul class="view--list">
+
+        <?php
+                while ( $the_query->have_posts() ) : $the_query->the_post();
+
+        ?>
+        <li class="grid-12 parent grid-mobile-12 ">
+            <div class="grid-5 align-left">
+        <?php if (has_post_thumbnail()): ?>
+                <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?></a>
+        <?php endif; ?>
+            </div>
+            <div class="grid-7 align-left">
+                <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
+                <p><?php the_excerpt(); ?></p>
+            </div>
+        </li>
+                <?php
+
+
+                    // $the_query = new WP_Query( $args );
+                    // $col_count = 1;
+                    // $dates = [];
+                    // if ( $the_query->have_posts() ) :
+                    //     while ( $the_query->have_posts() ) : $the_query->the_post();
+
+
+                    //     $unixtimestamp = strtotime(get_field('schedule-date'));
+
+                    //     $month = date_i18n("n", $unixtimestamp);
+                    //     $day = date_i18n("d", $unixtimestamp);
+                    //     $dayofweek = date_i18n("D", $unixtimestamp);
+                    //      array_push($dates, $unixtimestamp*1000);
+
+                    //      $categories = wp_get_object_terms($post->ID, 'category');
+                    //     $cats = [];
+
+                    //      if($categories){
+                    //         foreach($categories as $category){
+                    //             array_push($cats, $category->slug);
+                    //         }
+                    //      }
+                    //      if(!empty($cats)) $cats = implode(" ", $cats);
+
+
+                ?>  
+        <?php
+                endwhile;
+        ?>
+        </ul>
+
+        <?php
+            endif;
+            wp_reset_postdata();
+        ?>
+
+        <h3 class="grid-12">Past</h2>
+         <?php
+            $args = array(
+                'post_type' => 'residency',
+                'post_state' => 'publish',
+                'meta_key' => 'date_from',
+                'orderby' => 'meta_value_num',
+                'order' => 'DESC',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'date_from',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '<'
+                    ),
+                    array(
+                        'key' => 'date_until',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '<'
+                    )
+                )
+            );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ) :
+        ?>
+        <ul class="view--list">
+
+        <?php
+                while ( $the_query->have_posts() ) : $the_query->the_post();
+
+        ?>
+        <li class="grid-12 parent grid-mobile-12 ">
+            <div class="grid-5 align-left">
+        <?php if (has_post_thumbnail()): ?>
+                <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?></a>
+        <?php endif; ?>
+            </div>
+            <div class="grid-7 align-left">
+                <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
+                <p><?php the_excerpt(); ?></p>
+            </div>
+        </li>
+                <?php
+
+
+                    // $the_query = new WP_Query( $args );
+                    // $col_count = 1;
+                    // $dates = [];
+                    // if ( $the_query->have_posts() ) :
+                    //     while ( $the_query->have_posts() ) : $the_query->the_post();
+
+
+                    //     $unixtimestamp = strtotime(get_field('schedule-date'));
+
+                    //     $month = date_i18n("n", $unixtimestamp);
+                    //     $day = date_i18n("d", $unixtimestamp);
+                    //     $dayofweek = date_i18n("D", $unixtimestamp);
+                    //      array_push($dates, $unixtimestamp*1000);
+
+                    //      $categories = wp_get_object_terms($post->ID, 'category');
+                    //     $cats = [];
+
+                    //      if($categories){
+                    //         foreach($categories as $category){
+                    //             array_push($cats, $category->slug);
+                    //         }
+                    //      }
+                    //      if(!empty($cats)) $cats = implode(" ", $cats);
+
+
+                ?>  
+        <?php
+                endwhile;
+        ?>
+        </ul>
+
+        <?php
+            endif;
+            wp_reset_postdata();
+        ?>
         <?php
             // Previous/next page navigation.
             the_posts_pagination( array(
