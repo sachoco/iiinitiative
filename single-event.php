@@ -1,11 +1,10 @@
 <?php include('header.php') ?>
-
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="viewport">
-<!-- 	<div class="overlay--left"></div>
-	<div class="overlay--right"></div> -->
+
 
 	<section class="page--single">
-        <section class="page__header"><h2 class="title">Agenda</h2></section>
+        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
         <section class="page__body container">
         <div class="event-list">
             <h3 class="">Host</h3>
@@ -221,42 +220,15 @@
             </li>
     <?php endwhile; ?>
     <?php endif; ?>
+    <?php wp_reset_postdata(); ?>
+
             </ul>
         </div>
         <section class="event-content">
-          <?php
-            $args = array(
-                'post_type' => 'event',
-                'post_state' => 'publish',
-                'meta_key' => 'date_from',
-                'orderby' => 'meta_value_num',
-                'order' => 'DESC',
-                'posts_per_page' => 1,
-                'meta_query' => array(
-                    'relation' => 'OR',
-                    array(
-                        'key' => 'date_from',
-                        'value' => strtotime("now"),
-                        'type' => 'NUMERIC',
-                        'compare' => '>'
-                    ),
-                    array(
-                        'key' => 'date_until',
-                        'value' => strtotime("now"),
-                        'type' => 'NUMERIC',
-                        'compare' => '>'
-                    )
-                )
-            );
 
-            $the_query = new WP_Query( $args );
-        ?>
-<?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
 <h2><?php the_title(); ?></h2>
 <?php the_content(); ?>
-
-<?php endwhile; ?>
-<?php endif; ?>      
+  
         </section>
         <div class="event-list right">
             <h3 class="">Circulation</h3>
@@ -471,14 +443,7 @@
     <?php endif; ?>
             </ul>
         </div>
-        <?php
-            // Previous/next page navigation.
-            the_posts_pagination( array(
-                'prev_text'          => __( 'Previous page', 'iii' ),
-                'next_text'          => __( 'Next page', 'iii' ),
-                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'iii' ) . ' </span>',
-            ) );
-        ?>
+
         </section>
 	</section>
 
@@ -497,7 +462,8 @@
     </div>
 </section> -->
 
-
+<?php endwhile; ?>
+<?php endif; ?>
 
 
 <?php include('footer.php') ?>

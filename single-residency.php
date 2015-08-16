@@ -14,13 +14,19 @@
     </ul>
 </section> -->
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
 
-	<section class="page--single">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+	<section class="page--single residency">
+        <section class="page__header"><h2 class="title">Residency</h2></section>
         <section class="page__body container">
-            <?php the_content(); ?>
+            <div class="wrapper">
+                <h1 class="title"><?php the_title(); ?></h1>
+                <div class="image">
+                <?php the_post_thumbnail(""); ?>
+                </div>
+                <div class="text">
+                <?php the_content(); ?>
+                </div>
+            </div>
 
         </section>
 	</section>

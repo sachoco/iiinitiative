@@ -14,8 +14,8 @@
     </ul>
 </section>
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
+	<div class="overlay overlay--left"></div>
+	<div class="overlay overlay--right"></div>
 
 	<section class="home">
         <div class="intro">

@@ -192,6 +192,12 @@ section.main article, footer article, footer .copyright {
  * @param 	list 	$pattern 		The name pattern of the class
  * @param 	list 	$statesNames 		The states names to generate
  */
+/*********************
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*********************/
 * {
   box-sizing: border-box;
 }
@@ -207,6 +213,13 @@ html, body {
   color: #555;
   line-height: 1.2;
   font-weight: normal;
+}
+
+body {
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+body.home {
+  background: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -316,6 +329,7 @@ section.header {
   background-color: white;
   height: 60px;
   width: 100%;
+  border-bottom: 1px solid;
 }
 section.header nav {
   position: absolute;
@@ -480,13 +494,64 @@ section.background .rslides:after {
   float: left;
 }
 
-body.home .viewport .overlay--left, body.home .viewport .overlay--right {
+body.home section.page__header {
+  background-color: white;
+  border-bottom: 1px solid;
+}
+body.home .viewport .overlay--left {
   background: none;
+  border-top: none;
+  top: 0;
+}
+body.home .viewport .overlay--left:before {
+  top: 60px;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgIDxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.7)), color-stop(40%, rgba(0, 0, 0, 0.4)), color-stop(99%, transparent), color-stop(100%, transparent));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 99%, transparent 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 99%, transparent 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 );
+  /* IE6-8 */
+}
+body.home .viewport .overlay--right {
+  background: none;
+  border-top: none;
+  top: 0;
+}
+body.home .viewport .overlay--right:before {
+  top: 60px;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(1%, transparent), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, transparent 0%, transparent 1%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.7) 100%);
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: linear-gradient(to right, transparent 0%, transparent 1%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.7) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b3000000',GradientType=1 );
+  /* IE6-8 */
 }
 
 section.home {
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
+  width: -webkit-calc(100% - 75px);
+  width: calc(100% - 75px);
   position: relative;
   padding-bottom: 45%;
   margin: auto;
@@ -506,24 +571,85 @@ section.home .intro {
 }
 
 section.page--single {
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
+  width: 100%;
   position: relative;
   margin: auto;
-  background-color: white;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+section.page--single h1.title {
+  font-size: 2em;
+  margin-bottom: 1em;
 }
 section.page--single .page__body {
   padding-top: 2em;
   padding-bottom: 2em;
+  background-color: white;
 }
 section.page--single .page__body h3 {
   font-size: 1.5em;
 }
+section.page--single.artist .wrapper, section.page--single.work .wrapper, section.page--single.residency .wrapper {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+section.page--single.artist .wrapper .image, section.page--single.work .wrapper .image, section.page--single.residency .wrapper .image {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 1em;
+}
+section.page--single.artist .wrapper .image img, section.page--single.work .wrapper .image img, section.page--single.residency .wrapper .image img {
+  width: 100%;
+  height: auto;
+}
+section.page--single.artist .wrapper .text, section.page--single.work .wrapper .text, section.page--single.residency .wrapper .text {
+  text-align: left;
+}
+section.page--single.artist .wrapper .text img, section.page--single.work .wrapper .text img, section.page--single.residency .wrapper .text img {
+  max-width: 100%;
+  height: auto;
+}
+
+section.page--eventlist {
+  width: 100%;
+}
+
+.event-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
+  float: left;
+  padding: 0 1em;
+}
+.event-content h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.event-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.event-list {
+  width: 200px;
+  float: left;
+}
+.event-list.right {
+  float: right;
+}
+.event-list li {
+  padding: 0.5em 0;
+  font-size: 0.8em;
+}
+.event-list li time {
+  display: block;
+  font-size: 0.8em;
+}
 
 section.page {
   position: absolute;
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
+  width: -webkit-calc(100% - 75px);
+  width: calc(100% - 75px);
   min-height: 100%;
   top: 0;
   z-index: 9;
@@ -534,7 +660,6 @@ section.page {
 }
 section.page__header {
   height: 60px;
-  background-color: white;
   position: relative;
 }
 section.page__header:before {
@@ -547,9 +672,6 @@ section.page__header:before {
 }
 section.page__header .title {
   padding: 1.4em 2em 0;
-}
-section.page__body {
-  border-top: 1px solid;
 }
 section.page.current {
   background-color: white;
@@ -686,3 +808,75 @@ footer .copyright {
     padding-right: 5px;
   }
 }
+
+/*********************
+LARGER MOBILE DEVICES
+This is for devices like the Galaxy Note or something that's
+larger than an iPhone but smaller than a tablet. Let's call them
+tweeners.
+*********************/
+@media only screen and (min-width: 481px) {
+  section.home {
+    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 75px);
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 75px);
+  }
+}
+/*********************
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 768px) {
+  section.home {
+    width: -webkit-calc(100% - 150px);
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 150px);
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+}
+/*********************
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 1030px) {
+  section.home {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+
+  section.page--single {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 1030px;
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+}
+/*********************
+LARGE VIEWING SIZE
+This is for the larger monitors and possibly full screen viewers.
+*********************/
+/*********************
+RETINA (2x RESOLUTION DEVICES)
+This applies to the retina iPhone (4s) and iPad (2,3) along with
+other displays with a 2x resolution. You can also create a media
+query for retina AND a certain size if you want. Go Nuts.
+*********************/

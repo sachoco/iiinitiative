@@ -14,8 +14,6 @@
     </ul>
 </section> -->
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
 
 	<section class="page--single">
         <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>

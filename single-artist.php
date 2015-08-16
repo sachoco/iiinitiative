@@ -14,28 +14,33 @@
     </ul>
 </section> -->
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
 
-	<section class="page--single">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+	<section class="page--single artist">
+        <section class="page__header"><h2 class="title">Artist</h2></section>
         <section class="page__body container">
-            <?php the_content(); ?>
-
-            <div class="details details--artist">
-            
-                <p>
-                    <?php 
-                        $url=get_post_meta(get_the_ID(), '_url', TRUE);
-                        if( ! empty( $url ) ) { 
-                            echo '<a href="http://'.$url.'" target="_blank">'.$url.'</a><br />';
-                        }
-                        $email=get_post_meta(get_the_ID(), '_email', TRUE);
-                        if( ! empty( $email ) ) {   
-                            echo '<a href="mailto:'.$email.'">'.$email.'</a>';
-                        } 
-                    ?>
-                </p>
+            <div class="wrapper">
+                <h1 class="title"><?php the_title(); ?></h1>
+                <div class="image">
+                <?php the_post_thumbnail(""); ?>
+                </div>
+                <div class="text">
+                <?php the_content(); ?>
+                </div>
+                <div class="details details--artist">
+                
+                    <p>
+                        <?php 
+                            $url=get_post_meta(get_the_ID(), '_url', TRUE);
+                            if( ! empty( $url ) ) { 
+                                echo '<a href="http://'.$url.'" target="_blank">'.$url.'</a><br />';
+                            }
+                            $email=get_post_meta(get_the_ID(), '_email', TRUE);
+                            if( ! empty( $email ) ) {   
+                                echo '<a href="mailto:'.$email.'">'.$email.'</a>';
+                            } 
+                        ?>
+                    </p>
+                </div>
             </div>
 
         <?php       ///////// Find related works ///////////

@@ -113,7 +113,7 @@
             duration: 1000
           });
         }
-        h = $(".home").outerHeight();
+        h = $("section.home").outerHeight();
         return $(".viewport").velocity({
           height: h
         }, {
@@ -146,17 +146,25 @@
       }
     });
     resizeHandler = function() {
-      var h;
+      var h, pageW, winW;
       if ($(".page.current").length > 0) {
         h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
-        return $(".viewport").velocity({
+        $(".viewport").velocity({
           height: h
         }, {
           duration: 0
         });
       }
+      winW = $(window).width();
+      pageW = $("section.page").width();
+      console.log(pageW);
+      return $(".viewport .overlay").width((winW - pageW) / 2);
     };
     $(window).resize(resizeHandler);
+    $(document).ready(function() {
+      resizeHandler();
+      return this;
+    });
     return this;
   });
 

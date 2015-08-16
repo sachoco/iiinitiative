@@ -66,7 +66,7 @@ jQuery ($) ->
 			for page in nextPages
 				$(page).velocity { translateX: "+=100%" }, { duration: 1000 }
 		
-			h = $(".home").outerHeight();
+			h = $("section.home").outerHeight();
 			$(".viewport").velocity {height: h}, {duration: 1000}
 
 	$(".overlay--right").on {
@@ -97,9 +97,15 @@ jQuery ($) ->
 			h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
 			# console.log h
 			$(".viewport").velocity {height: h}, {duration: 0}
+		winW = $(window).width();
+		pageW = $("section.page").width();
+		console.log(pageW)
+		$(".viewport .overlay").width((winW - pageW) / 2)
 
 	$(window).resize resizeHandler
 
-
+	$(document).ready ->
+		resizeHandler()
+		@
 
 	@
