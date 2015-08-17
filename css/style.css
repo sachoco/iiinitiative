@@ -200,6 +200,8 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 * {
   box-sizing: border-box;
+  -webkit-transition: -webkit-filter 2s, filter 2s;
+          transition: filter 2s;
 }
 
 html {
@@ -336,10 +338,51 @@ section.header nav {
   width: 100%;
   top: 1.4em;
   text-align: center;
-  z-index: 999;
+  z-index: 99999;
+}
+section.header nav .mobile-menu {
+  cursor: pointer;
+  position: absolute;
+  right: 45px;
+  top: -16px;
+}
+section.header nav .mobile-menu .fa {
+  color: white;
+  background-color: #555;
+}
+section.header nav.mobile-nav {
+  box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.75);
+  display: none;
+  top: 0;
+  padding-top: 60px;
+  position: relative;
+  background-color: white;
+  z-index: 9999;
+  text-align: left;
+  border-bottom: 1px solid;
+  font-size: 1.5em;
+}
+section.header nav.mobile-nav ul.nav {
+  display: block;
+  position: relative;
+  margin: auto;
+  left: 50px;
+}
+section.header nav.mobile-nav ul.nav li {
+  display: block;
+  padding: 0.3em;
+}
+section.header nav.mobile-nav ul.nav li .sub-menu {
+  position: relative;
+  display: block;
+}
+section.header nav.mobile-nav ul.nav li .sub-menu li {
+  padding: 0em;
+  left: 1em;
 }
 section.header nav ul {
   position: absolute;
+  display: none;
 }
 section.header nav ul.nav-left {
   right: -webkit-calc(50% + 40px);
@@ -650,6 +693,7 @@ section.page {
   position: absolute;
   width: -webkit-calc(100% - 75px);
   width: calc(100% - 75px);
+  display: none;
   min-height: 100%;
   top: 0;
   z-index: 9;
@@ -833,6 +877,16 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 768px) {
+  section.header nav .mobile-menu {
+    display: none;
+  }
+  section.header nav.mobile-nav {
+    display: none !important;
+  }
+  section.header nav ul {
+    display: block;
+  }
+
   section.home {
     width: -webkit-calc(100% - 150px);
     width: calc(100% - 150px);

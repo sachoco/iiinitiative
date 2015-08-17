@@ -16,10 +16,16 @@
     $(".button").on("click", function() {
       var sort;
       sort = $(this).data("sort-by");
-      console.log(sort);
       return $(".isotope").isotope({
         sortBy: sort
       });
+    });
+    $(".mobile-menu").on("click", function() {
+      $(".mobile-nav").slideToggle();
+      $("section.background").toggleClass("blur");
+      $(".viewport").toggleClass("blur");
+      $("section.main").toggleClass("blur");
+      return $("footer").toggleClass("blur");
     });
     return this;
   });

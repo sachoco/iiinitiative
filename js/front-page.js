@@ -13,7 +13,10 @@
       $(page).velocity({
         translateX: v + "%"
       }, {
-        duration: 0
+        duration: 0,
+        complete: function(elem) {
+          return $(elem).fadeIn();
+        }
       });
     }
     for (i = k = 0, len1 = prevPages.length; k < len1; i = ++k) {
@@ -22,7 +25,10 @@
       $(page).velocity({
         translateX: v + "%"
       }, {
-        duration: 0
+        duration: 0,
+        complete: function(elem) {
+          return $(elem).fadeIn();
+        }
       });
     }
     $(document).on("click", ".overlay--right", function() {

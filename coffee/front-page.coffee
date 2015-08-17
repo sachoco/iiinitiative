@@ -10,11 +10,15 @@ jQuery ($) ->
 
 	for page, i in nextPages
 		v = 50 + (i * 100)
-		$(page).velocity { translateX: v+"%" }, { duration: 0}
+		$(page).velocity { translateX: v+"%" }, { duration: 0, complete: (elem)->
+			$(elem).fadeIn()
+		}
 
 	for page, i in prevPages
 		v = -150 - ((prevPages.length - 1 - i) * 100)
-		$(page).velocity { translateX: v+"%" }, { duration: 0}
+		$(page).velocity { translateX: v+"%" }, { duration: 0, complete: (elem)->
+			$(elem).fadeIn()
+		}
 
 	$(document).on "click", ".overlay--right", -> 
 		if curPage is null
@@ -106,6 +110,7 @@ jQuery ($) ->
 
 	$(document).ready ->
 		resizeHandler()
+
 		@
 
 	@
