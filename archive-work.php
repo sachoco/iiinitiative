@@ -13,18 +13,18 @@
     </ul>
 </section> -->
 <div class="viewport">
-    <div class="overlay--left"></div>
-    <div class="overlay--right"></div>
+<!--     <div class="overlay--left"></div>
+    <div class="overlay--right"></div> -->
 
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
-        <div class="sort">
+<!--         <div class="sort">
             <p>
                 Order: 
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
-        </div>
+        </div> -->
         <ul class="view--grid isotope">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">

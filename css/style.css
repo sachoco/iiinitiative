@@ -228,6 +228,13 @@ h1, h2, h3, h4, h5 {
   font-family: "Gafata", sans-serif;
   font-weight: normal;
 }
+h1 a, h2 a, h3 a, h4 a, h5 a {
+  background: none;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+  background: url(images/overlay-pattern.png) black;
+  color: white !important;
+}
 
 .h3 {
   font-size: 1.3em;
@@ -238,8 +245,30 @@ p {
 }
 
 a {
-  color: #555;
+  color: black;
   text-decoration: none;
+  -webkit-transition: all 0.1s;
+          transition: all 0.1s;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+a:hover {
+  background-color: black;
+  color: white;
+}
+a:hover time {
+  color: #555;
+}
+a time {
+  -webkit-transition: none;
+          transition: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }
 
 button {
@@ -333,6 +362,9 @@ section.header {
   width: 100%;
   border-bottom: 1px solid;
 }
+section.header a {
+  background: none;
+}
 section.header nav {
   position: absolute;
   width: 100%;
@@ -399,7 +431,11 @@ section.header nav ul li {
   position: relative;
 }
 section.header nav ul li a {
-  padding: 0 0.3em;
+  padding: 0.2em;
+  background: none;
+}
+section.header nav ul li a:hover {
+  background: url(images/overlay-pattern.png) black;
 }
 section.header nav ul li .sub-menu {
   text-align: left;
@@ -414,7 +450,8 @@ section.header nav ul li .sub-menu li {
 }
 section.header nav ul li .sub-menu li a {
   padding: 0.2em;
-  display: block;
+  display: inline-block;
+  line-height: 1em;
 }
 section.header nav ul li:hover .sub-menu {
   display: block;
@@ -707,6 +744,10 @@ section.page__header {
   position: relative;
 }
 section.page__header:before {
+  -webkit-transition: opacity 0.5s;
+          transition: opacity 0.5s;
+  opacity: 1;
+  filter: alpha(opacity=100);
   content: "";
   position: absolute;
   background: url(images/arrow.svg) no-repeat left center;
@@ -720,6 +761,10 @@ section.page__header .title {
 section.page.current {
   background-color: white;
   border-color: rgba(255, 255, 255, 0);
+}
+section.page.current .page__header:before {
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 
 section.next {
@@ -740,6 +785,13 @@ section.prev {
 section.prev.hover {
   background-color: white;
   margin-left: 50px;
+}
+section.prev .page__header:before {
+  margin-right: 0.5em;
+  -webkit-transform: scale(-1, 1);
+      -ms-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+  right: 0;
 }
 
 section.main {

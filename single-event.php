@@ -4,7 +4,7 @@
 
 
 	<section class="page--single">
-        <section class="page__header"><h2 class="title"><?php the_title(); ?></h2></section>
+        <section class="page__header"><h2 class="title">Event</h2></section>
         <section class="page__body container">
         <div class="event-list">
             <h3 class="">Host</h3>
