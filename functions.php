@@ -125,14 +125,14 @@ function custom_post_event() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'custom-fields', 'revisions', 'sticky')
 		) /* end of options */
 	); /* end of register post type */
 
 	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type( 'category', 'event' );
+	// register_taxonomy_for_object_type( 'category', 'event' );
 	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type( 'post_tag', 'event' );
+	// register_taxonomy_for_object_type( 'post_tag', 'event' );
 
 }
 

@@ -23,7 +23,6 @@
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
-        <h3 class="grid-12">Current</h3>
         <?php
             $args = array(
                 'post_type' => 'residency',
@@ -52,6 +51,8 @@
             $the_query = new WP_Query( $args );
             if ( $the_query->have_posts() ) :
         ?>
+        <h3 class="grid-12">Current</h3>
+
         <ul class="view--list">
 
         <?php
@@ -66,7 +67,18 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
+        <?php 
+            if(get_field('date_from')){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
+            }
+        ?>
                 <p><?php the_excerpt(); ?></p>
             </div>
         </li>
@@ -111,7 +123,6 @@
 
 
 
-        <h3 class="grid-12">Upcoming</h3>
         <?php
             $args = array(
                 'post_type' => 'residency',
@@ -133,6 +144,8 @@
             $the_query = new WP_Query( $args );
             if ( $the_query->have_posts() ) :
         ?>
+        <h3 class="grid-12">Upcoming</h3>
+
         <ul class="view--list">
 
         <?php
@@ -147,7 +160,18 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
+        <?php 
+            if(get_field('date_from')){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
+            }
+        ?>
                 <p><?php the_excerpt(); ?></p>
             </div>
         </li>
@@ -190,7 +214,6 @@
             wp_reset_postdata();
         ?>
 
-        <h3 class="grid-12">Past</h3>
          <?php
             $args = array(
                 'post_type' => 'residency',
@@ -219,6 +242,8 @@
             $the_query = new WP_Query( $args );
             if ( $the_query->have_posts() ) :
         ?>
+        <h3 class="grid-12">Past</h3>
+
         <ul class="view--list">
 
         <?php
@@ -233,7 +258,19 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-                <?php the_field('date_from'); ?> - <?php the_field('date_until'); ?>
+
+        <?php 
+            if(get_field('date_from')){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
+            }
+        ?>
                 <p><?php the_excerpt(); ?></p>
             </div>
         </li>

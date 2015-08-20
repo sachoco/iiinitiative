@@ -1,17 +1,14 @@
 <?php include('header.php') ?>
 
 <div class="viewport">
-<!-- 	<div class="overlay--left"></div>
-	<div class="overlay--right"></div> -->
 
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Agenda</h2></section>
         <section class="page__body container">
         <div class="event-list">
             <h3 class="">Hosting</h3>
+<?php $display_item; ?>
 
-            <h4 class="">Current</h4>
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -47,7 +44,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) :  ?>
+            <h4 class="">Current</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -82,10 +82,9 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
-            <h4 class="">Upcoming</h4>
-            <ul class="">
+    <?php endif; ?>
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -121,7 +120,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Upcoming</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -156,12 +158,10 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
 
-            <h4 class="">Past</h4>
 
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -197,7 +197,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Past</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -232,49 +235,14 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
         </div>
-        <section class="event-content">
-          <?php
-            $args = array(
-                'post_type' => 'event',
-                'post_state' => 'publish',
-                'meta_key' => 'date_from',
-                'orderby' => 'meta_value_num',
-                'order' => 'DESC',
-                'posts_per_page' => 1,
-                'meta_query' => array(
-                    'relation' => 'OR',
-                    array(
-                        'key' => 'date_from',
-                        'value' => date("Ymd", strtotime("now")),
-                        'type' => 'NUMERIC',
-                        'compare' => '>'
-                    ),
-                    array(
-                        'key' => 'date_until',
-                        'value' => date("Ymd", strtotime("now")),
-                        'type' => 'NUMERIC',
-                        'compare' => '>'
-                    )
-                )
-            );
 
-            $the_query = new WP_Query( $args );
-        ?>
-<?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
-<h2><?php the_title(); ?></h2>
-<?php the_content(); ?>
-
-<?php endwhile; ?>
-<?php endif; ?>      
-        </section>
         <div class="event-list right">
             <h3 class="">Circulation</h3>
 
-            <h4 class="">Current</h4>
-            <ul class="">
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -310,7 +278,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Current</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -345,10 +316,9 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
-            <h4 class="">Upcoming</h4>
-            <ul class="">
+    <?php endif; ?>
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -384,7 +354,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Upcoming</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -419,12 +392,10 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
 
-            <h4 class="">Past</h4>
 
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -460,7 +431,10 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Past</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
@@ -495,9 +469,53 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
         </div>
+
+
+
+        <section class="event-content">
+<?php
+  if(!$display_item):
+    $args = array(
+        'post_type' => 'event',
+        'post_state' => 'publish',
+        'meta_key' => 'date_from',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
+        'posts_per_page' => 1,
+        'meta_query' => array(
+            array(
+                'key' => 'host_|_circulation',
+                'value' => 'host',
+                'compare' => 'LIKE'
+            )
+        )
+    );
+
+    $the_query = new WP_Query( $args );
+?>
+<?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+<h2><?php the_title(); ?></h2>
+<?php the_content(); ?>
+
+<?php endwhile; ?>
+<?php endif; ?>      
+<?php else: ?>      
+
+<?php
+    $post = get_post($display_item);
+    echo "<h2>". $post->post_title ."</h2>";
+    echo $post->post_content;
+?>
+
+<?php endif; ?>      
+
+        </section>
+
+
+
         <?php
             // Previous/next page navigation.
             the_posts_pagination( array(
