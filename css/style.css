@@ -355,6 +355,16 @@ ul.view--list li h2 {
   font-size: 16px;
 }
 
+.worksby h2 {
+  text-align: center;
+}
+.worksby ul.view--grid {
+  text-align: center;
+}
+.worksby ul.view--grid li {
+  float: none !important;
+}
+
 section.header {
   position: absolute;
   background-color: white;
@@ -672,12 +682,11 @@ section.page--single .page__body h3 {
   font-size: 1.5em;
 }
 section.page--single.artist .wrapper, section.page--single.work .wrapper, section.page--single.residency .wrapper {
-  max-width: 600px;
+  max-width: 780px;
   margin: auto;
   text-align: center;
 }
 section.page--single.artist .wrapper .image, section.page--single.work .wrapper .image, section.page--single.residency .wrapper .image {
-  max-width: 600px;
   margin: auto;
   margin-bottom: 1em;
 }

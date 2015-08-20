@@ -72,9 +72,9 @@
                 <div class="details">
                     <h2>Works by <?php the_title(); ?></h2>
                 </div>
-                <ul class="view--grid vc_row wpb_row vc_row-fluid">
+                <ul class="view--grid">
                 <?php foreach ( $related_works as $post ) : ?>
-                    <li class="wpb_column vc_column_container vc_col-sm-4">
+                    <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">
                     <a class="thumbnail" href="<?php echo get_permalink($post); ?>"><?php //echo get_the_title($post);?>
     
                     <?php
@@ -86,65 +86,54 @@
                         }       
                     ?>
     
-                    <div class="teaser__details__wrapper">
-                        <div class="teaser__details">
-                            <div class="teaser__details__content">
-                                <p class="teaser__title">
-                                    <?php 
-                                        echo get_the_title($post); 
-                                        //echo ' '.get_the_ID();
-                                    
-                                    ?>
-                                </p>
-                        
-                                <p class="teaser__artist"> 
+                    <div class="info--overlay"><div>
+                        <p class="teaser__title">
+                            <?php 
+                                echo get_the_title($post); 
+                                //echo ' '.get_the_ID();
+                            
+                            ?>
+                        </p>
+                
+                        <p class="teaser__artist"> 
+                 
+                             <?php  //////////// Find related artists of related work //////////////
                          
-                                     <?php  //////////// Find related artists of related work //////////////
-                                 
-                                        //$related_artist_pages_ids = array();
-                                        unset($related_artist_pages_ids);
-                                        $related_artist_pages_ids = rpt_get_object_relation($post->ID, 'artist');
-                                        //echo print_r($related_artist_pages_ids).' ';
-                                        //echo count($related_artist_pages_ids).' ';
-                                        if ( count($related_artist_pages_ids) >= 1 ) {
-                                            $related_artist_pages = get_posts( array(
-                                                'post_type' => 'artist',
-                                                'post_status' => 'publish',
-                                                'posts_per_page' => -1,
-                                                'post__in' => $related_artist_pages_ids,
-                                                'orderby' => 'post_date',
-                                                'order' => 'DESC'
-                                            ) );
-                                           //echo print_r($related_artist_pages).' ';
-                                           foreach ( $related_artist_pages as $artist_post ) {
-                                               echo get_the_title($artist_post).'<br />';
-                                           } 
-                                        //unset($related_artist_pages_ids);
-                                        //$related_artist_pages_ids = array();
-                                        //echo count($related_artist_pages_ids);
-                                        }                        
-                                     ?>
-                                 
-                                     <?php // other artists
-                        
-                                        $artists = rwmb_meta( 'work_artists');
-                                        // foreach($artists as $artist){
-                                        //     echo $artist."<br />";
-                                        // }   
-                                    ?>   
-                        
-                                </p>
+                                //$related_artist_pages_ids = array();
+                                unset($related_artist_pages_ids);
+                                $related_artist_pages_ids = rpt_get_object_relation($post->ID, 'artist');
+                                //echo print_r($related_artist_pages_ids).' ';
+                                //echo count($related_artist_pages_ids).' ';
+                                if ( count($related_artist_pages_ids) >= 1 ) {
+                                    $related_artist_pages = get_posts( array(
+                                        'post_type' => 'artist',
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => -1,
+                                        'post__in' => $related_artist_pages_ids,
+                                        'orderby' => 'post_date',
+                                        'order' => 'DESC'
+                                    ) );
+                                   //echo print_r($related_artist_pages).' ';
+                                   foreach ( $related_artist_pages as $artist_post ) {
+                                       echo get_the_title($artist_post).'<br />';
+                                   } 
+                                //unset($related_artist_pages_ids);
+                                //$related_artist_pages_ids = array();
+                                //echo count($related_artist_pages_ids);
+                                }                        
+                             ?>
                          
-<!--                                 <p class="teaser__year">
-                                    <?php $date=get_post_meta($post->ID, '_date', TRUE);
-                                        if( ! empty( $date ) ) {    
-                                            echo $date;
-                                        } 
-                                    ?>
-                                </p> -->
-                            </div>
-                        </div>
-                    </div>
+                             <?php // other artists
+                
+                                $artists = rwmb_meta( 'work_artists');
+                                // foreach($artists as $artist){
+                                //     echo $artist."<br />";
+                                // }   
+                            ?>   
+                
+                        </p>
+
+                    </div></div>
             
                     </a>
                     </li>

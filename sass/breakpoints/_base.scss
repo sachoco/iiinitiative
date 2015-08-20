@@ -181,6 +181,19 @@ ul.view {
 		font-size: $base-font-size;
 	}
 }
+.worksby {
+	h2 {
+		text-align: center;
+	}
+	ul {
+		&.view--grid {
+			text-align: center;
+			li {
+				float: none !important;
+			}
+		}
+	}
+}
 section.header {
 	position: absolute;
 	background-color: white;
@@ -551,11 +564,11 @@ section.page--single {
 	}
 	&.artist, &.work, &.residency {
 		.wrapper {
-			max-width: 600px;
+			max-width: 780px;
 			margin: auto;
 			text-align: center;
 			.image {
-				max-width: 600px;
+				// max-width: 600px;
 				margin: auto;
 				margin-bottom: 1em;
 				img {

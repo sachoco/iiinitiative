@@ -7,7 +7,7 @@
         <section class="page__header"><h2 class="title">Event</h2></section>
         <section class="page__body container">
         <div class="event-list">
-            <h3 class="">Host</h3>
+            <h3 class="">Hosting</h3>
 
             <h4 class="">Current</h4>
             <ul class="">

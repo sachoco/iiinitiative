@@ -1,8 +1,7 @@
 <?php include('header.php') ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="viewport">
-	<div class="overlay--left"></div>
-	<div class="overlay--right"></div>
+
 
 	<section class="page--single work">
         <section class="page__header"><h2 class="title">Work</h2></section>
