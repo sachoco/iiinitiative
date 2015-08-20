@@ -505,8 +505,31 @@ function show_upcoming_events( $atts ) {
                     $date .= " - ". $date_until;
                 }
             }
+            if(get_field('location', $post->ID)){
+                   
+            }
+			
+            $location = "";
+			// check if the repeater field has rows of data
 
-	    	$output .= "<span class='post-date'>" . $date . "</span></li>";
+			if( have_rows('location', $post->ID) ):
+
+			 	// loop through the rows of data
+			    while ( have_rows('location', $post->ID) ) : the_row();
+
+			        // display a sub field value
+			        $location .= "<br>" . get_sub_field('location');
+
+			    endwhile;
+
+			else :
+
+			    // no rows found
+
+			endif;
+
+	    	$output .= "<span class='post-date'>" .  $date . $location . "</span></li>";
+	    	// $output .= "<span class='post-location'>" . $location . "</span></li>";
 
 	    // return, don't echo
 		endforeach;
