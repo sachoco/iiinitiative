@@ -25,13 +25,13 @@
                             'relation' => 'AND',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '<='
                             ),
                             array(
                                 'key' => 'date_until',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '>='
                             )
@@ -57,9 +57,13 @@
             }
 
             if(get_field('date_from')){
-                the_field('date_from');
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
                 if(get_field('date_until')){
-                    echo " - ". get_field('date_until');
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
                 }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
@@ -95,7 +99,7 @@
                             'relation' => 'AND',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '>'
                             ),
@@ -127,9 +131,13 @@
             }
 
             if(get_field('date_from')){
-                the_field('date_from');
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
                 if(get_field('date_until')){
-                    echo " - ". get_field('date_until');
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
                 }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
@@ -167,13 +175,13 @@
                             'relation' => 'AND',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '<'
                             ),
                             array(
                                 'key' => 'date_until',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '<'
                             )
@@ -199,9 +207,13 @@
             }
 
             if(get_field('date_from')){
-                the_field('date_from');
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
                 if(get_field('date_until')){
-                    echo " - ". get_field('date_until');
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
                 }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
@@ -249,13 +261,13 @@
                             'relation' => 'AND',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '<='
                             ),
                             array(
                                 'key' => 'date_until',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '>='
                             )
@@ -281,9 +293,13 @@
             }
 
             if(get_field('date_from')){
-                the_field('date_from');
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
                 if(get_field('date_until')){
-                    echo " - ". get_field('date_until');
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
                 }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
@@ -319,7 +335,7 @@
                             'relation' => 'OR',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
                                 'compare' => '>'
                             ),
@@ -351,9 +367,13 @@
             }
 
             if(get_field('date_from')){
-                the_field('date_from');
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
                 if(get_field('date_until')){
-                    echo " - ". get_field('date_until');
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
                 }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
@@ -383,28 +403,28 @@
                     'post_state' => 'publish',
                     'meta_key' => 'date_from',
                     'orderby' => 'meta_value_num',
-                    'order' => 'ASC',
+                    'order' => 'DESC',
                     'posts_per_page' => -1,
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'OR',
+                            'relation' => 'AND',
                             array(
                                 'key' => 'date_from',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
-                                'compare' => '>'
+                                'compare' => '<'
                             ),
                             array(
                                 'key' => 'date_until',
-                                'value' => strtotime("now"),
+                                'value' => date("Ymd", strtotime("now")),
                                 'type' => 'NUMERIC',
-                                'compare' => '>'
+                                'compare' => '<'
                             )
                         ),
                         array(
                             'key' => 'host_|_circulation',
-                            'value' => 'circulation',
+                            'value' => 'host',
                             'compare' => 'LIKE'
                         )
                     )
@@ -423,7 +443,14 @@
             }
 
             if(get_field('date_from')){
-
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
             }else{
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){

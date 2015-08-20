@@ -431,11 +431,13 @@ section.header nav ul li {
   position: relative;
 }
 section.header nav ul li a {
-  padding: 0.2em;
+  padding: 0.2em 0.2em 0;
   background: none;
+  display: block;
 }
 section.header nav ul li a:hover {
   background: url(images/overlay-pattern.png) black;
+  text-decoration: none;
 }
 section.header nav ul li .sub-menu {
   text-align: left;
@@ -854,16 +856,10 @@ footer h2 {
 }
 footer ul li {
   margin-bottom: 0.5em;
-  font-family: "Gafata", sans-serif;
-  font-weight: bold;
 }
 footer ul li .post-date {
-  margin-left: 1em;
-}
-footer ul li .post-date:before {
-  content: "-";
-  position: absolute;
-  margin-left: -0.7em;
+  display: block;
+  font-size: 0.8em;
 }
 footer #mc_embed_signup {
   font-size: 0.8em;

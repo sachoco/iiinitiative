@@ -492,7 +492,21 @@ function show_upcoming_events( $atts ) {
 
 		foreach( $posts as $post ): 	
 
-	    	$output .= "<li><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . " - " . get_field('date_from', $post->ID) . "</a></li>";
+	    	$output .= "<li><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a>";
+
+	    	$date = "";
+            if(get_field('date_from', $post->ID)){
+                    $unixtimestamp = strtotime(get_field('date_from', $post->ID));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date = $date_from;
+                if(get_field('date_until', $post->ID)){
+                    $unixtimestamp = strtotime(get_field('date_until', $post->ID));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    $date .= " - ". $date_until;
+                }
+            }
+
+	    	$output .= "<span class='post-date'>" . $date . "</span></li>";
 
 	    // return, don't echo
 		endforeach;
