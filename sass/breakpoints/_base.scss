@@ -592,7 +592,20 @@ section.page--eventlist {
 	}
 	padding: 0 1em;
 }
-.event-list {
+.press-content {
+	width: calc(100% - 400px);
+	float: left;
+	h2 {
+		font-size: 2em;
+		margin-bottom: 1em;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	padding: 0 1em;
+}
+.event-list, .press-list {
 	// max-height: 100vh;
 	// overflow: scroll;
 	width: 200px;

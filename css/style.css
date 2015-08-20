@@ -712,18 +712,33 @@ section.page--eventlist {
   height: auto;
 }
 
-.event-list {
+.press-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
+  float: left;
+  padding: 0 1em;
+}
+.press-content h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.press-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.event-list, .press-list {
   width: 200px;
   float: left;
 }
-.event-list.right {
+.event-list.right, .press-list.right {
   float: right;
 }
-.event-list li {
+.event-list li, .press-list li {
   padding: 0.5em 0;
   font-size: 0.8em;
 }
-.event-list li time {
+.event-list li time, .press-list li time {
   display: block;
   font-size: 0.8em;
 }
