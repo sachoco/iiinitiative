@@ -721,3 +721,15 @@ add_filter('single_template', create_function(
 		return TEMPLATEPATH . "/single-{$cat->slug}.php"; }
 	return $the_template;' )
 );
+
+function new_excerpt_more($more) {
+    return '';
+}
+add_filter('excerpt_more', 'new_excerpt_more', 21 );
+
+function the_excerpt_more_link( $excerpt ){
+    $post = get_post();
+    $excerpt .= '<a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __( "Read More...", "iii" ) . '</a>';
+    return $excerpt;
+}
+add_filter( 'the_excerpt', 'the_excerpt_more_link', 21 );

@@ -560,7 +560,11 @@ section.page--single {
 		background-color: white;
 		h3 {
 			font-size: 1.5em;
-		}		
+		}	
+		img {
+			width: 100%;
+			height: auto;
+		}	
 	}
 	&.artist, &.work, &.residency {
 		.wrapper {
