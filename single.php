@@ -19,7 +19,9 @@
         <section class="page__header"></section>
         <section class="page__body container">
             <h1 class="title"><?php the_title(); ?></h1>
+            <div class="text">
             <?php the_content(); ?>
+            </div>
 
         </section>
 	</section>

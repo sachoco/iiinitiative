@@ -67,22 +67,42 @@ a {
 	// color: $font-color;
 	color: black;
 	text-decoration: none;
-	transition: all 0.1s;
-	background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+	// transition: all 0.1s;
+	// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
 	&:hover {
-		background-color: black;
+		// background-color: black;
 		// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
-		// text-decoration: underline;
-		color: white;
-		time {
-			color: $font-color;
-		}
+		text-decoration: underline;
+		// color: white;
+		// time {
+		// 	color: $font-color;
+		// }
 	}
 	time {
-		transition: none;
+		// transition: none;
 	}
 }
-
+.page__body .text {
+	a {
+		// color: $font-color;
+		color: black;
+		text-decoration: none;
+		transition: all 0.1s;
+		background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+		&:hover {
+			background-color: black;
+			// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+			// text-decoration: underline;
+			color: white;
+			time {
+				color: $font-color;
+			}
+		}
+		time {
+			transition: none;
+		}
+	}
+}
 strong {
 	font-weight: bold;
 }
@@ -275,10 +295,12 @@ section.header {
 					padding: 0.2em 0.2em 0;
 					background: none;
 					display: block;
-					&:hover {
-						background: url(images/overlay-pattern.png) rgba(0, 0, 0, 1);
-						text-decoration: none;
-					}
+					// 	text-decoration: none;
+
+					// &:hover {
+					// 	background: url(images/overlay-pattern.png) rgba(0, 0, 0, 1);
+					// 	text-decoration: none;
+					// }
 				}
 					.sub-menu {
 						text-align: left;
@@ -697,6 +719,8 @@ section.page {
 
 
 }
+
+
 section.next {
 	// transform: translateX(50%);
 	// border-left: 1px solid;

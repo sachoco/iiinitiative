@@ -247,18 +247,26 @@ p {
 a {
   color: black;
   text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.page__body .text a {
+  color: black;
+  text-decoration: none;
   -webkit-transition: all 0.1s;
           transition: all 0.1s;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 }
-a:hover {
+.page__body .text a:hover {
   background-color: black;
   color: white;
 }
-a:hover time {
+.page__body .text a:hover time {
   color: #555;
 }
-a time {
+.page__body .text a time {
   -webkit-transition: none;
           transition: none;
 }
@@ -444,10 +452,6 @@ section.header nav ul li a {
   padding: 0.2em 0.2em 0;
   background: none;
   display: block;
-}
-section.header nav ul li a:hover {
-  background: url(images/overlay-pattern.png) black;
-  text-decoration: none;
 }
 section.header nav ul li .sub-menu {
   text-align: left;
