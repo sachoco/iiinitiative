@@ -690,7 +690,7 @@ section.page--single .page__body img {
   height: auto;
 }
 section.page--single.artist .wrapper, section.page--single.work .wrapper, section.page--single.residency .wrapper {
-  max-width: 780px;
+  max-width: 900px;
   margin: auto;
   text-align: center;
 }
