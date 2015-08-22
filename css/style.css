@@ -523,7 +523,7 @@ section.background .rslides:after {
   left: -1px;
   width: 150px;
   min-height: 100%;
-  z-index: 999;
+  z-index: 999999;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
   border-top: 1px solid;
 }
@@ -534,7 +534,7 @@ section.background .rslides:after {
   right: -1px;
   width: 150px;
   min-height: 100%;
-  z-index: 999;
+  z-index: 999999;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
   border-top: 1px solid;
 }
