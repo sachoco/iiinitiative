@@ -99,7 +99,17 @@
             <div class="worksby">
                 
                 <div class="details">
-                    <h2>Works by <?php the_title(); ?></h2>
+                    <h2>Other works by by 
+                    <?php
+                        $i = 0;
+                        foreach ( $related_artist_pages as $artist_post ) {
+                           //echo get_the_title($artist_post).'<br />';
+                            if($i>0) echo ", ";
+                           echo '<a href="'.get_permalink($artist_post).'">'.get_the_title($artist_post).'</a>';
+                           $i++;
+                       }  
+                    ?>
+                    </h2>
                 </div>
                 <ul class="view--grid">
                 <?php foreach ( $related_works as $post ) : ?>
