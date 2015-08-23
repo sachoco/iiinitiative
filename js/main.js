@@ -1,17 +1,20 @@
 (function() {
   jQuery(function($) {
+    var $grid;
     $(".rslides").responsiveSlides({
       speed: 2000,
       random: true,
       timeout: 20000
     });
-    $(".isotope").isotope({
-      itemSelector: "li",
-      layoutMode: "fitRows",
-      getSortData: {
-        name: '.name',
-        date: '.date'
-      }
+    $grid = $('.isotope').imagesLoaded(function() {
+      return $grid.isotope({
+        itemSelector: "li",
+        layoutMode: "fitRows",
+        getSortData: {
+          name: '.name',
+          date: '.date'
+        }
+      });
     });
     $(".button").on("click", function() {
       var sort;
