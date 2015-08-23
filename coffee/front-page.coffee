@@ -67,11 +67,15 @@ jQuery ($) ->
 		if curPage isnt null
 			$(allPages[curPage]).removeClass("current").addClass("next")
 			curPage = null
+			prevPages.unshift( nextPages.pop() )
+			$("section.page.next").last().removeClass("next").addClass("prev").prependTo( pageWrapper ).velocity("stop").velocity { translateX: (prevPages.length - 1) * -100 - 150 + "%" }, { duration: 0 }
 			for page in nextPages
 				$(page).velocity { translateX: "+=100%" }, { duration: 1000 }
-		
+
+			# nextPages.unshift( prevPages.pop() )		
 			h = $("section.home").outerHeight();
 			$(".viewport").velocity {height: h}, {duration: 1000}
+
 
 	$(".overlay--right").on {
 		'mouseenter': ->

@@ -111,6 +111,12 @@
       if (curPage !== null) {
         $(allPages[curPage]).removeClass("current").addClass("next");
         curPage = null;
+        prevPages.unshift(nextPages.pop());
+        $("section.page.next").last().removeClass("next").addClass("prev").prependTo(pageWrapper).velocity("stop").velocity({
+          translateX: (prevPages.length - 1) * -100 - 150 + "%"
+        }, {
+          duration: 0
+        });
         for (l = 0, len2 = nextPages.length; l < len2; l++) {
           page = nextPages[l];
           $(page).velocity({
