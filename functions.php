@@ -29,8 +29,8 @@ add_filter('widget_text', 'do_shortcode');
 		wp_enqueue_script( 'velocity' );
 		wp_register_script( 'isotope', get_stylesheet_directory_uri() . '/bower_components/isotope/dist/isotope.pkgd.min.js', array('jquery'), '', true );
 		wp_enqueue_script( 'isotope' );
-		wp_register_script( 'imageloaded', get_stylesheet_directory_uri() . '/bower_components/imageloaded/imageloaded.pkgd.min.js', array('jquery'), '', true );
-		wp_enqueue_script( 'imageloaded' );
+		wp_register_script( 'imagesloaded', get_stylesheet_directory_uri() . '/bower_components/imagesloaded/imagesloaded.pkgd.min.js', array('jquery'), '', true );
+		wp_enqueue_script( 'imagesloaded' );
 		// register main script
 		wp_register_script( 'main-script', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), '', true );
 		wp_enqueue_script( 'main-script' );

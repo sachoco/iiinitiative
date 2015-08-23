@@ -370,6 +370,7 @@ ul.view--list li h2 {
   text-align: center;
 }
 .worksby ul.view--grid li {
+  width: 32% !important;
   float: none !important;
 }
 

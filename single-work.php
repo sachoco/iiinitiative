@@ -20,33 +20,33 @@
                         
                     <?php // related artists
                                         
-                                $id=get_the_ID();
-                                //echo $id.' ';
-                                //$related_artist_pages_ids = array();
-                                unset($related_artist_pages_ids);
-                                $related_artist_pages_ids = rpt_get_object_relation($id, 'artist');
-                                //echo print_r($related_artist_pages_ids).' ';
-                                //echo count($related_artist_pages_ids).' ';
-                                if ( count($related_artist_pages_ids) >= 1 ) {
-                                    $related_artist_pages = query_posts( array(
-                                        'post_type' => 'artist',
-                                        'post_status' => 'publish',
-                                        'posts_per_page' => -1,
-                                        'post__in' => $related_artist_pages_ids,
-                                        'orderby' => 'post_date',
-                                        'order' => 'DESC'
-                                    ) );
-                                   //echo print_r($related_artist_pages).' ';
-                                   foreach ( $related_artist_pages as $artist_post ) {
-                                       //echo get_the_title($artist_post).'<br />';
-                                       echo '<a href="'.get_permalink($artist_post).'">'.get_the_title($artist_post).'</a><br />';
-                                   } 
-                                //unset($related_artist_pages_ids);
-                                //$related_artist_pages_ids = array();
-                                //echo count($related_artist_pages_ids);
-                                wp_reset_query();
-                                }                        
-                            ?>  
+                        $id=get_the_ID();
+                        //echo $id.' ';
+                        //$related_artist_pages_ids = array();
+                        unset($related_artist_pages_ids);
+                        $related_artist_pages_ids = rpt_get_object_relation($id, 'artist');
+                        //echo print_r($related_artist_pages_ids).' ';
+                        //echo count($related_artist_pages_ids).' ';
+                        if ( count($related_artist_pages_ids) >= 1 ) {
+                            $related_artist_pages = query_posts( array(
+                                'post_type' => 'artist',
+                                'post_status' => 'publish',
+                                'posts_per_page' => -1,
+                                'post__in' => $related_artist_pages_ids,
+                                'orderby' => 'post_date',
+                                'order' => 'DESC'
+                            ) );
+                           //echo print_r($related_artist_pages).' ';
+                           foreach ( $related_artist_pages as $artist_post ) {
+                               //echo get_the_title($artist_post).'<br />';
+                               echo '<a href="'.get_permalink($artist_post).'">'.get_the_title($artist_post).'</a><br />';
+                           } 
+                        //unset($related_artist_pages_ids);
+                        //$related_artist_pages_ids = array();
+                        //echo count($related_artist_pages_ids);
+                        wp_reset_query();
+                        }                        
+                    ?>  
                         
                         
                 </p>
@@ -75,6 +75,105 @@
                 <?php the_content(); ?>
             </div>
         </div>
+
+        <?php       ///////// Find related works ///////////
+            
+            if( count($related_artist_pages_ids)>0 ):
+                $related_works_ids = array();
+                foreach($related_artist_pages_ids as $post_id):
+                    $related_works_ids = array_merge($related_works_ids, rpt_get_object_relation($post_id, 'work'));
+                endforeach;
+            endif;
+                    // $related_works_ids = rpt_get_object_relation($post_id, 'work');
+            if ( is_array($related_works_ids) ) :
+                $related_works = get_posts( array(
+                    'post_type' => 'work',
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'post__in' => $related_works_ids,
+                    'orderby' => 'title',
+                    'order' => 'ASC'
+                ) );
+            ?>
+            
+            <div class="worksby">
+                
+                <div class="details">
+                    <h2>Works by <?php the_title(); ?></h2>
+                </div>
+                <ul class="view--grid">
+                <?php foreach ( $related_works as $post ) : ?>
+                    <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">
+                    <a class="thumbnail" href="<?php echo get_permalink($post); ?>"><?php //echo get_the_title($post);?>
+    
+                    <?php
+                        if ( '' != get_the_post_thumbnail($post->ID)) { // check if the post has a Post Thumbnail assigned to it.
+                            echo get_the_post_thumbnail($post->ID, 'work-thumb');
+                            //echo "has thumb";
+                        } else {
+                            //echo "has no thumb";
+                        }       
+                    ?>
+    
+                    <div class="info--overlay"><div>
+                        <p class="teaser__title">
+                            <?php 
+                                echo get_the_title($post); 
+                                //echo ' '.get_the_ID();
+                            
+                            ?>
+                        </p>
+                
+                        <p class="teaser__artist"> 
+                 
+                             <?php  //////////// Find related artists of related work //////////////
+                         
+                                //$related_artist_pages_ids = array();
+                                unset($related_artist_pages_ids);
+                                $related_artist_pages_ids = rpt_get_object_relation($post->ID, 'artist');
+                                //echo print_r($related_artist_pages_ids).' ';
+                                //echo count($related_artist_pages_ids).' ';
+                                if ( count($related_artist_pages_ids) >= 1 ) {
+                                    $related_artist_pages = get_posts( array(
+                                        'post_type' => 'artist',
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => -1,
+                                        'post__in' => $related_artist_pages_ids,
+                                        'orderby' => 'post_date',
+                                        'order' => 'DESC'
+                                    ) );
+                                   //echo print_r($related_artist_pages).' ';
+                                   foreach ( $related_artist_pages as $artist_post ) {
+                                       echo get_the_title($artist_post).'<br />';
+                                   } 
+                                //unset($related_artist_pages_ids);
+                                //$related_artist_pages_ids = array();
+                                //echo count($related_artist_pages_ids);
+                                }                        
+                             ?>
+                         
+                             <?php // other artists
+                
+                                $artists = rwmb_meta( 'work_artists');
+                                // foreach($artists as $artist){
+                                //     echo $artist."<br />";
+                                // }   
+                            ?>   
+                
+                        </p>
+
+                    </div></div>
+            
+                    </a>
+                    </li>
+                    <?php endforeach; ?>
+                    </ul>
+                </div>
+    <?php 
+
+        endif; 
+    ?>
+
         </section>
 	</section>
 
