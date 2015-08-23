@@ -79,7 +79,14 @@
                 }
             }
         ?>
-                <p><?php the_excerpt(); ?></p>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
             </div>
         </li>
                 <?php
@@ -172,7 +179,14 @@
                 }
             }
         ?>
-                <p><?php the_excerpt(); ?></p>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
             </div>
         </li>
                 <?php
@@ -271,7 +285,14 @@
                 }
             }
         ?>
-                <p><?php the_excerpt(); ?></p>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
             </div>
         </li>
                 <?php

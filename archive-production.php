@@ -25,6 +25,8 @@
         </div> -->
         <ul class="view--list">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <?php //remove_filter('the_excerpt', 'wpautop'); ?>
+
         <li class="grid-12 parent grid-mobile-12 ">
             <div class="grid-5 align-left">
         <?php if (has_post_thumbnail()): ?>
@@ -33,7 +35,14 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-                <p><?php the_excerpt(); ?></p>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
             </div>
         </li>
 
