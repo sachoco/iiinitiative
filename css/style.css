@@ -454,6 +454,9 @@ section.header nav ul li a {
   background: none;
   display: block;
 }
+section.header nav ul li.menu-item-has-children > a:hover {
+  text-decoration: none;
+}
 section.header nav ul li .sub-menu {
   text-align: left;
   min-width: 120px;

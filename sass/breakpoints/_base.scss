@@ -303,27 +303,35 @@ section.header {
 					// 	text-decoration: none;
 					// }
 				}
-					.sub-menu {
-						text-align: left;
-						// width: 300px;
-						min-width: 120px;
-						display: none;
-						padding: 0.4em 1em;
-						left: -1em;
-						// margin-top: 0.1em;
-						background-color: rgba(255,255,255,0.8);
-						li {
-							display: block;
-							a {
-								padding: 0.2em;
-								display: inline-block;
-								line-height: 1em;
-							}
+				&.menu-item-has-children {
+					>a {
+						&:hover {
+							text-decoration: none;
 						}
 					}
-					&:hover .sub-menu {
+				}
+
+				.sub-menu {
+					text-align: left;
+					// width: 300px;
+					min-width: 120px;
+					display: none;
+					padding: 0.4em 1em;
+					left: -1em;
+					// margin-top: 0.1em;
+					background-color: rgba(255,255,255,0.8);
+					li {
 						display: block;
+						a {
+							padding: 0.2em;
+							display: inline-block;
+							line-height: 1em;
+						}
 					}
+				}
+				&:hover .sub-menu {
+					display: block;
+				}
 				
 			}
 
