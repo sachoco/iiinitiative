@@ -482,7 +482,22 @@ function show_upcoming_events( $atts ) {
 		'post_type'        => 'event',
 		'meta_key'			=> 'date_from',
 		'orderby'			=> 'meta_value_num',
-		'order'				=> 'DESC'
+		'order'				=> 'DESC',
+		'meta_query' => array(
+		    'relation' => 'OR',
+	        array(
+	            'key' => 'date_from',
+	            'value' => date("Ymd", strtotime("now")),
+	            'type' => 'NUMERIC',
+	            'compare' => '>='
+	        ),
+	        array(
+	            'key' => 'date_until',
+	            'value' => date("Ymd", strtotime("now")),
+	            'type' => 'NUMERIC',
+	            'compare' => '>='
+	        )
+		)		
 	);
 
 	$posts = get_posts( $args );
