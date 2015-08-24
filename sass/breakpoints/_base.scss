@@ -561,8 +561,12 @@ section.home {
 	padding-bottom: 45%;
 	margin: auto;
 	top: $header-height;
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.5) !important;
+	// min-height: auto !important;
 	// overflow: hidden;
+	&.current {
+		min-height: auto !important;
+	}
 	.intro {
 		position: absolute;
 		top: 50%;

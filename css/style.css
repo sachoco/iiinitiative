@@ -656,7 +656,10 @@ section.home {
   padding-bottom: 45%;
   margin: auto;
   top: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+section.home.current {
+  min-height: auto !important;
 }
 section.home .intro {
   position: absolute;

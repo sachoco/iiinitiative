@@ -1,6 +1,6 @@
 (function() {
   jQuery(function($) {
-    var allPages, curPage, i, j, k, len, len1, nextPages, page, pageWrapper, prevPages, resizeHandler, v;
+    var allPages, curPage, goNext, goPrev, homeLoc, i, j, k, len, len1, nextPages, page, pageWrapper, prevPages, resizeHandler, v;
     curPage = null;
     pageWrapper = $(".section-wrap");
     nextPages = $("section.page");
@@ -9,7 +9,7 @@
     allPages = $("section.page");
     for (i = j = 0, len = nextPages.length; j < len; i = ++j) {
       page = nextPages[i];
-      v = 50 + (i * 100);
+      v = 50 + ((i - 1) * 100);
       $(page).velocity({
         translateX: v + "%"
       }, {
@@ -31,7 +31,106 @@
         }
       });
     }
+    curPage = $.inArray(nextPages[0], allPages);
+    $(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover");
+    homeLoc = curPage;
     $(document).on("click", ".overlay--right", function() {
+      return goNext();
+    });
+    $(document).on("click", ".overlay--left", function() {
+      return goPrev();
+    });
+    $(".logo").on("click", function(e) {
+      var _i, num_to_move, results, results1, results2, results3;
+      e.preventDefault();
+      if (!$(allPages[curPage]).hasClass('home')) {
+        if (((allPages.length * 1 / 4) <= curPage && curPage <= (allPages.length * 3 / 4))) {
+          if ((num_to_move = homeLoc - curPage) > 0) {
+            _i = 0;
+            results = [];
+            while (true) {
+              goNext();
+              _i++;
+              if (_i >= num_to_move) {
+                break;
+              } else {
+                results.push(void 0);
+              }
+            }
+            return results;
+          } else {
+            _i = 0;
+            results1 = [];
+            while (true) {
+              goPrev();
+              _i--;
+              if (_i <= num_to_move) {
+                break;
+              } else {
+                results1.push(void 0);
+              }
+            }
+            return results1;
+          }
+        } else {
+          if (curPage > allPages.length * 1 / 2) {
+            num_to_move = allPages.length - curPage;
+            _i = 0;
+            results2 = [];
+            while (true) {
+              goNext();
+              _i++;
+              console.log(_i);
+              if (_i >= num_to_move) {
+                break;
+              } else {
+                results2.push(void 0);
+              }
+            }
+            return results2;
+          } else {
+            num_to_move = curPage;
+            _i = 0;
+            results3 = [];
+            while (true) {
+              goPrev();
+              _i++;
+              if (_i <= num_to_move) {
+                break;
+              } else {
+                results3.push(void 0);
+              }
+            }
+            return results3;
+          }
+        }
+      }
+    });
+    $(".overlay--right").on({
+      'mouseenter': function() {
+        if (curPage !== null) {
+          return $(nextPages[1]).addClass("hover");
+        } else {
+          return $(nextPages[0]).addClass("hover");
+        }
+      },
+      'mouseleave': function() {
+        if (curPage !== null) {
+          return $(nextPages[1]).removeClass("hover");
+        } else {
+          return $(nextPages[0]).removeClass("hover");
+        }
+      }
+    });
+    $(".overlay--left").on({
+      'mouseenter': function() {
+        return $(prevPages[prevPages.length - 1]).addClass("hover");
+      },
+      'mouseleave': function() {
+        return $(prevPages[prevPages.length - 1]).removeClass("hover");
+      }
+    });
+    goNext = function() {
       var h, l, len2, target;
       if (curPage === null) {
         curPage = $.inArray(nextPages[0], allPages);
@@ -60,14 +159,14 @@
         });
       }
       $(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover");
-      h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
+      h = $(".page.current").outerHeight();
       return $(".viewport").velocity({
         height: h
       }, {
         duration: 1000
       });
-    });
-    $(document).on("click", ".overlay--left", function() {
+    };
+    goPrev = function() {
       var h, l, len2, target;
       if (curPage === null) {
         curPage = $.inArray(nextPages[0], allPages) - 1;
@@ -95,72 +194,19 @@
         });
       }
       nextPages.unshift(prevPages.pop());
-      console.log(prevPages);
       $("section.page.prev").last().removeClass("prev");
       $(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover");
-      h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
+      h = $(".page.current").outerHeight();
       return $(".viewport").velocity({
         height: h
       }, {
         duration: 1000
       });
-    });
-    $(".logo").on("click", function(e) {
-      var h, l, len2;
-      e.preventDefault();
-      if (curPage !== null) {
-        $(allPages[curPage]).removeClass("current").addClass("next");
-        curPage = null;
-        prevPages.unshift(nextPages.pop());
-        $("section.page.next").last().removeClass("next").addClass("prev").prependTo(pageWrapper).velocity("stop").velocity({
-          translateX: (prevPages.length - 1) * -100 - 150 + "%"
-        }, {
-          duration: 0
-        });
-        for (l = 0, len2 = nextPages.length; l < len2; l++) {
-          page = nextPages[l];
-          $(page).velocity({
-            translateX: "+=100%"
-          }, {
-            duration: 1000
-          });
-        }
-        h = $("section.home").outerHeight();
-        return $(".viewport").velocity({
-          height: h
-        }, {
-          duration: 1000
-        });
-      }
-    });
-    $(".overlay--right").on({
-      'mouseenter': function() {
-        if (curPage !== null) {
-          return $(nextPages[1]).addClass("hover");
-        } else {
-          return $(nextPages[0]).addClass("hover");
-        }
-      },
-      'mouseleave': function() {
-        if (curPage !== null) {
-          return $(nextPages[1]).removeClass("hover");
-        } else {
-          return $(nextPages[0]).removeClass("hover");
-        }
-      }
-    });
-    $(".overlay--left").on({
-      'mouseenter': function() {
-        return $(prevPages[prevPages.length - 1]).addClass("hover");
-      },
-      'mouseleave': function() {
-        return $(prevPages[prevPages.length - 1]).removeClass("hover");
-      }
-    });
+    };
     resizeHandler = function() {
       var h, pageW, winW;
       if ($(".page.current").length > 0) {
-        h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
+        h = $(".page.current").outerHeight();
         $(".viewport").velocity({
           height: h
         }, {
