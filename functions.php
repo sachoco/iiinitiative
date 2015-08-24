@@ -484,7 +484,7 @@ function show_upcoming_events( $atts ) {
 		'post_type'        => 'event',
 		'meta_key'			=> 'date_from',
 		'orderby'			=> 'meta_value_num',
-		'order'				=> 'DESC',
+		'order'				=> 'ASC',
 		'meta_query' => array(
 		    'relation' => 'OR',
 	        array(
