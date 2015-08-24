@@ -15,7 +15,7 @@
 <div class="viewport">
 
     <section class="page--single">
-        <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
+        <section class="page__header"><h2 class="title">Residencies<?php //post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
 <!--         <div class="sort">
             <p>

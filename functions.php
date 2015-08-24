@@ -216,6 +216,8 @@ function custom_post_residency() {
 			// 'menu_icon' => 'dashicons-calendar', /* the icon for the custom post type menu */
 			'rewrite'	=> array( 'slug' => 'residency', 'with_front' => false ), /* you can specify its url slug */
 			'has_archive' => 'residencies', /* you can rename the slug here */
+            /* Custom archive label.  Must filter 'post_type_archive_title' to use. */
+            'archive_title' => __( 'Residencies', 'iii' ),
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
