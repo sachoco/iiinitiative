@@ -17,9 +17,9 @@
 	<div class="overlay overlay--left"></div>
 	<div class="overlay overlay--right"></div>
 
-	<section class="home">
+<!-- 	<section class="home">
         <div class="intro">
-           <!--  <svg x="0px" y="0px" width="120px" height="152px" viewBox="0 0 120 152">
+            <svg x="0px" y="0px" width="120px" height="152px" viewBox="0 0 120 152">
                 <g>
                     <ellipse fill="#FFFFFF" cx="18.235" cy="14.702" rx="10.875" ry="8.891"/>
                     <ellipse fill="#FFFFFF" cx="59.235" cy="14.702" rx="10.875" ry="8.891"/>
@@ -31,9 +31,9 @@
             </svg>
             <p class="h3">image, sound, space and the body</p>
             <p>
-iii is an artist run platform for the development of self-made media based in The Hague which supports idiosyncratic research trajectories that zigzag between disciplines and distribution channels.           </p> -->
+iii is an artist run platform for the development of self-made media based in The Hague which supports idiosyncratic research trajectories that zigzag between disciplines and distribution channels.           </p>
         </div>  
-	</section>
+	</section> -->
 
 	<div class="section-wrap">
 
