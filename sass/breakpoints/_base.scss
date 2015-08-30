@@ -82,26 +82,29 @@ a {
 		// transition: none;
 	}
 }
-.page__body .text {
-	a {
-		// color: $font-color;
-		color: black;
-		text-decoration: none;
-		transition: all 0.1s;
-		background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
-		&:hover {
-			background-color: black;
-			// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
-			// text-decoration: underline;
-			color: white;
-			time {
-				color: $font-color;
+.page__body  {
+	.text, .wpb_wrapper p{
+		a {
+			// color: $font-color;
+			color: black;
+			text-decoration: none;
+			transition: all 0.1s;
+			background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+			&:hover {
+				background-color: black;
+				// background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);	
+				// text-decoration: underline;
+				color: white;
+				time {
+					color: $font-color;
+				}
 			}
-		}
-		time {
-			transition: none;
-		}
+			time {
+				transition: none;
+			}
+		}		
 	}
+	
 }
 strong {
 	font-weight: bold;

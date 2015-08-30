@@ -252,21 +252,21 @@ a:hover {
   text-decoration: underline;
 }
 
-.page__body .text a {
+.page__body .text a, .page__body .wpb_wrapper p a {
   color: black;
   text-decoration: none;
   -webkit-transition: all 0.1s;
           transition: all 0.1s;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 }
-.page__body .text a:hover {
+.page__body .text a:hover, .page__body .wpb_wrapper p a:hover {
   background-color: black;
   color: white;
 }
-.page__body .text a:hover time {
+.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time {
   color: #555;
 }
-.page__body .text a time {
+.page__body .text a time, .page__body .wpb_wrapper p a time {
   -webkit-transition: none;
           transition: none;
 }
