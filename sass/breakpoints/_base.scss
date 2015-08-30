@@ -563,13 +563,16 @@ section.home {
 	position: relative;
 	// padding-bottom: 55%;
 	padding-bottom: 45%;
-	margin: auto;
+	// margin: auto;
+
 	top: $header-height;
-	background-color: rgba(0,0,0,0.5) !important;
+	// background-color: rgba(0,0,0,0.5);
 	// min-height: auto !important;
 	// overflow: hidden;
+
 	&.current {
 		min-height: auto !important;
+		background-color: rgba(0,0,0,0.5) !important;
 	}
 	.intro {
 		position: absolute;

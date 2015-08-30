@@ -654,12 +654,11 @@ section.home {
   width: calc(100% - 75px);
   position: relative;
   padding-bottom: 45%;
-  margin: auto;
   top: 60px;
-  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 section.home.current {
   min-height: auto !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 section.home .intro {
   position: absolute;
