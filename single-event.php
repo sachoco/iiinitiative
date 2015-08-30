@@ -8,9 +8,8 @@
         <section class="page__body container">
         <div class="event-list">
             <h3 class="">Hosting</h3>
+<?php $display_item; ?>
 
-            <h4 class="">Current</h4>
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -46,15 +45,25 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) :  ?>
+            <h4 class="">Current</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
-                                    
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
+
 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
@@ -81,10 +90,9 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
-            <h4 class="">Upcoming</h4>
-            <ul class="">
+    <?php endif; ?>
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -120,14 +128,24 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Upcoming</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -155,12 +173,10 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
 
-            <h4 class="">Past</h4>
 
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -196,14 +212,24 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Past</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -231,23 +257,14 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
-
             </ul>
+    <?php endif; ?>
         </div>
-        <section class="event-content">
 
-<h2><?php the_title(); ?></h2>
-<div class="text">
-<?php the_content(); ?>
-</div>  
-        </section>
         <div class="event-list right">
             <h3 class="">Circulation</h3>
 
-            <h4 class="">Current</h4>
-            <ul class="">
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -283,14 +300,24 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Current</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -318,10 +345,9 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
-            <h4 class="">Upcoming</h4>
-            <ul class="">
+    <?php endif; ?>
+
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -357,14 +383,24 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Upcoming</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -392,12 +428,10 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
 
-            <h4 class="">Past</h4>
 
-            <ul class="">
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -425,7 +459,7 @@
                         ),
                         array(
                             'key' => 'host_|_circulation',
-                            'value' => 'host',
+                            'value' => 'circulation',
                             'compare' => 'LIKE'
                         )
                     )
@@ -433,14 +467,24 @@
 
                 $the_query = new WP_Query( $args );
             ?>
-    <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
+    <?php if ($the_query->have_posts()) : ?>
+            <h4 class="">Past</h4>
+            <ul class="">
+    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -468,9 +512,18 @@
                 </a>
             </li>
     <?php endwhile; ?>
-    <?php endif; ?>
             </ul>
+    <?php endif; ?>
+     <?php wp_reset_query(); ?>
         </div>
+        <section class="event-content">
+
+<h2><?php the_title(); ?></h2>
+<div class="text">
+<?php the_content(); ?>
+</div>  
+        </section>
+
 
         </section>
 	</section>

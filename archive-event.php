@@ -51,11 +51,18 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
-                                    
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
+
 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
@@ -128,9 +135,16 @@
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -205,9 +219,16 @@
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -286,9 +307,16 @@
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -362,9 +390,16 @@
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -439,9 +474,16 @@
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
     <?php echo '<time>';
                                     
-            $locations = rwmb_meta( 'event_location');
-            foreach($locations as $location){
-                echo $location.'</br>'; //''
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
             }
 
             if(get_field('date_from')){
@@ -507,7 +549,7 @@
 <?php
     $post = get_post($display_item);
     echo "<h2>". $post->post_title ."</h2>";
-    echo $post->post_content;
+    echo apply_filters('the_content', $post->post_content);;
 ?>
 
 <?php endif; ?>      
