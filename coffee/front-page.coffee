@@ -11,13 +11,13 @@ jQuery ($) ->
 	for page, i in nextPages
 		v = 50 + ((i-1) * 100)
 		$(page).velocity { translateX: v+"%" }, { duration: 0, complete: (elem)->
-			$(elem).fadeIn()
+			$(elem).addClass("ready")
 		}
 
 	for page, i in prevPages
 		v = -150 - ((prevPages.length - 1 - i) * 100)
 		$(page).velocity { translateX: v+"%" }, { duration: 0, complete: (elem)->
-			$(elem).fadeIn()
+			$(elem).addClass("ready")
 		}
 
 	curPage = $.inArray nextPages[0], allPages

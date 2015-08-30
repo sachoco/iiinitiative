@@ -15,7 +15,7 @@
       }, {
         duration: 0,
         complete: function(elem) {
-          return $(elem).fadeIn();
+          return $(elem).addClass("ready");
         }
       });
     }
@@ -27,7 +27,7 @@
       }, {
         duration: 0,
         complete: function(elem) {
-          return $(elem).fadeIn();
+          return $(elem).addClass("ready");
         }
       });
     }

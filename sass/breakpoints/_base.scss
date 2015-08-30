@@ -127,6 +127,7 @@ button {
 	padding: 2em;
 }
 
+
 ul.view {
 	&--grid {
 		li {
@@ -678,7 +679,8 @@ section.page {
 	position: absolute;
 	width: calc(100% - 75px);
 	// visibility: hidden;
-	display: none; 
+	// display: none; 
+	opacity: 0;
 	// max-width: 1200px;
 	// min-width: 780px;
 	min-height: 100%;
@@ -689,8 +691,10 @@ section.page {
 	left: 50%;
 	// transform: translateX(150%);
 	border-left: 1px solid;
-	transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
-
+	transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
+	&.ready {
+		opacity: 1;
+	}
 	&__header {
 		height: $header-height;
 		// background-color: white;
@@ -727,10 +731,23 @@ section.page {
 		}
 		// min-height: 0;
 	}
+	.flexslider {
+		border: none;
+	}
+	.wpb_gallery_slides {
+		overflow: hidden;
+		li {
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
 
+	}
 
-
-
+	.flex-control-paging li a {
+		overflow: hidden;
+	}
 }
 
 
