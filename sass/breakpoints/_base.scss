@@ -450,7 +450,7 @@ section.background {
 	.col, .wpb_column{
 		border-left: 1px solid;
 		padding: 25px;
-		&:nth-child(odd) {
+		&:nth-child(1) {
 			border: none;
 		}
 	}

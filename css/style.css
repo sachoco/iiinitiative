@@ -546,7 +546,7 @@ section.background .rslides:after {
   border-left: 1px solid;
   padding: 25px;
 }
-.viewport .col:nth-child(odd), .viewport .wpb_column:nth-child(odd) {
+.viewport .col:nth-child(1), .viewport .wpb_column:nth-child(1) {
   border: none;
 }
 .viewport article {
