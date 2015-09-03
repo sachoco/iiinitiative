@@ -723,6 +723,10 @@ section.page {
 	&__body {
 		// border-top: 1px solid;
 		// padding: 1em;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
 	}
 	// &:first-child{
 	// 	transform: translateX(50%);
@@ -737,6 +741,9 @@ section.page {
 		}
 		// min-height: 0;
 	}
+	
+
+
 	.flexslider {
 		border: none;
 	}
