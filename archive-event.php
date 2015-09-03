@@ -353,7 +353,7 @@
                     'post_state' => 'publish',
                     'meta_key' => 'date_from',
                     'orderby' => 'meta_value_num',
-                    'order' => 'DESC',
+                    'order' => 'ASC',
                     'posts_per_page' => -1,
                     'meta_query' => array(
                         'relation' => 'AND',

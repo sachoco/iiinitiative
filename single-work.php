@@ -99,7 +99,7 @@
             <div class="worksby">
                 
                 <div class="details">
-                    <h2>Other works by by 
+                    <h2>Other works by 
                     <?php
                         $i = 0;
                         foreach ( $related_artist_pages as $artist_post ) {
