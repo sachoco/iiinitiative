@@ -1,6 +1,10 @@
 <?php
 include 'meta_box_defs.php';
 
+
+update_option('image_default_link_type','none'); 
+
+
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'artist-page-image', 618, 9999, false ); // unlimited height
 	//add_image_size( 'artist-list-thumb', 199, 150, TRUE ); 
