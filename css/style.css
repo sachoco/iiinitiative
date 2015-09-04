@@ -303,6 +303,7 @@ ul.view--grid li {
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
+  padding: 0 15px;
   border: none !important;
 }
 ul.view--grid li .thumbnail {
