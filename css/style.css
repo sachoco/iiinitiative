@@ -809,7 +809,7 @@ section.page__body img {
 }
 section.page.current {
   background-color: white;
-  border-color: rgba(255, 255, 255, 0);
+  border: none;
 }
 section.page.current .page__header:before {
   opacity: 0;
