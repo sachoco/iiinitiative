@@ -779,6 +779,7 @@ section.prev {
 	// left: calc(-100% + 100px);
 	// transform: translateX(-150%);
 	border-right: 1px solid;
+	border-left: none;
 	cursor: pointer;
 	background: url(images/overlay-pattern.png) rgba(255,255,255,0.5);
 	z-index: 19;
