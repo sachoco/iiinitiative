@@ -301,8 +301,8 @@ ul.view--grid li {
   display: inline-block;
   position: relative;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   padding: 0 15px;
   border: none !important;
 }
