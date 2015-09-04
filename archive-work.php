@@ -25,13 +25,14 @@
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
-        <ul class="view--grid isotope">
+        <ul class="view--grid isotope works">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">
         <?php if (has_post_thumbnail()): ?>
             <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?>
 
             <div class="info--overlay"><div>
+                <div><?php the_title(); ?></div>
                 <?php
                     unset($related_artist_pages_ids);
                     $id=get_the_ID();
@@ -79,8 +80,8 @@
 
             </a>
         <?php endif; ?>
-            <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-
+<!--             <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+ -->
         </li>
 
 <?php endwhile; ?>

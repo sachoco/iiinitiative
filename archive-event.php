@@ -49,7 +49,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
             $locations = get_field('location');                      
             if($locations) {
@@ -86,7 +86,7 @@
 
             echo '</time>';
     ?>
-                </a>
+                
             </li>
     <?php endwhile; ?>
             </ul>
@@ -132,7 +132,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -169,7 +169,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -216,7 +215,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -253,7 +252,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -304,7 +302,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -341,7 +339,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -387,7 +384,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -424,7 +421,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -471,7 +467,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -508,7 +504,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
