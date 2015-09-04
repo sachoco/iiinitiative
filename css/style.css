@@ -192,8 +192,20 @@ section.main article, footer article, footer .copyright {
  * @param 	list 	$pattern 		The name pattern of the class
  * @param 	list 	$statesNames 		The states names to generate
  */
+/*********************
+BASE (MOBILE) SIZE
+This are the mobile styles. It's what people see on their phones. If
+you set a great foundation, you won't need to add too many styles in
+the other stylesheets. Remember, keep it light: Speed is Important.
+*********************/
 * {
   box-sizing: border-box;
+  -webkit-transition: -webkit-filter 2s, filter 2s;
+          transition: filter 2s;
+}
+
+html {
+  background-color: #EDEDED;
 }
 
 html, body {
@@ -205,9 +217,23 @@ html, body {
   font-weight: normal;
 }
 
+body {
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+body.home {
+  background: none;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: "Gafata", sans-serif;
   font-weight: normal;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a {
+  background: none;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+  background: url(images/overlay-pattern.png) black;
+  color: white !important;
 }
 
 .h3 {
@@ -222,9 +248,47 @@ a {
   color: #555;
   text-decoration: none;
 }
+a:hover {
+  text-decoration: underline;
+}
+
+.page__body .text a, .page__body .wpb_wrapper p a {
+  color: black;
+  text-decoration: none;
+  -webkit-transition: all 0.1s;
+          transition: all 0.1s;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+}
+.page__body .text a:hover, .page__body .wpb_wrapper p a:hover {
+  background-color: black;
+  color: white;
+}
+.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time {
+  color: #555;
+}
+.page__body .text a time, .page__body .wpb_wrapper p a time {
+  -webkit-transition: none;
+          transition: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
 
 button {
   font-family: "Maven Pro", sans-serif;
+}
+
+.margin-top {
+  margin-top: 2em;
+}
+
+.align-left {
+  text-align: left;
 }
 
 .wrap {
@@ -233,21 +297,143 @@ button {
   padding: 2em;
 }
 
+ul.view--grid li {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: none !important;
+}
+ul.view--grid li .thumbnail {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+ul.view--grid li .thumbnail img {
+  width: 100%;
+  height: auto;
+}
+ul.view--grid li h2, ul.view--grid li h3 {
+  margin: 1em;
+}
+ul.view--grid li .info--overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-transition: opacity 0.5s;
+          transition: opacity 0.5s;
+}
+ul.view--grid li .info--overlay div {
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  top: 50%;
+  position: relative;
+}
+ul.view--grid li:hover .info--overlay {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+ul.view--list {
+  float: left;
+  width: 100%;
+}
+ul.view--list li {
+  margin: 1em 0;
+}
+ul.view--list li h2 {
+  font-size: 1.5em;
+}
+
+.sort {
+  text-align: center;
+  margin-top: 2em;
+}
+.sort button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.worksby h2 {
+  text-align: center;
+}
+.worksby ul.view--grid {
+  text-align: center;
+}
+.worksby ul.view--grid li {
+  width: 32% !important;
+  float: none !important;
+}
+
 section.header {
   position: absolute;
   background-color: white;
   height: 60px;
   width: 100%;
+  border-bottom: 1px solid;
+}
+section.header a {
+  background: none;
 }
 section.header nav {
   position: absolute;
   width: 100%;
-  top: 1em;
+  top: 1.4em;
   text-align: center;
-  z-index: 999;
+  z-index: 99999;
+}
+section.header nav .mobile-menu {
+  cursor: pointer;
+  position: absolute;
+  right: 45px;
+  top: -16px;
+}
+section.header nav .mobile-menu .fa {
+  color: white;
+  background-color: #555;
+}
+section.header nav.mobile-nav {
+  box-shadow: 0px 0px 60px 10px rgba(0, 0, 0, 0.75);
+  display: none;
+  top: 0;
+  padding-top: 60px;
+  position: relative;
+  background-color: white;
+  z-index: 9999;
+  text-align: left;
+  border-bottom: 1px solid;
+  font-size: 1.5em;
+}
+section.header nav.mobile-nav ul.nav {
+  display: block;
+  position: relative;
+  margin: auto;
+  left: 50px;
+}
+section.header nav.mobile-nav ul.nav li {
+  display: block;
+  padding: 0.3em;
+}
+section.header nav.mobile-nav ul.nav li .sub-menu {
+  position: relative;
+  display: block;
+}
+section.header nav.mobile-nav ul.nav li .sub-menu li {
+  padding: 0em;
+  left: 1em;
 }
 section.header nav ul {
   position: absolute;
+  display: none;
 }
 section.header nav ul.nav-left {
   right: -webkit-calc(50% + 40px);
@@ -261,7 +447,34 @@ section.header nav ul.nav-right {
 }
 section.header nav ul li {
   display: inline-block;
-  margin: 0 0.3em;
+  position: relative;
+}
+section.header nav ul li a {
+  padding: 0.2em 0.2em 0;
+  background: none;
+  display: block;
+}
+section.header nav ul li.menu-item-has-children > a:hover {
+  text-decoration: none;
+}
+section.header nav ul li .sub-menu {
+  text-align: left;
+  min-width: 120px;
+  display: none;
+  padding: 0.4em 1em;
+  left: -1em;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+section.header nav ul li .sub-menu li {
+  display: block;
+}
+section.header nav ul li .sub-menu li a {
+  padding: 0.2em;
+  display: inline-block;
+  line-height: 1em;
+}
+section.header nav ul li:hover .sub-menu {
+  display: block;
 }
 section.header nav .logo {
   display: inline-block;
@@ -273,6 +486,7 @@ section.background {
   position: absolute;
   z-index: -1;
   width: 100%;
+  overflow: hidden;
   top: 0;
   height: 100%;
   background-color: black;
@@ -313,9 +527,84 @@ section.background .rslides:after {
   left: -1px;
   width: 150px;
   min-height: 100%;
-  z-index: 999;
+  z-index: 999999;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  border-top: 1px solid;
 }
-.viewport .overlay--left:before {
+.viewport .overlay--right {
+  cursor: pointer;
+  position: absolute;
+  top: 60px;
+  right: -1px;
+  width: 150px;
+  min-height: 100%;
+  z-index: 999999;
+  background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
+  border-top: 1px solid;
+}
+.viewport .col, .viewport .wpb_column {
+  border-left: 1px solid;
+  padding: 25px;
+}
+.viewport .col:nth-child(1), .viewport .wpb_column:nth-child(1) {
+  border: none;
+}
+.viewport article {
+  clear: both;
+  padding-top: 3em;
+}
+.viewport article h3 {
+  font-size: 2em;
+  margin-bottom: 0.7em;
+}
+.viewport article p {
+  margin: 1em 0;
+}
+.viewport article img {
+  width: 100%;
+}
+.viewport article img.featured_image {
+  width: 100%;
+  max-width: 600px;
+}
+.viewport article img.align-left {
+  text-align: left;
+  margin: 0 1em 1em 0;
+  float: left;
+}
+.viewport .vc_column_container h3 {
+  font-size: 2em;
+  margin-bottom: 0.7em;
+  clear: both;
+}
+.viewport .vc_column_container p {
+  margin: 1em 0;
+}
+.viewport .vc_column_container .vc_single_image-wrapper img {
+  width: 100%;
+  max-width: 600px;
+}
+.viewport .vc_column_container img.featured_image {
+  width: 100%;
+  max-width: 600px;
+}
+.viewport .vc_column_container img.alignleft {
+  text-align: left;
+  margin: 0 1em 1em 0;
+  float: left;
+}
+
+body.home section.page__header {
+  background-color: white;
+  border-bottom: 1px solid;
+}
+body.home .viewport .overlay--left {
+  background: none;
+  border-top: none;
+  top: 0;
+}
+body.home .viewport .overlay--left:before {
+  top: 60px;
   content: "";
   position: absolute;
   width: 100%;
@@ -334,16 +623,13 @@ section.background .rslides:after {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 );
   /* IE6-8 */
 }
-.viewport .overlay--right {
-  cursor: pointer;
-  position: absolute;
-  top: 60px;
-  right: -1px;
-  width: 150px;
-  min-height: 100%;
-  z-index: 999;
+body.home .viewport .overlay--right {
+  background: none;
+  border-top: none;
+  top: 0;
 }
-.viewport .overlay--right:before {
+body.home .viewport .overlay--right:before {
+  top: 60px;
   content: "";
   position: absolute;
   width: 100%;
@@ -364,13 +650,15 @@ section.background .rslides:after {
 }
 
 section.home {
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
+  width: -webkit-calc(100% - 75px);
+  width: calc(100% - 75px);
   position: relative;
   padding-bottom: 45%;
-  margin: auto;
   top: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+}
+section.home.current {
+  min-height: auto !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 section.home .intro {
   position: absolute;
@@ -384,24 +672,127 @@ section.home .intro {
   text-align: center;
 }
 
-.page {
+section.page--single {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+section.page--single h1.title {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+section.page--single .page__body {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: white;
+}
+section.page--single .page__body h3 {
+  font-size: 1.5em;
+}
+section.page--single .page__body img {
+  width: 100%;
+  height: auto;
+}
+section.page--single.artist .wrapper, section.page--single.work .wrapper, section.page--single.residency .wrapper {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+section.page--single.artist .wrapper .image, section.page--single.work .wrapper .image, section.page--single.residency .wrapper .image {
+  margin: auto;
+  margin-bottom: 1em;
+}
+section.page--single.artist .wrapper .image img, section.page--single.work .wrapper .image img, section.page--single.residency .wrapper .image img {
+  width: 100%;
+  height: auto;
+}
+section.page--single.artist .wrapper .text, section.page--single.work .wrapper .text, section.page--single.residency .wrapper .text {
+  text-align: left;
+}
+section.page--single.artist .wrapper .text img, section.page--single.work .wrapper .text img, section.page--single.residency .wrapper .text img {
+  max-width: 100%;
+  height: auto;
+}
+
+section.page--eventlist {
+  width: 100%;
+}
+
+.event-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
+  float: left;
+  padding: 0 1em;
+}
+.event-content h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.event-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.press-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
+  float: left;
+  padding: 0 1em;
+}
+.press-content h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.press-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.event-list, .press-list {
+  width: 200px;
+  float: left;
+}
+.event-list.right, .press-list.right {
+  float: right;
+}
+.event-list li, .press-list li {
+  padding: 0.5em 0;
+  font-size: 0.8em;
+}
+.event-list li time, .press-list li time {
+  display: block;
+  font-size: 0.8em;
+}
+
+section.page {
   position: absolute;
-  width: -webkit-calc(100% - 300px);
-  width: calc(100% - 300px);
+  width: -webkit-calc(100% - 75px);
+  width: calc(100% - 75px);
+  opacity: 0;
+  filter: alpha(opacity=0);
   min-height: 100%;
   top: 0;
   z-index: 9;
   left: 50%;
   border-left: 1px solid;
-  -webkit-transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
-          transition: background-color 0.2s, margin-left 0.5s, border-color 1s;
+  -webkit-transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
+          transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
 }
-.page__header {
+section.page.ready {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+section.page__header {
   height: 60px;
-  background-color: white;
   position: relative;
 }
-.page__header:before {
+section.page__header:before {
+  -webkit-transition: opacity 0.5s;
+          transition: opacity 0.5s;
+  opacity: 1;
+  filter: alpha(opacity=100);
   content: "";
   position: absolute;
   background: url(images/arrow.svg) no-repeat left center;
@@ -409,66 +800,33 @@ section.home .intro {
   height: 100%;
   margin-left: 0.5em;
 }
-.page__header .title {
-  padding: 1em 2em 0;
+section.page__header .title {
+  padding: 1.4em 2em 0;
 }
-.page__body {
-  border-top: 1px solid;
+section.page__body img {
+  max-width: 100%;
+  height: auto;
 }
-.page.current {
+section.page.current {
   background-color: white;
   border-color: rgba(255, 255, 255, 0);
 }
-.page .col, .page .wpb_column {
-  border-left: 1px solid;
-  padding: 25px;
+section.page.current .page__header:before {
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
-.page .col:nth-child(odd), .page .wpb_column:nth-child(odd) {
+section.page .flexslider {
   border: none;
 }
-.page article {
-  clear: both;
-  padding-top: 3em;
+section.page .wpb_gallery_slides {
+  overflow: hidden;
 }
-.page article h3 {
-  font-size: 2em;
-  margin-bottom: 0.7em;
-}
-.page article p {
-  margin: 1em 0;
-}
-.page article img {
+section.page .wpb_gallery_slides li img {
   width: 100%;
+  height: auto;
 }
-.page article img.featured_image {
-  width: 100%;
-  max-width: 600px;
-}
-.page article img.align-left {
-  text-align: left;
-  margin: 0 1em 1em 0;
-  float: left;
-}
-.page .vc_column_container h3 {
-  font-size: 2em;
-  margin-bottom: 0.7em;
-  clear: both;
-}
-.page .vc_column_container p {
-  margin: 1em 0;
-}
-.page .vc_column_container .vc_single_image-wrapper img {
-  width: 100%;
-  max-width: 600px;
-}
-.page .vc_column_container img.featured_image {
-  width: 100%;
-  max-width: 600px;
-}
-.page .vc_column_container img.alignleft {
-  text-align: left;
-  margin: 0 1em 1em 0;
-  float: left;
+section.page .flex-control-paging li a {
+  overflow: hidden;
 }
 
 section.next {
@@ -490,6 +848,13 @@ section.prev.hover {
   background-color: white;
   margin-left: 50px;
 }
+section.prev .page__header:before {
+  margin-right: 0.5em;
+  -webkit-transform: scale(-1, 1);
+      -ms-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+  right: 0;
+}
 
 section.main {
   background-color: white;
@@ -502,7 +867,7 @@ section.main article {
   padding-right: 35px;
   width: 33.33333%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   section.main article {
     padding-left: 5px;
     padding-right: 5px;
@@ -517,14 +882,21 @@ section.main article h3, section.main article h4 {
 section.main article img {
   margin-bottom: 0.5em;
 }
+section.main article p {
+  font-size: 0.8em;
+}
 section.main .wpb_wrapper h2 {
   font-size: 1.7em;
 }
 section.main .wpb_wrapper h3, section.main .wpb_wrapper h4 {
   margin-bottom: 0.5em;
+  font-weight: bold;
 }
 section.main .wpb_wrapper img {
   margin-bottom: 0.5em;
+}
+section.main .wpb_wrapper p {
+  font-size: 0.8em;
 }
 section.main .item {
   float: left;
@@ -538,6 +910,29 @@ section.main .item img {
 footer {
   background-color: #EDEDED;
 }
+footer h2 {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+}
+footer ul li {
+  margin-bottom: 0.5em;
+}
+footer ul li .post-date {
+  display: block;
+  font-size: 0.8em;
+}
+footer #mc_embed_signup {
+  font-size: 0.8em;
+}
+footer #mc_embed_signup input {
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  width: 100%;
+  max-width: 200px;
+}
+footer #mc_embed_signup input.button {
+  width: auto;
+}
 footer article {
   float: left;
   direction: ltr;
@@ -545,7 +940,7 @@ footer article {
   padding-right: 35px;
   width: 33.33333%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   footer article {
     padding-left: 5px;
     padding-right: 5px;
@@ -559,9 +954,91 @@ footer .copyright {
   width: 100%;
   margin-top: 100px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   footer .copyright {
     padding-left: 5px;
     padding-right: 5px;
   }
 }
+
+/*********************
+LARGER MOBILE DEVICES
+This is for devices like the Galaxy Note or something that's
+larger than an iPhone but smaller than a tablet. Let's call them
+tweeners.
+*********************/
+@media only screen and (min-width: 481px) {
+  section.home {
+    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 75px);
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 75px);
+    width: calc(100% - 75px);
+  }
+}
+/*********************
+TABLET & SMALLER LAPTOPS
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 768px) {
+  section.header nav .mobile-menu {
+    display: none;
+  }
+  section.header nav.mobile-nav {
+    display: none !important;
+  }
+  section.header nav ul {
+    display: block;
+  }
+
+  section.home {
+    width: -webkit-calc(100% - 150px);
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 150px);
+    width: calc(100% - 150px);
+    min-width: 680px;
+  }
+}
+/*********************
+DESKTOP
+This is the average viewing window. So Desktops, Laptops, and
+in general anyone not viewing on a mobile device. Here's where
+you can add resource intensive styles.
+*********************/
+@media only screen and (min-width: 1030px) {
+  section.home {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+
+  section.page--single {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 1030px;
+  }
+
+  section.page {
+    width: -webkit-calc(100% - 300px);
+    width: calc(100% - 300px);
+    min-width: 900px;
+  }
+}
+/*********************
+LARGE VIEWING SIZE
+This is for the larger monitors and possibly full screen viewers.
+*********************/
+/*********************
+RETINA (2x RESOLUTION DEVICES)
+This applies to the retina iPhone (4s) and iPad (2,3) along with
+other displays with a 2x resolution. You can also create a media
+query for retina AND a certain size if you want. Go Nuts.
+*********************/

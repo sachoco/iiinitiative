@@ -106,9 +106,9 @@
 				<li>test</li>
 			</ul>
 		</article> -->
-		<div class="copyright">
-			&copy; iiiinitiative.
-		</div>
+<!-- 		<div class="margin-top wpb_column vc_column_container vc_col-sm-12">
+			<a href="mailto:info@iiinitiative.org">info@iiinitiative.org</a>
+		</div> -->
 	</div>
 </footer>
 

@@ -11,10 +11,21 @@
 
 // make the use of media queries really easy
 @include gridle_register_state ( mobile , (
-	max-width : 480px,
+	max-width : 768px,
 	gutter-width : 10px
 ) );
-
+@include gridle_register_state( sm , (
+    min-width : 768px
+) );
+@include gridle_register_state( md, (
+    min-width : 992px
+) );
+@include gridle_register_state( lg, (
+    min-width : 1200px
+) );
+@include gridle_register_state( xl, (
+    min-width : 1700px
+) );
 // even with full custom queries :
 @include gridle_register_state ( landscape, (
 	query : "(orientation : landscape)"
