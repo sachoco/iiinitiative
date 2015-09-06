@@ -1,6 +1,6 @@
 <?php include('header.php') ?>
 
-<div class="viewport">
+<!-- <div class="viewport"> -->
 <!-- 	<div class="overlay--left"></div>
 	<div class="overlay--right"></div> -->
 
@@ -23,13 +23,12 @@
 <?php if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
             the_date();
 
             echo '</time>';
     ?>
-                </a>
             </li>
 <?php endwhile; ?>
 <?php endif; ?>
@@ -66,7 +65,7 @@
 
 	</div>
 	
-</div>
+<!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">

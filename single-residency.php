@@ -13,7 +13,7 @@
 ?>
     </ul>
 </section> -->
-<div class="viewport">
+<!-- <div class="viewport"> -->
 
 	<section class="page--single residency">
         <section class="page__header"><h2 class="title">Residency</h2></section>
@@ -38,7 +38,7 @@
 
 	</div>
 	
-</div>
+<!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">

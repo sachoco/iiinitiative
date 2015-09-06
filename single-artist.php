@@ -13,7 +13,6 @@
 ?>
     </ul>
 </section> -->
-<div class="viewport">
 
 	<section class="page--single artist">
         <section class="page__header"><h2 class="title">Artist</h2></section>
@@ -156,7 +155,6 @@
 
 	</div>
 	
-</div>
 
 <!-- <section class="main">
     <div class="wrap">

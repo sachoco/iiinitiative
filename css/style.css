@@ -686,7 +686,7 @@ section.page--single {
 }
 section.page--single h1.title {
   font-size: 2em;
-  margin-left: 10px;
+  margin-bottom: 1em;
 }
 section.page--single .page__body {
   padding-top: 2em;

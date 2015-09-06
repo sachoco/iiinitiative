@@ -1,6 +1,5 @@
 <?php include('header.php') ?>
 
-<div class="viewport">
 
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Agenda</h2></section>
@@ -571,7 +570,6 @@
 
 	</div>
 	
-</div>
 
 <!-- <section class="main">
     <div class="wrap">

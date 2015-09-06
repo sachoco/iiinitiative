@@ -12,8 +12,8 @@
 ?>
     </ul>
 </section> -->
-<div class="viewport">
-
+<!-- <div class="viewport">
+ -->
 
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
@@ -47,7 +47,7 @@
 
     </div>
     
-</div>
+<!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">
