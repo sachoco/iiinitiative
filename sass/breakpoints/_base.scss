@@ -847,9 +847,21 @@ section.main {
 			font-size: $font-size-s;
 		}
 	}
+	.wpb_column {
+		&:nth-child(1){
+			.wpb_wrapper {
+				h2 {
+					margin-top: 0;
+				}				
+			}
+
+		}
+	}
 	.wpb_wrapper {
 		h2 {
 			font-size: 1.7em;
+			margin-bottom: 1em;
+			margin-top: 1em;
 		}
 		h3, h4 {
 			margin-bottom: 0.5em;
@@ -861,6 +873,7 @@ section.main {
 		p {
 			font-size: $font-size-s;
 		}
+
 	}
 	.item {
 		float: left;
@@ -875,9 +888,17 @@ section.main {
 }
 footer {
 	background-color: $bg-color-grey;
+	.wpb_column {
+		&:nth-child(1){
+			h2 {
+				margin-top: 0;
+			}				
+		}
+	}
 	h2 {
 		font-size: 1.7em;
 		margin-bottom: 1em;
+		margin-top: 1em;
 	}
 	ul {
 		// font-size: $font-size-s;

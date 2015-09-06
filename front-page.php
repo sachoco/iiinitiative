@@ -1,3 +1,9 @@
+<?php 
+    require_once("include/Mobile_Detect.php");
+    $detect = new Mobile_Detect;
+    $is_mobile = false;
+    if ( $detect->isMobile() && !$detect->isIpad() )  $is_mobile = ture;
+?>  
 <?php include('header.php') ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <section class="background">
@@ -35,7 +41,7 @@
 iii is an artist run platform for the development of self-made media based in The Hague which supports idiosyncratic research trajectories that zigzag between disciplines and distribution channels.           </p>
         </div>   -->
 	</section>
-
+<?php if(!$is_mobile): ?>
 	<div class="section-wrap">
 
         <section class="page home">
@@ -79,7 +85,7 @@ iii is an artist run platform for the development of self-made media based in Th
 ?>
 
 	</div>
-	
+<?php endif; ?>	
 </div>
 
 <section class="main">

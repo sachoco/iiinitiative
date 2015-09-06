@@ -914,8 +914,13 @@ section.main article img {
 section.main article p {
   font-size: 0.8em;
 }
+section.main .wpb_column:nth-child(1) .wpb_wrapper h2 {
+  margin-top: 0;
+}
 section.main .wpb_wrapper h2 {
   font-size: 1.7em;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 section.main .wpb_wrapper h3, section.main .wpb_wrapper h4 {
   margin-bottom: 0.5em;
@@ -939,9 +944,13 @@ section.main .item img {
 footer {
   background-color: #EDEDED;
 }
+footer .wpb_column:nth-child(1) h2 {
+  margin-top: 0;
+}
 footer h2 {
   font-size: 1.7em;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 footer ul li {
   margin-bottom: 1em;
@@ -1034,6 +1043,14 @@ you can add resource intensive styles.
     width: -webkit-calc(100% - 150px);
     width: calc(100% - 150px);
     min-width: 680px;
+  }
+
+  section.main .wpb_wrapper h2 {
+    margin-top: 0;
+  }
+
+  footer h2 {
+    margin-top: 0;
   }
 }
 /*********************
