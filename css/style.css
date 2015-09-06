@@ -698,7 +698,7 @@ section.page--single {
   border-left: 1px solid;
   border-right: 1px solid;
 }
-section.page--single h1.title, section.page--single h2.title {
+section.page--single h1.title {
   font-size: 2em;
   margin-bottom: 1em;
 }
