@@ -19,18 +19,35 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'AND',
+                            'relation' => 'OR',
                             array(
-                                'key' => 'date_from',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '<='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '>='
+                                )
                             ),
                             array(
-                                'key' => 'date_until',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '>='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value'   => false,
+                                    'type' => 'BOOLEAN'
+                                )
                             )
                         ),
                         array(
@@ -82,7 +99,7 @@
                     echo ' - '.$event_end_date;
                 }            
             }
-
+            
             echo '</time>';
     ?>
                 
@@ -229,6 +246,8 @@
                 }
             }
 
+
+
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
                     $date_from = date_i18n("d M, Y", $unixtimestamp);
@@ -272,18 +291,35 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'AND',
+                            'relation' => 'OR',
                             array(
-                                'key' => 'date_from',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '<='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '>='
+                                )
                             ),
                             array(
-                                'key' => 'date_until',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '>='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value'   => false,
+                                    'type' => 'BOOLEAN'
+                                )
                             )
                         ),
                         array(
