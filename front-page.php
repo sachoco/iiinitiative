@@ -21,8 +21,10 @@
     <div class="overlay"></div>
 </section>
 <div class="viewport">
+<?php if(!$is_mobile): ?>
 	<div class="overlay overlay--left"></div>
 	<div class="overlay overlay--right"></div>
+<?php endif; ?> 
 
 	<section class="dummy">
 <!--         <div class="intro">

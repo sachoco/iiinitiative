@@ -41,67 +41,160 @@
       return goPrev();
     });
     $(".logo").on("click", function(e) {
-      var _i, num_to_move, results, results1, results2, results3;
+      var _i, h, l, len2, len3, len4, len5, m, n, num_to_move, o, target;
       e.preventDefault();
       if (!$(allPages[curPage]).hasClass('home')) {
         if (((allPages.length * 1 / 4) <= curPage && curPage <= (allPages.length * 3 / 4))) {
           if ((num_to_move = homeLoc - curPage) > 0) {
             _i = 0;
-            results = [];
             while (true) {
-              goNext();
+              $(allPages[curPage]).removeClass("current").addClass("prev");
+              prevPages.push(nextPages.shift());
+              nextPages.push(prevPages.shift());
+              $("section.page.prev").first().removeClass("prev").addClass("next").appendTo(pageWrapper).velocity("stop").velocity({
+                translateX: (nextPages.length - 1) * 100 + 50 + "%"
+              }, {
+                duration: 0
+              });
+              target = allPages;
+              curPage++;
+              if (curPage >= allPages.length) {
+                curPage = 0;
+              }
               _i++;
               if (_i >= num_to_move) {
                 break;
-              } else {
-                results.push(void 0);
               }
             }
-            return results;
+            for (l = 0, len2 = target.length; l < len2; l++) {
+              page = target[l];
+              $(page).velocity({
+                translateX: "-=" + 100 * _i + "%"
+              }, {
+                duration: 1000
+              });
+            }
+            $(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover");
+            h = $(".page.current").outerHeight();
+            return $(".viewport").velocity({
+              height: h
+            }, {
+              duration: 1000
+            });
           } else {
             _i = 0;
-            results1 = [];
             while (true) {
-              goPrev();
+              $(allPages[curPage]).removeClass("current").addClass("next");
+              prevPages.unshift(nextPages.pop());
+              $("section.page.next").last().removeClass("next").addClass("prev").prependTo(pageWrapper).velocity("stop").velocity({
+                translateX: (prevPages.length - 1) * -100 - 150 + "%"
+              }, {
+                duration: 0
+              });
+              target = allPages;
+              curPage--;
+              if (curPage < 0) {
+                curPage = allPages.length - 1;
+              }
               _i--;
               if (_i <= num_to_move) {
                 break;
-              } else {
-                results1.push(void 0);
               }
             }
-            return results1;
+            for (m = 0, len3 = target.length; m < len3; m++) {
+              page = target[m];
+              $(page).velocity({
+                translateX: "+=" + 100 * -_i + "%"
+              }, {
+                duration: 1000
+              });
+            }
+            nextPages.unshift(prevPages.pop());
+            $("section.page.prev").last().removeClass("prev");
+            $(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover");
+            h = $(".page.current").outerHeight();
+            return $(".viewport").velocity({
+              height: h
+            }, {
+              duration: 1000
+            });
           }
         } else {
           if (curPage > allPages.length * 1 / 2) {
             num_to_move = allPages.length - curPage;
             _i = 0;
-            results2 = [];
             while (true) {
-              goNext();
+              $(allPages[curPage]).removeClass("current").addClass("prev");
+              prevPages.push(nextPages.shift());
+              nextPages.push(prevPages.shift());
+              $("section.page.prev").first().removeClass("prev").addClass("next").appendTo(pageWrapper).velocity("stop").velocity({
+                translateX: (nextPages.length - 1) * 100 + 50 + "%"
+              }, {
+                duration: 0
+              });
+              target = allPages;
+              curPage++;
+              if (curPage >= allPages.length) {
+                curPage = 0;
+              }
               _i++;
-              console.log(_i);
               if (_i >= num_to_move) {
                 break;
-              } else {
-                results2.push(void 0);
               }
             }
-            return results2;
+            for (n = 0, len4 = target.length; n < len4; n++) {
+              page = target[n];
+              $(page).velocity({
+                translateX: "-=" + 100 * _i + "%"
+              }, {
+                duration: 1000
+              });
+            }
+            $(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover");
+            h = $(".page.current").outerHeight();
+            return $(".viewport").velocity({
+              height: h
+            }, {
+              duration: 1000
+            });
           } else {
             num_to_move = curPage;
             _i = 0;
-            results3 = [];
             while (true) {
-              goPrev();
+              $(allPages[curPage]).removeClass("current").addClass("next");
+              prevPages.unshift(nextPages.pop());
+              $("section.page.next").last().removeClass("next").addClass("prev").prependTo(pageWrapper).velocity("stop").velocity({
+                translateX: (prevPages.length - 1) * -100 - 150 + "%"
+              }, {
+                duration: 0
+              });
+              target = allPages;
+              curPage--;
+              if (curPage < 0) {
+                curPage = allPages.length - 1;
+              }
               _i++;
               if (_i <= num_to_move) {
                 break;
-              } else {
-                results3.push(void 0);
               }
             }
-            return results3;
+            for (o = 0, len5 = target.length; o < len5; o++) {
+              page = target[o];
+              $(page).velocity({
+                translateX: "+=" + 100 * -_i + "%"
+              }, {
+                duration: 1000
+              });
+            }
+            nextPages.unshift(prevPages.pop());
+            $("section.page.prev").last().removeClass("prev");
+            $(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover");
+            h = $(".page.current").outerHeight();
+            return $(".viewport").velocity({
+              height: h
+            }, {
+              duration: 1000
+            });
           }
         }
       }

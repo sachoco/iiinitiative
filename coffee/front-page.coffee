@@ -37,34 +37,80 @@ jQuery ($) ->
 				if (num_to_move = homeLoc - curPage) > 0
 					_i = 0
 					loop
-						goNext()
+						$(allPages[curPage]).removeClass("current").addClass("prev")
+						prevPages.push( nextPages.shift() )
+						nextPages.push( prevPages.shift() )
+						$("section.page.prev").first().removeClass("prev").addClass("next").appendTo( pageWrapper ).velocity("stop").velocity { translateX: (nextPages.length - 1) * 100 + 50 + "%" }, { duration: 0 }
+						target = allPages
+						curPage++
+						if curPage >= allPages.length
+							curPage = 0
 						_i++
 						break if _i >= num_to_move
-					
+					for page in target
+						$(page).velocity { translateX: "-="+100*_i+"%" }, { duration: 1000}
+					$(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover")
+					h = $(".page.current").outerHeight()
+					$(".viewport").velocity {height: h}, {duration: 1000}
 				else
 					_i = 0
 					loop
-						goPrev()
+						$(allPages[curPage]).removeClass("current").addClass("next")
+						prevPages.unshift( nextPages.pop() )
+						$("section.page.next").last().removeClass("next").addClass("prev").prependTo( pageWrapper ).velocity("stop").velocity { translateX: (prevPages.length - 1) * -100 - 150 + "%" }, { duration: 0 }
+						target = allPages
+						curPage--
+						if curPage < 0
+							curPage = allPages.length - 1
 						_i--
 						break if _i <= num_to_move
+					for page in target
+						$(page).velocity { translateX: "+="+100*-_i+"%" }, { duration: 1000}
+					nextPages.unshift( prevPages.pop() )
+					$("section.page.prev").last().removeClass("prev")
+					$(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover")
+					h = $(".page.current").outerHeight()
+					$(".viewport").velocity {height: h}, {duration: 1000}					
 			else
 				if curPage > allPages.length * 1/2
 					num_to_move = allPages.length - curPage
 					_i = 0
 					loop
-						goNext()
+						$(allPages[curPage]).removeClass("current").addClass("prev")
+						prevPages.push( nextPages.shift() )
+						nextPages.push( prevPages.shift() )
+						$("section.page.prev").first().removeClass("prev").addClass("next").appendTo( pageWrapper ).velocity("stop").velocity { translateX: (nextPages.length - 1) * 100 + 50 + "%" }, { duration: 0 }
+						target = allPages
+						curPage++
+						if curPage >= allPages.length
+							curPage = 0
 						_i++
-						console.log(_i)
 						break if _i >= num_to_move
-					
+					for page in target
+						$(page).velocity { translateX: "-="+100*_i+"%" }, { duration: 1000}
+					$(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover")
+					h = $(".page.current").outerHeight()
+					$(".viewport").velocity {height: h}, {duration: 1000}					
 				else
 					num_to_move = curPage
 					_i = 0
 					loop
-						goPrev()
+						$(allPages[curPage]).removeClass("current").addClass("next")
+						prevPages.unshift( nextPages.pop() )
+						$("section.page.next").last().removeClass("next").addClass("prev").prependTo( pageWrapper ).velocity("stop").velocity { translateX: (prevPages.length - 1) * -100 - 150 + "%" }, { duration: 0 }
+						target = allPages
+						curPage--
+						if curPage < 0
+							curPage = allPages.length - 1
 						_i++
 						break if _i <= num_to_move
-
+					for page in target
+						$(page).velocity { translateX: "+="+100*-_i+"%" }, { duration: 1000}
+					nextPages.unshift( prevPages.pop() )
+					$("section.page.prev").last().removeClass("prev")
+					$(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover")
+					h = $(".page.current").outerHeight()
+					$(".viewport").velocity {height: h}, {duration: 1000}	
 		# if curPage isnt null
 		# 	$(allPages[curPage]).removeClass("current").addClass("next")
 		# 	curPage = null

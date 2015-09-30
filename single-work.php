@@ -84,6 +84,12 @@
                 endforeach;
             endif;
                     // $related_works_ids = rpt_get_object_relation($post_id, 'work');
+            if(($key = array_search($id, $related_works_ids)) !== false) {
+                unset($related_works_ids[$key]);
+            }
+            // var_dump($id);
+            // var_dump($related_works_ids);
+
             if ( is_array($related_works_ids) ) :
                 $related_works = get_posts( array(
                     'post_type' => 'work',
@@ -164,13 +170,20 @@
                              <?php // other artists
                 
                                 $artists = rwmb_meta( 'work_artists');
-                                // foreach($artists as $artist){
-                                //     echo $artist."<br />";
-                                // }   
+                                foreach($artists as $artist){
+                                    echo $artist."<br />";
+                                }   
                             ?>   
-                
+                            <?php 
+                                $date=get_post_meta(get_the_ID(), '_date', TRUE);
+                                if( ! empty( $date ) ) {
+                                //if( false ) { 
+                                    echo '<span class="date">'.$date.'</span><br />';
+                                }
+                        
+                            ?>                        
                         </p>
-
+                        
                     </div></div>
             
                     </a>

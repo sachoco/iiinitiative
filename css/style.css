@@ -368,6 +368,10 @@ ul.view--list li h2 {
   font-size: 16px;
 }
 
+.worksby {
+  max-width: 1300px;
+  margin: auto;
+}
 .worksby h2 {
   text-align: center;
 }
