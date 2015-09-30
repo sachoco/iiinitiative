@@ -5,7 +5,7 @@
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Event</h2></section>
         <section class="page__body container">
-        <div class="event-list">
+        <div class="event-list hide-on-mobile">
             <h3 class="">Hosting</h3>
 <?php $display_item; ?>
 
@@ -277,7 +277,7 @@
     <?php endif; ?>
         </div>
 
-        <div class="event-list right">
+        <div class="event-list right hide-on-mobile">
             <h3 class="">Circulation</h3>
 
 

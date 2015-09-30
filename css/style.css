@@ -252,6 +252,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.hide-on-mobile {
+  display: none;
+}
+
 .page__body .text a, .page__body .wpb_wrapper p a {
   color: black;
   text-decoration: none;
@@ -747,8 +751,6 @@ section.page--eventlist {
 }
 
 .event-content {
-  width: -webkit-calc(100% - 400px);
-  width: calc(100% - 400px);
   float: left;
   padding: 0 1em;
 }
@@ -762,8 +764,6 @@ section.page--eventlist {
 }
 
 .press-content {
-  width: -webkit-calc(100% - 400px);
-  width: calc(100% - 400px);
   float: left;
   padding: 0 1em;
 }
@@ -776,13 +776,6 @@ section.page--eventlist {
   height: auto;
 }
 
-.event-list, .press-list {
-  width: 200px;
-  float: left;
-}
-.event-list.right, .press-list.right {
-  float: right;
-}
 .event-list li, .press-list li {
   padding: 0.5em 0;
   font-size: 0.8em;
@@ -1010,6 +1003,10 @@ larger than an iPhone but smaller than a tablet. Let's call them
 tweeners.
 *********************/
 @media only screen and (min-width: 481px) {
+  .hide-on-mobile {
+    display: block;
+  }
+
   section.home {
     width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
@@ -1018,6 +1015,30 @@ tweeners.
   section.page {
     width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
+  }
+
+  .event-content, .press-content {
+    width: -webkit-calc(100% - 400px);
+    width: calc(100% - 400px);
+  }
+
+  .event-list, .press-list {
+    width: 200px;
+    float: left;
+  }
+  .event-list.right, .press-list.right {
+    float: right;
+  }
+  .event-list li, .press-list li {
+    padding: 0.5em 0;
+    font-size: 0.8em;
+  }
+  .event-list li a, .press-list li a {
+    color: black;
+  }
+  .event-list li time, .press-list li time {
+    display: block;
+    font-size: 0.8em;
   }
 }
 /*********************

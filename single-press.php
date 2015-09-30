@@ -7,7 +7,7 @@
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Press</h2></section>
         <section class="page__body container">
-        <div class="press-list">
+        <div class="press-list hide-on-mobile">
             <h3 class="">Press Archive</h3>
             <ul class="">
           <?php

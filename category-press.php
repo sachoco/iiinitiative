@@ -25,7 +25,7 @@
             </ul>
         </div>    
 
-        <section class="press-content">
+        <section class="press-content hide-on-mobile">
           <?php
             $args = array(
                 'post_type' => 'post',

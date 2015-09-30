@@ -82,6 +82,9 @@ a {
 		// transition: none;
 	}
 }
+.hide-on-mobile {
+	display: none;
+}
 .page__body  {
 	.text, .wpb_wrapper p{
 		a {
@@ -666,7 +669,6 @@ section.page--eventlist {
 
 }
 .event-content {
-	width: calc(100% - 400px);
 	float: left;
 	h2 {
 		font-size: 2em;
@@ -679,7 +681,6 @@ section.page--eventlist {
 	padding: 0 1em;
 }
 .press-content {
-	width: calc(100% - 400px);
 	float: left;
 	h2 {
 		font-size: 2em;
@@ -692,13 +693,7 @@ section.page--eventlist {
 	padding: 0 1em;
 }
 .event-list, .press-list {
-	// max-height: 100vh;
-	// overflow: scroll;
-	width: 200px;
-	float: left;
-	&.right {
-		float: right;
-	}
+
 	li {
 		padding: 0.5em 0;
 		font-size: 0.8em;

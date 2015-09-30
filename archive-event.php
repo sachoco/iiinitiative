@@ -547,7 +547,7 @@
 
 
 
-        <section class="event-content">
+        <section class="event-content hide-on-mobile">
 <?php
   if(!$display_item):
     $args = array(
