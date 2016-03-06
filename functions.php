@@ -131,7 +131,7 @@ function custom_post_event() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'custom-fields', 'revisions', 'sticky')
+			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'sticky')
 		) /* end of options */
 	); /* end of register post type */
 
@@ -603,6 +603,152 @@ function show_press( $atts ) {
 }
 add_shortcode( 'show_press', 'show_press' );
 
+
+function show_upcoming_host( $atts ) {
+    $a = shortcode_atts( array(), $atts );
+
+	$args = array(
+		'posts_per_page'   => 1,
+		'post_type'        => 'event',
+		'meta_key'			=> 'date_from',
+		'orderby'			=> 'meta_value_num',
+		'order'				=> 'ASC',
+		'meta_query' => array(
+			'relation' => 'AND',
+            array(
+			    'relation' => 'OR',
+		        array(
+		            'key' => 'date_from',
+		            'value' => date("Ymd", strtotime("now")),
+		            'type' => 'NUMERIC',
+		            'compare' => '>='
+		        ),
+		        array(
+		            'key' => 'date_until',
+		            'value' => date("Ymd", strtotime("now")),
+		            'type' => 'NUMERIC',
+		            'compare' => '>='
+		        )
+	        ),
+            array(
+                'key' => 'host_|_circulation',
+                'value' => 'host',
+                'compare' => 'LIKE'
+            )	        
+		)		
+	);
+
+	$posts = get_posts( $args );
+	$output;
+
+	if( $posts ): 
+
+		// $output = "<ul>";
+
+		foreach( $posts as $post ): 	
+
+	    	$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
+
+            $locations = get_field('location', $post->ID);                      
+            if($locations) {
+                foreach($locations as $location){
+                    $loc .= $location[location].' '; //''
+                }
+            }
+
+			if(get_field('date_from', $post->ID)){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date .= $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    $date .= " - ". $date_until;
+                }
+            }         
+
+	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
+	    	$output .= "<p>" . $post->post_excerpt . "</p>";
+	    	$output .= "<div class='wpb_single_image'>" . get_the_post_thumbnail( $post->ID, "large" ) . "</div>";
+
+	    // return, don't echo
+		endforeach;
+
+		// $output .= "</ul>";
+
+	endif;
+
+	return $output;
+
+
+}
+add_shortcode( 'show_upcoming_host', 'show_upcoming_host' );
+
+function show_upcoming_residency( $atts ) {
+    $a = shortcode_atts( array(), $atts );
+
+            $args = array(
+                'post_type' => 'residency',
+                'post_state' => 'publish',
+                'meta_key' => 'date_from',
+                'orderby' => 'rand',
+                // 'order' => 'ASC',
+                'posts_per_page' => 4,
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+	                    'relation' => 'AND',
+	                    array(
+	                        'key' => 'date_from',
+	                        'value' => date('Ymd', strtotime("now")),
+	                        'type' => 'NUMERIC',
+	                        'compare' => '<='
+	                    ),
+	                    array(
+	                        'key' => 'date_until',
+	                        'value' => date('Ymd', strtotime("now")),
+	                        'type' => 'NUMERIC',
+	                        'compare' => '>='
+	                    )
+                    ),
+                    array(
+                        'key' => 'date_from',
+                        'value' => date('Ymd', strtotime("now")),
+                        'type' => 'NUMERIC',
+                        'compare' => '>'
+                    )
+                )
+            );
+            
+
+	$posts = get_posts( $args );
+	$output;
+
+	if( $posts ): 
+
+		$output = "<h2 class='vc_custom_heading'><a href='/residencies/''>Residency Program</a></h2>";
+		$i = 0;
+		$output .= '<div class="vc_row wpb_row vc_inner vc_row-fluid">';
+		foreach( $posts as $post ): 	
+			if($i%2==0){
+				$output .= '</div><div class="vc_row wpb_row vc_inner vc_row-fluid">';
+			}
+			$output .= '<div class="wpb_column vc_column_container vc_col-sm-6"><div class="wpb_wrapper">';
+			$output .= '<h4 class="vc_custom_heading"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . $post->post_title . '</a></h4>';
+			$output .= '<div class="wpb_single_image wpb_content_element vc_align_left"><div class="wpb_wrapper"><div class="vc_single_image-wrapper   vc_box_border_grey"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . get_the_post_thumbnail( $post->ID, array(300,200) ) . '</a></div></div></div>';
+			$output .= '</div></div>';
+			$i++;
+	    // return, don't echo
+		endforeach;
+		$output .= '</div>';
+
+	endif;
+
+	return $output;
+
+
+}
+add_shortcode( 'show_upcoming_residency', 'show_upcoming_residency' );
 
 /**
  * Recent_Posts widget class

@@ -252,25 +252,21 @@ a:hover {
   text-decoration: underline;
 }
 
-.hide-on-mobile {
-  display: none;
-}
-
-.page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
+.page__body .text a, .page__body .wpb_wrapper p a {
   color: black;
   text-decoration: none;
   -webkit-transition: all 0.1s;
           transition: all 0.1s;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 }
-.page__body .text a:hover, .page__body .wpb_wrapper p a:hover, .page__body .press-content a:hover {
+.page__body .text a:hover, .page__body .wpb_wrapper p a:hover {
   background-color: black;
   color: white;
 }
-.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time, .page__body .press-content a:hover time {
+.page__body .text a:hover time, .page__body .wpb_wrapper p a:hover time {
   color: #555;
 }
-.page__body .text a time, .page__body .wpb_wrapper p a time, .page__body .press-content a time {
+.page__body .text a time, .page__body .wpb_wrapper p a time {
   -webkit-transition: none;
           transition: none;
 }
@@ -305,9 +301,8 @@ ul.view--grid li {
   display: inline-block;
   position: relative;
   text-align: center;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  padding: 0 15px;
+  margin-top: 1em;
+  margin-bottom: 1em;
   border: none !important;
 }
 ul.view--grid li .thumbnail {
@@ -346,10 +341,6 @@ ul.view--grid li:hover .info--overlay {
   opacity: 1;
   filter: alpha(opacity=100);
 }
-ul.view--grid.works li {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
 ul.view--list {
   float: left;
   width: 100%;
@@ -372,10 +363,6 @@ ul.view--list li h2 {
   font-size: 16px;
 }
 
-.worksby {
-  max-width: 1300px;
-  margin: auto;
-}
 .worksby h2 {
   text-align: center;
 }
@@ -527,15 +514,6 @@ section.background .rslides:after {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
   /* IE6-8 */
 }
-section.background .overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
-}
 
 .viewport {
   width: 100%;
@@ -680,7 +658,7 @@ section.home {
 }
 section.home.current {
   min-height: auto !important;
-  background-color: rgba(255, 255, 255, 0) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 section.home .intro {
   position: absolute;
@@ -692,11 +670,6 @@ section.home .intro {
   max-width: 400px;
   color: white;
   text-align: center;
-}
-
-section.dummy {
-  padding-bottom: 45%;
-  padding-top: 60px;
 }
 
 section.page--single {
@@ -721,9 +694,6 @@ section.page--single .page__body h3 {
 section.page--single .page__body img {
   width: 100%;
   height: auto;
-}
-section.page--single .page__body p {
-  line-height: 1.3em;
 }
 section.page--single.artist .wrapper, section.page--single.work .wrapper, section.page--single.residency .wrapper {
   max-width: 900px;
@@ -751,6 +721,8 @@ section.page--eventlist {
 }
 
 .event-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
   float: left;
   padding: 0 1em;
 }
@@ -764,6 +736,8 @@ section.page--eventlist {
 }
 
 .press-content {
+  width: -webkit-calc(100% - 400px);
+  width: calc(100% - 400px);
   float: left;
   padding: 0 1em;
 }
@@ -776,12 +750,16 @@ section.page--eventlist {
   height: auto;
 }
 
+.event-list, .press-list {
+  width: 200px;
+  float: left;
+}
+.event-list.right, .press-list.right {
+  float: right;
+}
 .event-list li, .press-list li {
   padding: 0.5em 0;
   font-size: 0.8em;
-}
-.event-list li a, .press-list li a {
-  color: black;
 }
 .event-list li time, .press-list li time {
   display: block;
@@ -825,16 +803,9 @@ section.page__header:before {
 section.page__header .title {
   padding: 1.4em 2em 0;
 }
-section.page__body img {
-  max-width: 100%;
-  height: auto;
-}
-section.page__body p {
-  line-height: 1.3em;
-}
 section.page.current {
   background-color: white;
-  border: none;
+  border-color: rgba(255, 255, 255, 0);
 }
 section.page.current .page__header:before {
   opacity: 0;
@@ -865,7 +836,6 @@ section.next.hover {
 
 section.prev {
   border-right: 1px solid;
-  border-left: none;
   cursor: pointer;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
   z-index: 19;
@@ -911,13 +881,8 @@ section.main article img {
 section.main article p {
   font-size: 0.8em;
 }
-section.main .wpb_column:nth-child(1) .wpb_wrapper h2 {
-  margin-top: 0;
-}
 section.main .wpb_wrapper h2 {
   font-size: 1.7em;
-  margin-bottom: 1em;
-  margin-top: 1em;
 }
 section.main .wpb_wrapper h3, section.main .wpb_wrapper h4 {
   margin-bottom: 0.5em;
@@ -941,16 +906,12 @@ section.main .item img {
 footer {
   background-color: #EDEDED;
 }
-footer .wpb_column:nth-child(1) h2 {
-  margin-top: 0;
-}
 footer h2 {
   font-size: 1.7em;
   margin-bottom: 1em;
-  margin-top: 1em;
 }
 footer ul li {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 footer ul li .post-date {
   display: block;
@@ -1003,10 +964,6 @@ larger than an iPhone but smaller than a tablet. Let's call them
 tweeners.
 *********************/
 @media only screen and (min-width: 481px) {
-  .hide-on-mobile {
-    display: block;
-  }
-
   section.home {
     width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
@@ -1015,30 +972,6 @@ tweeners.
   section.page {
     width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
-  }
-
-  .event-content, .press-content {
-    width: -webkit-calc(100% - 400px);
-    width: calc(100% - 400px);
-  }
-
-  .event-list, .press-list {
-    width: 200px;
-    float: left;
-  }
-  .event-list.right, .press-list.right {
-    float: right;
-  }
-  .event-list li, .press-list li {
-    padding: 0.5em 0;
-    font-size: 0.8em;
-  }
-  .event-list li a, .press-list li a {
-    color: black;
-  }
-  .event-list li time, .press-list li time {
-    display: block;
-    font-size: 0.8em;
   }
 }
 /*********************
@@ -1068,14 +1001,6 @@ you can add resource intensive styles.
     width: -webkit-calc(100% - 150px);
     width: calc(100% - 150px);
     min-width: 680px;
-  }
-
-  section.main .wpb_wrapper h2 {
-    margin-top: 0;
-  }
-
-  footer h2 {
-    margin-top: 0;
   }
 }
 /*********************
