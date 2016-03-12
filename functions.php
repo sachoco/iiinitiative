@@ -9,6 +9,7 @@ if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'artist-page-image', 618, 9999, false ); // unlimited height
 	//add_image_size( 'artist-list-thumb', 199, 150, TRUE ); 
 	add_image_size( 'artist-thumb', 300, 300, true );
+	add_image_size( 'artist-thumb-crop', 300, 200, true );
 	add_image_size( 'work-thumb', 410, 280, true );
 }
 
@@ -647,7 +648,12 @@ function show_upcoming_host( $atts ) {
 
 		foreach( $posts as $post ): 	
 
-	    	$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
+
+	    	if(get_field( "alt_title", $post->ID )){
+	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . get_field( "alt_title", $post->ID ) . "</a></h2>";
+	    	}else{
+	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
+	    	}
 
             $locations = get_field('location', $post->ID);                      
             if($locations) {
@@ -669,7 +675,12 @@ function show_upcoming_host( $atts ) {
 
 	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
 	    	$output .= "<p>" . $post->post_excerpt . "</p>";
+	    	if(get_field( "alt_image", $post->ID )){
+	    		$thumb = get_field( "alt_image", $post->ID );
+		    	$output .= "<div class='wpb_single_image'><img src='" . $thumb["sizes"]["large"] . "' /></div>";
+	    	}else{
 	    	$output .= "<div class='wpb_single_image'>" . get_the_post_thumbnail( $post->ID, "large" ) . "</div>";
+	    	}
 
 	    // return, don't echo
 		endforeach;
@@ -730,12 +741,21 @@ function show_upcoming_residency( $atts ) {
 		$i = 0;
 		$output .= '<div class="vc_row wpb_row vc_inner vc_row-fluid">';
 		foreach( $posts as $post ): 	
-			if($i%2==0){
+			if($i!=0&&$i%2==0){
 				$output .= '</div><div class="vc_row wpb_row vc_inner vc_row-fluid">';
 			}
 			$output .= '<div class="wpb_column vc_column_container vc_col-sm-6"><div class="wpb_wrapper">';
-			$output .= '<h4 class="vc_custom_heading"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . $post->post_title . '</a></h4>';
-			$output .= '<div class="wpb_single_image wpb_content_element vc_align_left"><div class="wpb_wrapper"><div class="vc_single_image-wrapper   vc_box_border_grey"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . get_the_post_thumbnail( $post->ID, array(300,200) ) . '</a></div></div></div>';
+	    	if(get_field( "alt_title", $post->ID )){
+				$output .= '<h4 class="vc_custom_heading"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . get_field( "alt_title", $post->ID ) . '</a></h4>';
+	    	}else{
+				$output .= '<h4 class="vc_custom_heading"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . $post->post_title . '</a></h4>';
+	    	}
+	    	if(get_field( "alt_image", $post->ID )){
+	    		$thumb = get_field( "alt_image", $post->ID );
+				$output .= '<div class="wpb_single_image wpb_content_element vc_align_left"><div class="wpb_wrapper"><div class="vc_single_image-wrapper   vc_box_border_grey"><a href="' . esc_url( get_permalink( $post->ID ) ) . '"><img src="' . $thumb["sizes"]["artist-thumb-crop"] . '" /></a></div></div></div>';
+	    	}else{
+				$output .= '<div class="wpb_single_image wpb_content_element vc_align_left"><div class="wpb_wrapper"><div class="vc_single_image-wrapper   vc_box_border_grey"><a href="' . esc_url( get_permalink( $post->ID ) ) . '">' . get_the_post_thumbnail( $post->ID, array(300,200) ) . '</a></div></div></div>';
+	    	}
 			$output .= '</div></div>';
 			$i++;
 	    // return, don't echo
