@@ -733,9 +733,44 @@ function show_upcoming_residency( $atts ) {
             
 
 	$posts = get_posts( $args );
-	$output;
+	// var_dump($posts);
+	// echo count($posts);
+	if( count($posts) < 4 ){
+		$ids = array();
+		foreach ( $posts as $post ) {
+		   $ids[] += $post->ID;
+		}
+		$args = array(
+		    'post_type' => 'residency',
+		    'post_state' => 'publish',
+		    'orderby' => 'rand',
+		    'posts_per_page' => (4 - count($posts)),
+		    'post__not_in' => $ids,
+            'meta_key' => 'date_from',
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key' => 'date_from',
+                    'value' => date('Y', strtotime("now"))."0101",
+                    'type' => 'NUMERIC',
+                    'compare' => '>='
+                ),
+                array(
+                    'key' => 'date_until',
+                    'value' => date('Ymd', strtotime("now"))."1231",
+                    'type' => 'NUMERIC',
+                    'compare' => '<'
+                )
+            )
+		);	
+		$posts2 = get_posts( $args );
+		$posts = array_merge($posts, $posts2);
 
+	}
+	$output;
 	if( $posts ): 
+
+
 
 		$output = "<h2 class='vc_custom_heading'><a href='/residencies/''>Residency Program</a></h2>";
 		$i = 0;
