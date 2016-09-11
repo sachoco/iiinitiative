@@ -24,6 +24,7 @@
                         //$related_artist_pages_ids = array();
                         unset($related_artist_pages_ids);
                         $related_artist_pages_ids = rpt_get_object_relation($id, 'artist');
+
                         //echo print_r($related_artist_pages_ids).' ';
                         //echo count($related_artist_pages_ids).' ';
                         if ( count($related_artist_pages_ids) >= 1 ) {
@@ -88,9 +89,8 @@
                 unset($related_works_ids[$key]);
             }
             // var_dump($id);
-            // var_dump($related_works_ids);
 
-            if ( is_array($related_works_ids) ) :
+            if ( count($related_works_ids)>0 ) :
                 $related_works = get_posts( array(
                     'post_type' => 'work',
                     'post_status' => 'publish',
