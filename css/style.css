@@ -200,8 +200,7 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 *********************/
 * {
   box-sizing: border-box;
-  -webkit-transition: -webkit-filter 2s, filter 2s;
-          transition: filter 2s;
+  transition: -webkit-filter 2s, filter 2s;
 }
 
 html {
@@ -259,8 +258,7 @@ a:hover {
 .page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
   color: black;
   text-decoration: none;
-  -webkit-transition: all 0.1s;
-          transition: all 0.1s;
+  transition: all 0.1s;
   background: url(images/overlay-pattern.png) rgba(255, 255, 255, 0.5);
 }
 .page__body .text a:hover, .page__body .wpb_wrapper p a:hover, .page__body .press-content a:hover {
@@ -271,8 +269,7 @@ a:hover {
   color: #555;
 }
 .page__body .text a time, .page__body .wpb_wrapper p a time, .page__body .press-content a time {
-  -webkit-transition: none;
-          transition: none;
+  transition: none;
 }
 
 strong {
@@ -299,6 +296,14 @@ button {
   max-width: 1600px;
   margin: auto;
   padding: 2em;
+}
+
+.preview_indicator {
+  position: absolute;
+  top: -20px;
+  color: white;
+  background-color: red;
+  padding: 0 1em;
 }
 
 ul.view--grid li {
@@ -330,10 +335,9 @@ ul.view--grid li .info--overlay {
   height: 100%;
   color: white;
   opacity: 0;
-  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   background-color: rgba(0, 0, 0, 0.8);
-  -webkit-transition: opacity 0.5s;
-          transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 ul.view--grid li .info--overlay div {
   -webkit-transform: translateY(-50%);
@@ -344,7 +348,7 @@ ul.view--grid li .info--overlay div {
 }
 ul.view--grid li:hover .info--overlay {
   opacity: 1;
-  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 ul.view--grid.works li {
   margin-top: 15px;
@@ -449,12 +453,10 @@ section.header nav ul {
   display: none;
 }
 section.header nav ul.nav-left {
-  right: -webkit-calc(50% + 40px);
   right: calc(50% + 40px);
   top: 0;
 }
 section.header nav ul.nav-right {
-  left: -webkit-calc(50% + 40px);
   left: calc(50% + 40px);
   top: 0;
 }
@@ -516,9 +518,7 @@ section.background .rslides:after {
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, black));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, transparent 0%, black 100%);
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
@@ -634,9 +634,7 @@ body.home .viewport .overlay--left:before {
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgIDxzdG9wIG9mZnNldD0iNDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.7)), color-stop(40%, rgba(0, 0, 0, 0.4)), color-stop(99%, transparent), color-stop(100%, transparent));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 99%, transparent 100%);
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
@@ -659,9 +657,7 @@ body.home .viewport .overlay--right:before {
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgIDxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNyIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, transparent), color-stop(1%, transparent), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0.7)));
   /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, transparent 0%, transparent 1%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.7) 100%);
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
@@ -672,7 +668,6 @@ body.home .viewport .overlay--right:before {
 }
 
 section.home {
-  width: -webkit-calc(100% - 75px);
   width: calc(100% - 75px);
   position: relative;
   padding-bottom: 45%;
@@ -790,31 +785,28 @@ section.page--eventlist {
 
 section.page {
   position: absolute;
-  width: -webkit-calc(100% - 75px);
   width: calc(100% - 75px);
   opacity: 0;
-  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   min-height: 100%;
   top: 0;
   z-index: 9;
   left: 50%;
   border-left: 1px solid;
-  -webkit-transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
-          transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
+  transition: background-color 0.2s, margin-left 0.5s, border-color 1s, opacity 0.5s;
 }
 section.page.ready {
   opacity: 1;
-  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 section.page__header {
   height: 60px;
   position: relative;
 }
 section.page__header:before {
-  -webkit-transition: opacity 0.5s;
-          transition: opacity 0.5s;
+  transition: opacity 0.5s;
   opacity: 1;
-  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   content: "";
   position: absolute;
   background: url(images/arrow.svg) no-repeat left center;
@@ -838,7 +830,7 @@ section.page.current {
 }
 section.page.current .page__header:before {
   opacity: 0;
-  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 section.page .flexslider {
   border: none;
@@ -1008,17 +1000,14 @@ tweeners.
   }
 
   section.home {
-    width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
   }
 
   section.page {
-    width: -webkit-calc(100% - 75px);
     width: calc(100% - 75px);
   }
 
   .event-content, .press-content {
-    width: -webkit-calc(100% - 400px);
     width: calc(100% - 400px);
   }
 
@@ -1048,6 +1037,15 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 768px) {
+  section.main .wpb_wrapper h2 {
+    margin-top: 0;
+  }
+
+  footer h2 {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 920px) {
   section.header nav .mobile-menu {
     display: none;
   }
@@ -1059,23 +1057,13 @@ you can add resource intensive styles.
   }
 
   section.home {
-    width: -webkit-calc(100% - 150px);
     width: calc(100% - 150px);
     min-width: 680px;
   }
 
   section.page {
-    width: -webkit-calc(100% - 150px);
     width: calc(100% - 150px);
     min-width: 680px;
-  }
-
-  section.main .wpb_wrapper h2 {
-    margin-top: 0;
-  }
-
-  footer h2 {
-    margin-top: 0;
   }
 }
 /*********************
@@ -1086,19 +1074,16 @@ you can add resource intensive styles.
 *********************/
 @media only screen and (min-width: 1030px) {
   section.home {
-    width: -webkit-calc(100% - 300px);
     width: calc(100% - 300px);
     min-width: 900px;
   }
 
   section.page--single {
-    width: -webkit-calc(100% - 300px);
     width: calc(100% - 300px);
     min-width: 1030px;
   }
 
   section.page {
-    width: -webkit-calc(100% - 300px);
     width: calc(100% - 300px);
     min-width: 900px;
   }

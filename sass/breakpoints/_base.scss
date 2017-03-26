@@ -132,7 +132,13 @@ button {
 	margin: auto;
 	padding: 2em;
 }
-
+.preview_indicator {
+	position: absolute;
+    top: -20px;
+    color: white;
+    background-color: red;
+    padding: 0 1em;
+}
 
 ul.view {
 	&--grid {
