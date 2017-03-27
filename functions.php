@@ -36,6 +36,8 @@ add_filter('widget_text', 'do_shortcode');
 		wp_enqueue_script( 'isotope' );
 		wp_register_script( 'imagesloaded', get_stylesheet_directory_uri() . '/bower_components/imagesloaded/imagesloaded.pkgd.min.js', array('jquery'), '', true );
 		wp_enqueue_script( 'imagesloaded' );
+		wp_register_script( 'readmore', get_stylesheet_directory_uri() . '/js/readmore.min.js', array('jquery'), '', true );
+		wp_enqueue_script( 'readmore' );
 		// register main script
 		wp_register_script( 'main-script', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), '', true );
 		wp_enqueue_script( 'main-script' );

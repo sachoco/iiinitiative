@@ -4,7 +4,7 @@
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Agenda</h2></section>
         <section class="page__body container">
-        <div class="event-list">
+        <div class="event-list ">
             <h3 class="">Hosting</h3>
 <?php $display_item; ?>
 
@@ -228,7 +228,7 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -499,7 +499,7 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
