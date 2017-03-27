@@ -85,6 +85,9 @@ a {
 .hide-on-mobile {
 	display: none;
 }
+.iii-readmore {
+	max-height: 5em;
+}
 .page__body  {
 	.text, .wpb_wrapper p, .press-content{
 		a {
@@ -711,6 +714,9 @@ section.page--eventlist {
 			display: block;
 			font-size: 0.8em;
 		}
+	}
+	&.right {
+		margin-top: 2em;
 	}
 }
 section.page {

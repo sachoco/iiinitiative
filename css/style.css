@@ -255,6 +255,10 @@ a:hover {
   display: none;
 }
 
+.iii-readmore {
+  max-height: 5em;
+}
+
 .page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {
   color: black;
   text-decoration: none;
@@ -783,6 +787,9 @@ section.page--eventlist {
   display: block;
   font-size: 0.8em;
 }
+.event-list.right, .press-list.right {
+  margin-top: 2em;
+}
 
 section.page {
   position: absolute;
@@ -1004,6 +1011,10 @@ tweeners.
     width: calc(100% - 75px);
   }
 
+  .iii-readmore {
+    max-height: 1500px;
+  }
+
   section.page {
     width: calc(100% - 75px);
   }
@@ -1029,6 +1040,9 @@ tweeners.
   .event-list li time, .press-list li time {
     display: block;
     font-size: 0.8em;
+  }
+  .event-list.right, .press-list.right {
+    margin-top: 0;
   }
 }
 /*********************

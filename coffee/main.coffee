@@ -20,7 +20,6 @@ jQuery ($) ->
 		moreLink: '<a class="square-btn" href="#">show more</a>',
 		lessLink: '<a class="square-btn" href="#">show less</a>',
 		embedCSS: true,
-		collapsedHeight: 1500,
-		blockCSS: 'margin-bottom: 2em;'
+		blockCSS: 'margin-bottom: 1em;'
 
 	@

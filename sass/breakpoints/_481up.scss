@@ -7,7 +7,9 @@ section.home {
 	// min-width: 680px;
 
 }
-
+.iii-readmore {
+	max-height: 1500px;
+}
 
 section.page {
 	width: calc(100% - 75px);
@@ -36,5 +38,8 @@ section.page {
 			display: block;
 			font-size: 0.8em;
 		}
+	}
+	&.right {
+		margin-top: 0;
 	}
 }
