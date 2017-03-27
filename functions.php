@@ -192,6 +192,28 @@ function custom_post_production() {
 	// adding the function to the Wordpress init
 	add_action( 'init', 'custom_post_production');
 
+	register_taxonomy( 'production_category',
+		array('production'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('hierarchical' => true,     /* if this is true, it acts like categories */
+			'labels' => array(
+				'name' => __( 'Production Categories', 'tas' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Production Category', 'tas' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Production Categories', 'tas' ), /* search title for taxomony */
+				'all_items' => __( 'All Production Categories', 'tas' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Production Category', 'tas' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Production Category:', 'tas' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Production Category', 'tas' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Production Category', 'tas' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Production Category', 'tas' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Production Category Name', 'tas' ) /* name title for taxonomy */
+			),
+			'show_admin_column' => true,
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'production-category' ),
+		)
+	);
+
 function custom_post_research() {
 	// creating (registering) the custom type
 	register_post_type( 'research', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
