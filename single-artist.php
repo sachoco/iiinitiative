@@ -86,15 +86,15 @@
                     ?>
     
                     <div class="info--overlay"><div>
-                        <p class="teaser__title">
+                        <div>
                             <?php 
                                 echo get_the_title($post); 
                                 //echo ' '.get_the_ID();
                             
                             ?>
-                        </p>
+                        </div>
                 
-                        <p class="teaser__artist"> 
+                        <!-- <p class="teaser__artist">  -->
                  
                              <?php  //////////// Find related artists of related work //////////////
                          
@@ -125,12 +125,21 @@
                              <?php // other artists
                 
                                 $artists = rwmb_meta( 'work_artists');
-                                // foreach($artists as $artist){
-                                //     echo $artist."<br />";
-                                // }   
+                                foreach($artists as $artist){
+                                    echo $artist."<br />";
+                                }   
                             ?>   
-                
-                        </p>
+                            <p class="teaser__year">
+                                <?php 
+                                    $date=get_post_meta(get_the_ID(), '_date', TRUE);
+                                    if( ! empty( $date ) ) {
+                                    //if( false ) { 
+                                        echo '<span class="date">'.$date.'</span><br />';
+                                    }
+                            
+                                ?>
+                            </p>
+                        <!-- </p> -->
 
                     </div></div>
             
