@@ -9,7 +9,7 @@
         <section class="page__body container">
         <div class="press-list">
             <h3 class="">Press Archive</h3>
-            <ul class="">
+            <ul class="iii-readmore">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>

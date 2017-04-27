@@ -1,6 +1,8 @@
 <?php
 include 'meta_box_defs.php';
 
+// require_once( 'include/Mobile_Detect.php' );
+
 
 update_option('image_default_link_type','none'); 
 

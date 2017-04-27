@@ -9,7 +9,7 @@
         <section class="page__body container">
         <div class="press-list hide-on-mobile">
             <h3 class="">Press Archive</h3>
-            <ul class="">
+            <ul class="iii-readmore">
           <?php
             $args = array(
                 'post_type' => 'post',

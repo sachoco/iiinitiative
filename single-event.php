@@ -230,7 +230,7 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
@@ -502,7 +502,7 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?>

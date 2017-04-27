@@ -23,6 +23,114 @@
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
+        <?php
+            $args = array(
+                'post_type' => 'production',
+                'post_state' => 'publish',
+                // 'meta_key' => 'date_from',
+                // 'orderby' => 'meta_value_num',
+                // 'order' => 'ASC',
+                'posts_per_page' => -1,
+                'tax_query' =>
+                    array(
+                        array(
+                            'taxonomy' => 'production_category',
+                            'field'    => 'slug',
+                            'terms' => 'ongoing-series',                                    
+                        ),
+                    )
+            );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ) :
+        ?>
+        <h3 class="grid-12">Ongoing Series</h3>
+        <ul class="view--list">
+        <?php
+                while ( $the_query->have_posts() ) : $the_query->the_post();
+
+        ?>
+       <li class="grid-12 parent grid-mobile-12 ">
+            <div class="grid-5 align-left">
+        <?php if (has_post_thumbnail()): ?>
+                <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?></a>
+        <?php endif; ?>
+            </div>
+            <div class="grid-7 align-left">
+                <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
+            </div>
+        </li>
+
+        <?php endwhile; ?>
+        </ul>
+
+        <?php
+            endif;
+            wp_reset_postdata();
+        ?>
+        <?php
+            $args = array(
+                'post_type' => 'production',
+                'post_state' => 'publish',
+                // 'meta_key' => 'date_from',
+                // 'orderby' => 'meta_value_num',
+                // 'order' => 'ASC',
+                'posts_per_page' => -1,
+                'tax_query' =>
+                    array(
+                        array(
+                            'taxonomy' => 'production_category',
+                            'field'    => 'slug',
+                            'terms' => 'past-productions',                                    
+                        ),
+                    )
+            );
+
+            $the_query = new WP_Query( $args );
+            if ( $the_query->have_posts() ) :
+        ?>
+        <h3 class="grid-12">Past Productions</h3>
+        <ul class="view--list">
+        <?php
+                while ( $the_query->have_posts() ) : $the_query->the_post();
+
+        ?>
+       <li class="grid-12 parent grid-mobile-12 ">
+            <div class="grid-5 align-left">
+        <?php if (has_post_thumbnail()): ?>
+                <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?></a>
+        <?php endif; ?>
+            </div>
+            <div class="grid-7 align-left">
+                <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
+                <p>
+                <?php
+                    $excerpt = get_the_excerpt(); 
+                    $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
+                    echo wpautop( $excerpt); 
+                ?>
+                <?php //the_excerpt(); ?>
+                </p>
+            </div>
+        </li>
+
+        <?php endwhile; ?>
+        </ul>
+
+        <?php
+            endif;
+            wp_reset_postdata();
+        ?>
+<!-- 
+
         <ul class="view--list">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?php //remove_filter('the_excerpt', 'wpautop'); ?>
@@ -48,7 +156,7 @@
 
 <?php endwhile; ?>
 <?php endif; ?>
-        </ul>
+        </ul> -->
         <?php
             // Previous/next page navigation.
             the_posts_pagination( array(
