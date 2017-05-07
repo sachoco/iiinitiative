@@ -814,7 +814,66 @@ endif;
 		endforeach;
 
 		// $output .= "</ul>";
+	else:
 
+		$args = array(
+			'posts_per_page'   => 1,
+			'post_type'        => 'event',
+			'meta_key'			=> 'date_from',
+			'orderby'			=> 'meta_value_num',
+			'order'				=> 'DESC',
+			'meta_query' => array(
+	                'key' => 'featured_on_homepage',
+	                'value' => true,
+	                'compare' => 'LIKE'
+			)		
+		);
+
+		$posts = get_posts( $args );
+
+		$output;
+
+		foreach( $posts as $post ): 	
+
+
+	    	if(get_field( "alt_title", $post->ID )){
+	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . get_field( "alt_title", $post->ID ) . "</a></h2>";
+	    	}else{
+	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
+	    	}
+
+            $locations = get_field('location', $post->ID);                      
+            if($locations) {
+                foreach($locations as $location){
+                    $loc .= $location[location].' '; //''
+                }
+            }
+
+			if(get_field('date_from', $post->ID)){
+                    $unixtimestamp = strtotime(get_field('date_from', $post->ID));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date .= $date_from;
+                if(get_field('date_until', $post->ID)){
+                    $unixtimestamp = strtotime(get_field('date_until', $post->ID));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    $date .= " - ". $date_until;
+                }
+            }         
+
+	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
+	    	$output .= "<p>" . $post->post_excerpt . "</p>";
+	    	if(get_field( "alt_image", $post->ID )){
+	    		$thumb = get_field( "alt_image", $post->ID );
+		    	$output .= "<div class='wpb_single_image'><img src='" . $thumb["sizes"]["large"] . "' /></div>";
+	    	}else{
+	    	$output .= "<div class='wpb_single_image'>" . get_the_post_thumbnail( $post->ID, "large" ) . "</div>";
+	    	}
+	    	if($preview) $output .= "<span class='preview_indicator'>This is a preview</span>";
+
+	    // return, don't echo
+		endforeach;
+
+		// $output .= "</ul>";
 	endif;
 
 	return $output;
