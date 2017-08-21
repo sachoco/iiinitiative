@@ -70,11 +70,11 @@
         <?php 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
-                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date_from = date_i18n("d/m/y", $unixtimestamp);
                     echo $date_from;
                 if(get_field('date_until')){
                     $unixtimestamp = strtotime(get_field('date_until'));
-                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    $date_until = date_i18n("d/m/y", $unixtimestamp);
                     echo " - ". $date_until;
                 }
             }
@@ -170,14 +170,33 @@
         <?php 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
-                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date_from = date_i18n("d/m/y", $unixtimestamp);
                     echo $date_from;
                 if(get_field('date_until')){
                     $unixtimestamp = strtotime(get_field('date_until'));
-                    $date_until = date_i18n("d M, Y", $unixtimestamp);
-                    echo " - ". $date_until;
+                    $date_until = date_i18n("d/m/y", $unixtimestamp);
+                    echo "-". $date_until;
                 }
             }
+            // check if the repeater field has rows of data
+            if( have_rows('more_date') ):
+
+                // loop through the rows of data
+                while ( have_rows('more_date') ) : the_row();
+
+                    // display a sub field value
+                    $unixtimestamp = strtotime(get_sub_field('date_from'));
+                    $date_from = date_i18n("d/m/y", $unixtimestamp);
+                    echo ", ".$date_from;
+                    if(get_sub_field('date_until')){
+                        $unixtimestamp = strtotime(get_sub_field('date_until'));
+                        $date_until = date_i18n("d/m/y", $unixtimestamp);
+                        echo "-". $date_until;
+                    }
+                endwhile;
+
+            endif;
+
         ?>
                 <p>
                 <?php
@@ -276,14 +295,33 @@
         <?php 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
-                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    $date_from = date_i18n("d/m/y", $unixtimestamp);
                     echo $date_from;
                 if(get_field('date_until')){
                     $unixtimestamp = strtotime(get_field('date_until'));
-                    $date_until = date_i18n("d M, Y", $unixtimestamp);
-                    echo " - ". $date_until;
+                    $date_until = date_i18n("d/m/y", $unixtimestamp);
+                    echo "-". $date_until;
                 }
             }
+            // check if the repeater field has rows of data
+            if( have_rows('more_date') ):
+
+                // loop through the rows of data
+                while ( have_rows('more_date') ) : the_row();
+
+                    // display a sub field value
+                    $unixtimestamp = strtotime(get_sub_field('date_from'));
+                    $date_from = date_i18n("d/m/y", $unixtimestamp);
+                    echo ", ".$date_from;
+                    if(get_sub_field('date_until')){
+                        $unixtimestamp = strtotime(get_sub_field('date_until'));
+                        $date_until = date_i18n("d/m/y", $unixtimestamp);
+                        echo "-". $date_until;
+                    }
+                endwhile;
+
+            endif;
+
         ?>
                 <p>
                 <?php
