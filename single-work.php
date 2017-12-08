@@ -59,8 +59,8 @@
                         echo $artist."<br />";
                      }  
                  ?>   
-                    
-                
+               </p>     
+                <p>
                 <?php   
                 $date=get_post_meta(get_the_ID(), '_date', TRUE);
                 if( ! empty( $date ) ) {    
