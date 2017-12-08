@@ -49,7 +49,6 @@
                     ?>  
                         
                         
-                </p>
                 
                 
                 
@@ -57,7 +56,7 @@
                     //$args='';
                     $artists = rwmb_meta( 'work_artists');
                     foreach($artists as $artist){
-                        echo "<p>".$artist."</p>";
+                        echo $artist."<br />";
                      }  
                  ?>   
                     
