@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <title><?php wp_title(''); ?></title>
-        
+
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
 
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="<?php echo bloginfo('template_url'); ?>/css/grid.css">
         <link href='https://fonts.googleapis.com/css?family=Nova+Round|Gafata|Karla|Exo+2:400,300,200,100|Ruda|Merriweather+Sans:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
 
@@ -89,7 +89,7 @@
                     'link_after' => '',                             // after each link
                     'depth' => 2,                                   // limit the depth of the nav
                     'fallback_cb' => ''                             // fallback function (if there is one)
-                )); ?>    
+                )); ?>
                 <?php wp_nav_menu(array(
                     'container' => false,                           // remove nav container
                     'container_class' => 'menu cf',                 // class of container (should you choose to use it)
@@ -100,12 +100,8 @@
                     'after' => '',                                  // after the menu
                     'link_before' => '',                            // before each link
                     'link_after' => '',                             // after each link
-                    'depth' => 1,                                   // limit the depth of the nav
+                    'depth' => 2,                                   // limit the depth of the nav
                     'fallback_cb' => ''                             // fallback function (if there is one)
-                )); ?>        
+                )); ?>
             </nav>
         </section>
-
-
-
-        
