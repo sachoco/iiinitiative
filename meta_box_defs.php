@@ -60,7 +60,7 @@ $meta_boxes[] = array(
 			// CLONES: Add to make the field cloneable (i.e. have multiple value)
 			'clone' => true,
 		)
-		
+
 	),
 	'validation' => array(
 		'rules' => array(
@@ -79,7 +79,59 @@ $meta_boxes[] = array(
 	)
 );
 
+//////////////// Commission: non-iii artists meta box /////////////
 
+$meta_boxes[] = array(
+	// Meta box id, UNIQUE per meta box. Optional since 4.1.5
+	'id' => 'commission_artists',
+
+	// Meta box title - Will appear at the drag and drop handle bar. Required.
+	'title' => __( 'Artists (non-iii)', 'rwmb' ),
+
+	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
+	'pages' => array( 'commission' ),
+
+	// Where the meta box appear: normal (default), advanced, side. Optional.
+	'context' => 'side',
+
+	// Order of meta box: high (default), low. Optional.
+	'priority' => 'low',
+
+
+	// List of meta fields
+	'fields' => array(
+		// TEXT
+		array(
+			// Field name - Will be used as label
+			'name'  => __( 'Names', 'rwmb' ),
+			// Field ID, i.e. the meta key
+			'id'    => "commission_artists",
+			// Field description (optional)
+			'desc'  => __( '', 'rwmb' ),
+			'type'  => 'text',
+			// Default value (optional)
+			'std'   => __( '', 'rwmb' ),
+			// CLONES: Add to make the field cloneable (i.e. have multiple value)
+			'clone' => true,
+		)
+
+	),
+	'validation' => array(
+		'rules' => array(
+			"{$prefix}password" => array(
+				'required'  => true,
+				'minlength' => 7,
+			),
+		),
+		// optional override of default jquery.validate messages
+		'messages' => array(
+			"{$prefix}password" => array(
+				'required'  => __( 'Password is required', 'rwmb' ),
+				'minlength' => __( 'Password must be at least 7 characters', 'rwmb' ),
+			),
+		)
+	)
+);
 
 
 

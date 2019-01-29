@@ -4,12 +4,12 @@ include 'meta_box_defs.php';
 // require_once( 'include/Mobile_Detect.php' );
 
 
-update_option('image_default_link_type','none'); 
+update_option('image_default_link_type','none');
 
 
-if ( function_exists( 'add_image_size' ) ) { 
+if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'artist-page-image', 618, 9999, false ); // unlimited height
-	//add_image_size( 'artist-list-thumb', 199, 150, TRUE ); 
+	//add_image_size( 'artist-list-thumb', 199, 150, TRUE );
 	add_image_size( 'artist-thumb', 300, 300, true );
 	add_image_size( 'artist-thumb-crop', 300, 200, true );
 	add_image_size( 'work-thumb', 410, 280, true );
@@ -58,13 +58,13 @@ add_filter('widget_text', 'do_shortcode');
 		// comment reply script for threaded comments
 		if ( is_front_page()) {
 			wp_enqueue_script( 'front-page-script' );
-		}		
+		}
 
 	}
 
 	add_action( 'wp_enqueue_scripts', 'theme_scripts_and_styles', 999 );
 
-function vc_enqueue_main_css_forever() { wp_enqueue_style('js_composer_front'); } 
+function vc_enqueue_main_css_forever() { wp_enqueue_style('js_composer_front'); }
 add_action('wp_enqueue_scripts', 'vc_enqueue_main_css_forever');
 
 /**
@@ -313,7 +313,7 @@ function custom_post_residency() {
 	add_action( 'init', 'custom_post_residency');
 /****************************************************************/
 
-// custom post types : artist, work, news  
+// custom post types : artist, work, news
 
 function create_post_type() {
 	register_post_type( 'artist',
@@ -338,16 +338,28 @@ function create_post_type() {
 		'has_archive' => 'works', /* you can rename the slug here */
 		'register_meta_box_cb' => 'add_work_metaboxes'
 		)
-	);	
+	);
+	register_post_type( 'commission',
+		array(
+			'labels' => array(
+			'name' => __( 'Commissions' ),
+			'singular_name' => __( 'Commission' )
+			),
+		'public' => true,
+		'has_archive' => 'commissions', /* you can rename the slug here */
+		'register_meta_box_cb' => 'add_commission_metaboxes'
+		)
+	);
 }
 add_post_type_support('artist', 'thumbnail');
 add_post_type_support('work', 'thumbnail');
+add_post_type_support('commission', 'thumbnail');
 add_action( 'init', 'create_post_type' );
 
 /****************************************************************/
 
 // Add the Artist Meta Boxes
- 
+
 function add_artist_metaboxes() {
     add_meta_box('artist_url', 'Website (without http://)', 'artist_url', 'artist', 'side', 'default');
     add_meta_box('artist_email', 'Email', 'artist_email', 'artist', 'side', 'default');
@@ -358,14 +370,14 @@ function add_artist_metaboxes() {
 
 function artist_url() {
 	global $post;
-	
+
 	// Noncename needed to verify where the data originated
-	echo '<input type="hidden" name="artistmeta_noncename" id="artistmeta_noncename" value="' . 
+	echo '<input type="hidden" name="artistmeta_noncename" id="artistmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	
+
 	// Get the location data if its already been entered
 	$url = get_post_meta($post->ID, '_url', true);
-	
+
 	// Echo out the field
 	echo '<input type="text" name="_url" value="' . $url  . '" class="widefat" />';
 
@@ -373,14 +385,14 @@ function artist_url() {
 
 function artist_email() {
 	global $post;
-	
+
 	// Noncename needed to verify where the data originated
-	echo '<input type="hidden" name="artistmeta_noncename" id="artistmeta_noncename" value="' . 
+	echo '<input type="hidden" name="artistmeta_noncename" id="artistmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	
+
 	// Get the location data if its already been entered
 	$url = get_post_meta($post->ID, '_email', true);
-	
+
 	// Echo out the field
 	echo '<input type="text" name="_email" value="' . $url  . '" class="widefat" />';
 
@@ -391,7 +403,7 @@ function artist_email() {
 // Save the Metabox Data
 
 function save_artist_meta($post_id, $post) {
-	
+
 	// verify this came from the our screen and with proper authorization,
 	// because save_post can be triggered at other times
 	if ( !wp_verify_nonce( $_POST['artistmeta_noncename'], plugin_basename(__FILE__) )) {
@@ -404,12 +416,12 @@ function save_artist_meta($post_id, $post) {
 
 	// OK, we're authenticated: we need to find and save the data
 	// We'll put it into an array to make it easier to loop though.
-	
+
 	$artist_meta['_url'] = $_POST['_url'];
 	$artist_meta['_email'] = $_POST['_email'];
-	
+
 	// Add values of $artist_meta as custom fields
-	
+
 	foreach ($artist_meta as $key => $value) { // Cycle through the $events_meta array!
 		if( $post->post_type == 'revision' ) return; // Don't store custom data twice
 		$value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
@@ -438,7 +450,7 @@ add_action('save_post', 'save_artist_meta', 1, 2); // save the custom fields
 }
  if (class_exists('MultiPostThumbnails')) {
 		new MultiPostThumbnails(
-			
+
 			array(
 				'label' => 'Homepage image small (190x125)',
 				'id' => 'home-small',
@@ -460,7 +472,7 @@ add_action('save_post', 'save_artist_meta', 1, 2); // save the custom fields
 }
  if (class_exists('MultiPostThumbnails')) {
 		new MultiPostThumbnails(
-			
+
 			array(
 				'label' => 'Homepage image small (190x125)',
 				'id' => 'home-small',
@@ -468,10 +480,10 @@ add_action('save_post', 'save_artist_meta', 1, 2); // save the custom fields
 			)
 		);
 }
-    
+
 /****************************************************************/
-   
-// custom post type : work page 
+
+// custom post type : work page
 /*
 function create_post_type() {
 	register_post_type( 'work',
@@ -487,11 +499,11 @@ function create_post_type() {
 	);
 }
 add_post_type_support('work', 'thumbnail');
-add_action( 'init', 'create_post_type' );    
+add_action( 'init', 'create_post_type' );
 */
 
 // Add the Work Meta Boxes
- 
+
 function add_work_metaboxes() {
 	if (is_admin()) { }
     add_meta_box('work_date', 'Year', 'work_date', 'work', 'side', 'default');
@@ -502,14 +514,14 @@ function add_work_metaboxes() {
 
 function work_date() {
 	global $post;
-	
+
 	// Noncename needed to verify where the data originated
-	echo '<input type="hidden" name="workmeta_noncename" id="workmeta_noncename" value="' . 
+	echo '<input type="hidden" name="workmeta_noncename" id="workmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	
+
 	// Get the location data if its already been entered
 	$date = get_post_meta($post->ID, '_date', true);
-	
+
 	// Echo out the field
 	echo '<input type="text" name="_date" value="' . $date  . '" class="widefat" />';
 
@@ -518,7 +530,7 @@ function work_date() {
 // Save the Metabox Data
 
 function save_work_meta($post_id, $post) {
-	
+
 	// verify this came from the our screen and with proper authorization,
 	// because save_post can be triggered at other times
 	if ( !wp_verify_nonce( $_POST['workmeta_noncename'], plugin_basename(__FILE__) )) {
@@ -531,12 +543,12 @@ function save_work_meta($post_id, $post) {
 
 	// OK, we're authenticated: we need to find and save the data
 	// We'll put it into an array to make it easier to loop though.
-	
+
 	$work_meta['_date'] = $_POST['_date'];
 //	$artist_meta['_email'] = $_POST['_email'];
-	
+
 	// Add values of $artist_meta as custom fields
-	
+
 	foreach ($work_meta as $key => $value) { // Cycle through the $events_meta array!
 		if( $post->post_type == 'revision' ) return; // Don't store custom data twice
 		$value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
@@ -550,6 +562,68 @@ function save_work_meta($post_id, $post) {
 
 }
 add_action('save_post', 'save_work_meta', 1, 2); // save the custom fields
+
+
+// Add the Commission Meta Boxes
+
+function add_commission_metaboxes() {
+	if (is_admin()) { }
+    add_meta_box('commission_date', 'Year', 'commission_date', 'commission', 'side', 'default');
+    //add_meta_box('artist_email', 'Email', 'artist_email', 'artist', 'side', 'default');
+}
+
+// The Commission Metaboxes
+
+function commission_date() {
+	global $post;
+
+	// Noncename needed to verify where the data originated
+	echo '<input type="hidden" name="commissionmeta_noncename" id="commissionmeta_noncename" value="' .
+	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
+
+	// Get the location data if its already been entered
+	$date = get_post_meta($post->ID, '_date', true);
+
+	// Echo out the field
+	echo '<input type="text" name="_date" value="' . $date  . '" class="widefat" />';
+
+}
+
+// Save the Metabox Data
+
+function save_commission_meta($post_id, $post) {
+
+	// verify this came from the our screen and with proper authorization,
+	// because save_post can be triggered at other times
+	if ( !wp_verify_nonce( $_POST['commissionmeta_noncename'], plugin_basename(__FILE__) )) {
+	return $post->ID;
+	}
+
+	// Is the user allowed to edit the post or page?
+	if ( !current_user_can( 'edit_post', $post->ID ))
+		return $post->ID;
+
+	// OK, we're authenticated: we need to find and save the data
+	// We'll put it into an array to make it easier to loop though.
+
+	$commission_meta['_date'] = $_POST['_date'];
+//	$artist_meta['_email'] = $_POST['_email'];
+
+	// Add values of $artist_meta as custom fields
+
+	foreach ($commission_meta as $key => $value) { // Cycle through the $events_meta array!
+		if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+		$value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+		if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+			update_post_meta($post->ID, $key, $value);
+		} else { // If the custom field doesn't have a value
+			add_post_meta($post->ID, $key, $value);
+		}
+		if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+	}
+
+}
+add_action('save_post', 'save_commission_meta', 1, 2); // save the custom fields
 
 
 
@@ -576,17 +650,17 @@ function show_upcoming_events( $atts ) {
 	            'type' => 'NUMERIC',
 	            'compare' => '>='
 	        )
-		)		
+		)
 	);
 
 	$posts = get_posts( $args );
 	$output;
 
-	if( $posts ): 
+	if( $posts ):
 
 		$output = "<ul>";
 
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 
 	    	$output .= "<li><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a>";
 
@@ -602,9 +676,9 @@ function show_upcoming_events( $atts ) {
                 }
             }
             if(get_field('location', $post->ID)){
-                   
+
             }
-			
+
             $location = "";
 			// check if the repeater field has rows of data
 
@@ -655,11 +729,11 @@ function show_press( $atts ) {
 	$posts = get_posts( $args );
 	$output;
 
-	if( $posts ): 
+	if( $posts ):
 
 		$output = "<ul>";
 
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 
 	    	$output .= "<li><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . " - " . $post->post_date . "</a></li>";
 
@@ -692,8 +766,8 @@ if(is_user_logged_in()):
                 'key' => 'enable_preview',
                 'value' => true,
                 'compare' => 'LIKE'
-            )	        
-		)		
+            )
+		)
 	);
 
 	if(!get_posts( $args )){
@@ -724,8 +798,8 @@ if(is_user_logged_in()):
 	                'key' => 'featured_on_homepage',
 	                'value' => true,
 	                'compare' => 'LIKE'
-	            )      
-			)		
+	            )
+			)
 		);
 	}else{
 		$preview = true;
@@ -760,8 +834,8 @@ else:
                 'key' => 'featured_on_homepage',
                 'value' => true,
                 'compare' => 'LIKE'
-            )	  
-		)		
+            )
+		)
 	);
 
 endif;
@@ -769,11 +843,11 @@ endif;
 
 	$output;
 
-	if( $posts ): 
+	if( $posts ):
 
 		// $output = "<ul>";
 
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 
 
 	    	if(get_field( "alt_title", $post->ID )){
@@ -782,7 +856,7 @@ endif;
 	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
 	    	}
 
-            $locations = get_field('location', $post->ID);                      
+            $locations = get_field('location', $post->ID);
             if($locations) {
                 foreach($locations as $location){
                     $loc .= $location[location].' '; //''
@@ -798,7 +872,7 @@ endif;
                     $date_until = date_i18n("d M, Y", $unixtimestamp);
                     $date .= " - ". $date_until;
                 }
-            }         
+            }
 
 	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
 	    	$output .= "<p>" . $post->post_excerpt . "</p>";
@@ -826,14 +900,14 @@ endif;
 	                'key' => 'featured_on_homepage',
 	                'value' => true,
 	                'compare' => 'LIKE'
-			)		
+			)
 		);
 
 		$posts = get_posts( $args );
 
 		$output;
 
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 
 
 	    	if(get_field( "alt_title", $post->ID )){
@@ -842,7 +916,7 @@ endif;
 	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
 	    	}
 
-            $locations = get_field('location', $post->ID);                      
+            $locations = get_field('location', $post->ID);
             if($locations) {
                 foreach($locations as $location){
                     $loc .= $location[location].' '; //''
@@ -858,7 +932,7 @@ endif;
                     $date_until = date_i18n("d M, Y", $unixtimestamp);
                     $date .= " - ". $date_until;
                 }
-            }         
+            }
 
 	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
 	    	$output .= "<p>" . $post->post_excerpt . "</p>";
@@ -912,18 +986,18 @@ function show_upcoming_host( $atts ) {
                 'key' => 'host_|_circulation',
                 'value' => 'host',
                 'compare' => 'LIKE'
-            )	        
-		)		
+            )
+		)
 	);
 
 	$posts = get_posts( $args );
 	$output;
 
-	if( $posts ): 
+	if( $posts ):
 
 		// $output = "<ul>";
 
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 
 
 	    	if(get_field( "alt_title", $post->ID )){
@@ -932,7 +1006,7 @@ function show_upcoming_host( $atts ) {
 	    		$output .= "<h2 class='vc_custom_heading'><a href='". esc_url( get_permalink( $post->ID ) ) . "'>" . $post->post_title . "</a></h2>";
 	    	}
 
-            $locations = get_field('location', $post->ID);                      
+            $locations = get_field('location', $post->ID);
             if($locations) {
                 foreach($locations as $location){
                     $loc .= $location[location].' '; //''
@@ -948,7 +1022,7 @@ function show_upcoming_host( $atts ) {
                     $date_until = date_i18n("d M, Y", $unixtimestamp);
                     $date .= " - ". $date_until;
                 }
-            }         
+            }
 
 	    	$output .= "<h3>" . $date . " at " . $loc . "</h3>";
 	    	$output .= "<p>" . $post->post_excerpt . "</p>";
@@ -1007,7 +1081,7 @@ function show_upcoming_residency( $atts ) {
                     )
                 )
             );
-            
+
 
 	$posts = get_posts( $args );
 	// var_dump($posts);
@@ -1039,20 +1113,20 @@ function show_upcoming_residency( $atts ) {
                     'compare' => '<'
                 )
             )
-		);	
+		);
 		$posts2 = get_posts( $args );
 		$posts = array_merge($posts, $posts2);
 
 	}
 	$output;
-	if( $posts ): 
+	if( $posts ):
 
 
 
 		$output = "<h2 class='vc_custom_heading'><a href='/residencies/''>Residency Program</a></h2>";
 		$i = 0;
 		$output .= '<div class="vc_row wpb_row vc_inner vc_row-fluid">';
-		foreach( $posts as $post ): 	
+		foreach( $posts as $post ):
 			if($i!=0&&$i%2==0){
 				$output .= '</div><div class="vc_row wpb_row vc_inner vc_row-fluid">';
 			}
