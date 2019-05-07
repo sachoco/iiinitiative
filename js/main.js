@@ -16,11 +16,13 @@
         }
       });
     });
-    $(".button").on("click", function() {
-      var sort;
-      sort = $(this).data("sort-by");
+    $(".sort .button").on("click", function() {
+      var filterItem;
+      filterItem = $(this).data("filter");
+      $(".sort .button").removeClass("active");
+      $(this).addClass("active");
       return $(".isotope").isotope({
-        sortBy: sort
+        filter: "." + filterItem
       });
     });
     $(".mobile-menu").on("click", function() {

@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
 <!-- <section class="background">
     <ul class="rslides">
-<?php 
+<?php
     $slides = get_field("slideshow", 65);
     if($slides){
         foreach($slides as $slide){
@@ -19,15 +19,24 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
-<!--         <div class="sort">
+        <div class="sort">
             <p>
-                Order: 
-               <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
+              Filter:
+              <?php
+                $field = get_field_object('work_category');
+                $choices = $field['choices'];
+                $i=0;
+                foreach( $choices as $choice => $name ){
+                  if($i>0) echo "|";
+                  $i++;
+                  echo "<button class='button' data-filter='". $choice ."'>". $name ."</button>";
+                }
+              ?>
             </p>
-        </div> -->
+        </div>
         <ul class="view--grid isotope works">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3">
+        <li class="grid-4 grid-mobile-12 grid-sm-6 grid-md-4 grid-xl-3 <?php echo implode(' ', get_field("work_category")); ?>">
         <?php if (has_post_thumbnail()): ?>
             <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("work-thumb"); ?>
 
@@ -49,12 +58,12 @@
                        //echo print_r($related_artist_pages).' ';
                        foreach ( $related_artist_pages as $artist_post ) {
                            echo get_the_title($artist_post).'<br />';
-                       } 
+                       }
                     //unset($related_artist_pages_ids);
                     //$related_artist_pages_ids = array();
                     //echo count($related_artist_pages_ids);
                     // wp_reset_query();
-                    }       
+                    }
                 ?>
                 <?php // other artists
 
@@ -62,17 +71,17 @@
                     //if(count($artists)>0) echo 'artists found' else echo 'no artists found';
                     foreach($artists as $artist){
                         echo $artist."<br />";
-                     }                           
+                     }
 
-                ?> 
+                ?>
                 <p class="teaser__year">
-                    <?php 
+                    <?php
                         $date=get_post_meta(get_the_ID(), '_date', TRUE);
                         if( ! empty( $date ) ) {
-                        //if( false ) { 
+                        //if( false ) {
                             echo '<span class="date">'.$date.'</span><br />';
                         }
-                
+
                     ?>
                 </p>
             </div></div>
@@ -104,12 +113,12 @@
 
 
     </div>
-    
+
 <!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">
-        <?php //the_content(); ?>        
+        <?php //the_content(); ?>
     </div>
 </section> -->
 

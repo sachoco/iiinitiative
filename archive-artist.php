@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
 <!-- <section class="background">
     <ul class="rslides">
-<?php 
+<?php
     $slides = get_field("slideshow", 65);
     if($slides){
         foreach($slides as $slide){
@@ -18,9 +18,24 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
+          <!-- <div class="sort">
+              <p>
+                Filter:
+                <?php
+                  $field = get_field_object('members_guests');
+                  $choices = $field['choices'];
+                  $i=0;
+                  foreach( $choices as $choice => $name ){
+                    if($i>0) echo "|";
+                    $i++;
+                    echo "<button class='button' data-filter='". $choice ."'>". $name ."</button>";
+                  }
+                ?>
+              </p>
+          </div> -->
         <ul class="view--grid isotope">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <li class="grid-3 grid-mobile-12 grid-sm-6 grid-md-4 grid-lg-3 grid-xl-2">
+        <li class="grid-3 grid-mobile-12 grid-sm-6 grid-md-4 grid-lg-3 grid-xl-2 <?php echo implode(' ', get_field("members_guests")); ?>">
         <?php if (has_post_thumbnail()): ?>
             <a class="thumbnail" href="<?php the_permalink(); ?>"><?php the_post_thumbnail("artist-thumb"); ?></a>
         <?php endif; ?>
@@ -46,12 +61,12 @@
 
 
     </div>
-    
+
 <!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">
-        <?php //the_content(); ?>        
+        <?php //the_content(); ?>
     </div>
 </section> -->
 

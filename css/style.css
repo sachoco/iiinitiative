@@ -379,6 +379,13 @@ ul.view--list li h2 {
   border: none;
   cursor: pointer;
   font-size: 16px;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+.sort button.active {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  text-decoration: underline;
 }
 
 .worksby {
