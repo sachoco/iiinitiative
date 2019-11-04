@@ -114,7 +114,7 @@
  */
 /**
  * Get states count
- * 
+ *
  * @return 	int 	The number of states defined
  */
 /**
@@ -134,7 +134,7 @@
  */
 /**
  * Set the debug device (not used for now)
- * 
+ *
  * @param 	String 		$state 		The state to update
  * @para m 	String 		$device 	The device to use (iphone, etc...)
  */
@@ -944,25 +944,6 @@
   display: inline-block;
   float: none !important;
   vertical-align: middle;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
   font-size: 1rem;
 }
 
@@ -974,25 +955,6 @@
   display: inline-block;
   float: none !important;
   vertical-align: top;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
   font-size: 1rem;
 }
 
@@ -1004,25 +966,6 @@
   display: inline-block;
   float: none !important;
   vertical-align: bottom;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
-  font-size: 16px;
   font-size: 1rem;
 }
 

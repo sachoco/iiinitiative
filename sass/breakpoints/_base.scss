@@ -246,6 +246,29 @@ ul.view {
 		}
 	}
 }
+.related_works {
+	max-width: 1300px;
+	margin: auto;
+	h2 {
+		text-align: center;
+	}
+	ul {
+		&.view--grid {
+			text-align: center;
+			li {
+				// width: 49% !important;
+				float: none !important;
+			}
+		}
+	}
+}
+.related_events {
+	text-align: center;
+	margin-bottom: 2em;
+	.event-list {
+		width: 100%;
+	}
+}
 section.header {
 	position: absolute;
 	background-color: white;

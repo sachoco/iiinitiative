@@ -403,6 +403,28 @@ ul.view--list li h2 {
   float: none !important;
 }
 
+.related_works {
+  max-width: 1300px;
+  margin: auto;
+}
+.related_works h2 {
+  text-align: center;
+}
+.related_works ul.view--grid {
+  text-align: center;
+}
+.related_works ul.view--grid li {
+  float: none !important;
+}
+
+.related_events {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.related_events .event-list {
+  width: 100%;
+}
+
 section.header {
   position: absolute;
   background-color: white;
