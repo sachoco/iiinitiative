@@ -79,11 +79,11 @@
 							$id=get_the_ID();
 						 unset($related_event_ids);
 						 $related_event_ids = rpt_get_object_relation($id, 'event');
-						 if ( count($related_event_ids) >= 1 ):
+						 if ( $related_event_ids ):
 						?>
 						<div class="grid-12 related_events">
 						<div class="event-list ">
-		            <h3 class="">Related events</h3>
+		            <h3 class="">Events</h3>
 		             <?php
 		                $args = array(
 		                    'post_type' => 'event',

@@ -561,7 +561,7 @@
 		$id=get_the_ID();
 		unset($related_works_ids);
 		$related_works_ids = rpt_get_object_relation($id, 'work');
-		if ( count($related_works_ids)>0 ) :
+		if ( $related_works_ids ) :
 				$related_works = get_posts( array(
 						'post_type' => 'work',
 						'post_status' => 'publish',
@@ -609,7 +609,7 @@
 												$related_artist_pages_ids = rpt_get_object_relation($post->ID, 'artist');
 												//echo print_r($related_artist_pages_ids).' ';
 												//echo count($related_artist_pages_ids).' ';
-												if ( count($related_artist_pages_ids) >= 1 ) {
+												if ( $related_artist_pages_ids ) {
 														$related_artist_pages = get_posts( array(
 																'post_type' => 'artist',
 																'post_status' => 'publish',
