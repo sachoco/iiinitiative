@@ -344,6 +344,10 @@ ul.view--grid li .info--overlay {
   background-color: rgba(0, 0, 0, 0.8);
   transition: opacity 0.5s;
 }
+ul.view--grid li .info--overlay > div {
+  margin: auto;
+  width: 80%;
+}
 ul.view--grid li .info--overlay div {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
