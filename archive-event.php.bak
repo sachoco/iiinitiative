@@ -1,11 +1,10 @@
 <?php include('header.php') ?>
 
-<div class="viewport">
 
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Agenda</h2></section>
         <section class="page__body container">
-        <div class="event-list">
+        <div class="event-list ">
             <h3 class="">Hosting</h3>
 <?php $display_item; ?>
 
@@ -20,18 +19,35 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'AND',
+                            'relation' => 'OR',
                             array(
-                                'key' => 'date_from',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '<='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '>='
+                                )
                             ),
                             array(
-                                'key' => 'date_until',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '>='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value'   => false,
+                                    'type' => 'BOOLEAN'
+                                )
                             )
                         ),
                         array(
@@ -49,7 +65,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
             $locations = get_field('location');                      
             if($locations) {
@@ -83,10 +99,10 @@
                     echo ' - '.$event_end_date;
                 }            
             }
-
+            
             echo '</time>';
     ?>
-                </a>
+                
             </li>
     <?php endwhile; ?>
             </ul>
@@ -132,7 +148,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -169,7 +185,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -213,10 +228,10 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -230,6 +245,8 @@
                     echo $location.'</br>'; //''
                 }
             }
+
+
 
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
@@ -253,7 +270,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -275,18 +291,35 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'AND',
+                            'relation' => 'OR',
                             array(
-                                'key' => 'date_from',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '<='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '>='
+                                )
                             ),
                             array(
-                                'key' => 'date_until',
-                                'value' => date("Ymd", strtotime("now")),
-                                'type' => 'NUMERIC',
-                                'compare' => '>='
+                                'relation' => 'AND',
+                                array(
+                                    'key' => 'date_from',
+                                    'value' => date("Ymd", strtotime("now")),
+                                    'type' => 'NUMERIC',
+                                    'compare' => '='
+                                ),
+                                array(
+                                    'key' => 'date_until',
+                                    'value'   => false,
+                                    'type' => 'BOOLEAN'
+                                )
                             )
                         ),
                         array(
@@ -304,7 +337,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -341,7 +374,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -353,7 +385,7 @@
                     'post_state' => 'publish',
                     'meta_key' => 'date_from',
                     'orderby' => 'meta_value_num',
-                    'order' => 'DESC',
+                    'order' => 'ASC',
                     'posts_per_page' => -1,
                     'meta_query' => array(
                         'relation' => 'AND',
@@ -387,7 +419,7 @@
             <ul class="">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -424,7 +456,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -468,10 +499,10 @@
             ?>
     <?php if ($the_query->have_posts()) : ?>
             <h4 class="">Past</h4>
-            <ul class="">
+            <ul class="iii-readmore">
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
                                     
             $locations = get_field('location');                      
@@ -508,7 +539,6 @@
 
             echo '</time>';
     ?>
-                </a>
             </li>
     <?php endwhile; ?>
             </ul>
@@ -517,7 +547,7 @@
 
 
 
-        <section class="event-content">
+        <section class="event-content hide-on-mobile">
 <?php
   if(!$display_item):
     $args = array(
@@ -576,7 +606,6 @@
 
 	</div>
 	
-</div>
 
 <!-- <section class="main">
     <div class="wrap">

@@ -8,7 +8,37 @@
         <div class="event-list hide-on-mobile">
             <h3 class="">Hosting</h3>
 <?php $display_item; ?>
+             <?php
+                $args = array(
+                    'post_type' => 'event',
+                    'post_state' => 'publish',
+                    'meta_key' => 'date_from',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'DESC',
+                    'posts_per_page' => -1,
+                    'meta_query' => array(
+                        'relation' => 'AND',                            
+                        array(
+                            'key' => 'date_from',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '='
+                        ),
+                        array(
+                            'key' => 'date_until',
+                            'value'   => false,
+                            'type' => 'BOOLEAN'
+                        ),
+                        array(
+                            'key' => 'host_|_circulation',
+                            'value' => 'host',
+                            'compare' => 'LIKE'
+                        )
+                    )
+                );
 
+                $the_query1 = new WP_Query( $args );
+            ?>
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -20,36 +50,16 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'OR',
-                            array(
-                                'relation' => 'AND',
-                                array(
-                                    'key' => 'date_from',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '<='
-                                ),
-                                array(
-                                    'key' => 'date_until',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '>='
-                                )
-                            ),
-                            array(
-                                'relation' => 'AND',
-                                array(
-                                    'key' => 'date_from',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '='
-                                ),
-                                array(
-                                    'key' => 'date_until',
-                                    'value'   => false,
-                                    'type' => 'BOOLEAN'
-                                )
-                            )
+                            'key' => 'date_from',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '<='
+                        ),
+                        array(
+                            'key' => 'date_until',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '>='
                         ),
                         array(
                             'key' => 'host_|_circulation',
@@ -59,16 +69,18 @@
                     )
                 );
 
-                $the_query = new WP_Query( $args );
+                $the_query2 = new WP_Query( $args );
+                
             ?>
-    <?php if ($the_query->have_posts()) :  ?>
+
+    <?php if ($the_query1->have_posts()||$the_query2->have_posts()) : ?>
             <h4 class="">Current</h4>
             <ul class="">
-    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
+    <?php while ($the_query1->have_posts()) : $the_query1->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-            $locations = get_field('location');
+            $locations = get_field('location');                      
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -94,21 +106,63 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //}
+                //} 
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
+                }            
+            }
+            
+            echo '</time>';
+    ?>
+                
+            </li>
+    <?php endwhile; ?>
+    <?php while ($the_query2->have_posts()) : $the_query2->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
+            <li>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+    <?php echo '<time>';
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
                 }
             }
 
+
+            if(get_field('date_from')){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
+            }else{
+                //$event_start_date = rwmb_meta( 'event_start_date');
+                //if('' != $event_start_date){
+                    the_date();
+                //} 
+                $event_end_date = rwmb_meta( 'event_end_date');
+                if('' != $event_end_date){
+                    echo ' - '.$event_end_date;
+                }            
+            }
+            
             echo '</time>';
     ?>
-                </a>
+                
             </li>
     <?php endwhile; ?>
             </ul>
     <?php endif; ?>
-
+    
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -280,7 +334,37 @@
         <div class="event-list right hide-on-mobile">
             <h3 class="">Circulation</h3>
 
+             <?php
+                $args = array(
+                    'post_type' => 'event',
+                    'post_state' => 'publish',
+                    'meta_key' => 'date_from',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'DESC',
+                    'posts_per_page' => -1,
+                    'meta_query' => array(
+                        'relation' => 'AND',                            
+                        array(
+                            'key' => 'date_from',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '='
+                        ),
+                        array(
+                            'key' => 'date_until',
+                            'value'   => false,
+                            'type' => 'BOOLEAN'
+                        ),
+                        array(
+                            'key' => 'host_|_circulation',
+                            'value' => 'circulation',
+                            'compare' => 'LIKE'
+                        )
+                    )
+                );
 
+                $the_query1 = new WP_Query( $args );
+            ?>
              <?php
                 $args = array(
                     'post_type' => 'event',
@@ -292,36 +376,16 @@
                     'meta_query' => array(
                         'relation' => 'AND',
                         array(
-                            'relation' => 'OR',
-                            array(
-                                'relation' => 'AND',
-                                array(
-                                    'key' => 'date_from',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '<='
-                                ),
-                                array(
-                                    'key' => 'date_until',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '>='
-                                )
-                            ),
-                            array(
-                                'relation' => 'AND',
-                                array(
-                                    'key' => 'date_from',
-                                    'value' => date("Ymd", strtotime("now")),
-                                    'type' => 'NUMERIC',
-                                    'compare' => '='
-                                ),
-                                array(
-                                    'key' => 'date_until',
-                                    'value'   => false,
-                                    'type' => 'BOOLEAN'
-                                )
-                            )
+                            'key' => 'date_from',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '<='
+                        ),
+                        array(
+                            'key' => 'date_until',
+                            'value' => date("Ymd", strtotime("now")),
+                            'type' => 'NUMERIC',
+                            'compare' => '>='
                         ),
                         array(
                             'key' => 'host_|_circulation',
@@ -331,17 +395,19 @@
                     )
                 );
 
-                $the_query = new WP_Query( $args );
+                $the_query2 = new WP_Query( $args );
+                
             ?>
-    <?php if ($the_query->have_posts()) : ?>
+
+    <?php if ($the_query1->have_posts()||$the_query2->have_posts()) : ?>
             <h4 class="">Current</h4>
             <ul class="">
-    <?php while ($the_query->have_posts()) : $the_query->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
+    <?php while ($the_query1->have_posts()) : $the_query1->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-
-            $locations = get_field('location');
+                                    
+            $locations = get_field('location');                      
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -366,16 +432,56 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //}
+                //} 
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }
+                }            
             }
 
             echo '</time>';
     ?>
-                </a>
+            </li>
+    <?php endwhile; ?>
+    <?php while ($the_query2->have_posts()) : $the_query2->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
+            <li>
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+    <?php echo '<time>';
+                                    
+            $locations = get_field('location');                      
+            if($locations) {
+                foreach($locations as $location){
+                    echo $location[location].'</br>'; //''
+                }
+            }else{
+                $locations = rwmb_meta( 'event_location');
+                foreach($locations as $location){
+                    echo $location.'</br>'; //''
+                }
+            }
+
+            if(get_field('date_from')){
+                    $unixtimestamp = strtotime(get_field('date_from'));
+                    $date_from = date_i18n("d M, Y", $unixtimestamp);
+                    echo $date_from;
+                if(get_field('date_until')){
+                    $unixtimestamp = strtotime(get_field('date_until'));
+                    $date_until = date_i18n("d M, Y", $unixtimestamp);
+                    echo " - ". $date_until;
+                }
+            }else{
+                //$event_start_date = rwmb_meta( 'event_start_date');
+                //if('' != $event_start_date){
+                    the_date();
+                //} 
+                $event_end_date = rwmb_meta( 'event_end_date');
+                if('' != $event_end_date){
+                    echo ' - '.$event_end_date;
+                }            
+            }
+
+            echo '</time>';
+    ?>
             </li>
     <?php endwhile; ?>
             </ul>
