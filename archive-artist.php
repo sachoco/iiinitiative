@@ -28,7 +28,7 @@
                   foreach( $choices as $choice => $name ){
                     if($i>0) echo "|";
                     $i++;
-                    echo "<button class='button' data-filter='". $choice ."'>". $name ."</button>";
+                    echo "<a class='button' href='#filter=.". $choice ."' data-filter='". $choice ."'>". $name ."</a>";
                   }
                 ?>
               </p>

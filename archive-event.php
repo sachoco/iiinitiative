@@ -4,6 +4,18 @@
 	<section class="page--single">
         <section class="page__header"><h2 class="title">Agenda</h2></section>
         <section class="page__body container">
+					<?php
+					$args = array(
+					'name'        => 'agenda-description',
+					'post_type'   => 'page',
+					'post_status' => 'publish',
+					'numberposts' => 1
+					);
+					$description = get_posts($args);
+					if( $description ) :
+					// echo $description[0]->post_content;
+					endif;
+					 ?>
         <div class="event-list ">
             <h3 class="">Hosting</h3>
 <?php $display_item; ?>
@@ -17,7 +29,7 @@
                     'order' => 'DESC',
                     'posts_per_page' => -1,
                     'meta_query' => array(
-                        'relation' => 'AND',                            
+                        'relation' => 'AND',
                         array(
                             'key' => 'date_from',
                             'value' => date("Ymd", strtotime("now")),
@@ -70,7 +82,7 @@
                 );
 
                 $the_query2 = new WP_Query( $args );
-                
+
             ?>
 
     <?php if ($the_query1->have_posts()||$the_query2->have_posts()) : ?>
@@ -80,7 +92,7 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-            $locations = get_field('location');                      
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -106,23 +118,23 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
-            
+
             echo '</time>';
     ?>
-                
+
             </li>
     <?php endwhile; ?>
     <?php while ($the_query2->have_posts()) : $the_query2->the_post(); if(!$display_item) $display_item = get_the_ID(); ?>
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-            $locations = get_field('location');                      
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -148,16 +160,16 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
-            
+
             echo '</time>';
     ?>
-                
+
             </li>
     <?php endwhile; ?>
             </ul>
@@ -205,8 +217,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -231,11 +243,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -288,8 +300,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -316,11 +328,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -343,7 +355,7 @@
                     'order' => 'DESC',
                     'posts_per_page' => -1,
                     'meta_query' => array(
-                        'relation' => 'AND',                            
+                        'relation' => 'AND',
                         array(
                             'key' => 'date_from',
                             'value' => date("Ymd", strtotime("now")),
@@ -396,7 +408,7 @@
                 );
 
                 $the_query2 = new WP_Query( $args );
-                
+
             ?>
 
     <?php if ($the_query1->have_posts()||$the_query2->have_posts()) : ?>
@@ -406,8 +418,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -432,11 +444,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -447,8 +459,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -473,11 +485,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -529,8 +541,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -555,11 +567,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -612,8 +624,8 @@
             <li>
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     <?php echo '<time>';
-                                    
-            $locations = get_field('location');                      
+
+            $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
                     echo $location[location].'</br>'; //''
@@ -638,11 +650,11 @@
                 //$event_start_date = rwmb_meta( 'event_start_date');
                 //if('' != $event_start_date){
                     the_date();
-                //} 
+                //}
                 $event_end_date = rwmb_meta( 'event_end_date');
                 if('' != $event_end_date){
                     echo ' - '.$event_end_date;
-                }            
+                }
             }
 
             echo '</time>';
@@ -681,8 +693,8 @@
 <?php the_content(); ?>
 
 <?php endwhile; ?>
-<?php endif; ?>      
-<?php else: ?>      
+<?php endif; ?>
+<?php else: ?>
 
 <?php
     $post = get_post($display_item);
@@ -690,7 +702,7 @@
     echo apply_filters('the_content', $post->post_content);;
 ?>
 
-<?php endif; ?>      
+<?php endif; ?>
 
         </section>
 
@@ -713,11 +725,11 @@
 
 
 	</div>
-	
+
 
 <!-- <section class="main">
     <div class="wrap">
-        <?php //the_content(); ?>        
+        <?php //the_content(); ?>
     </div>
 </section> -->
 

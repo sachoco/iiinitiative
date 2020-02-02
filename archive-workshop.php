@@ -19,6 +19,18 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
+          <?php
+          $args = array(
+          'name'        => 'workshop-description',
+          'post_type'   => 'page',
+          'post_status' => 'publish',
+          'numberposts' => 1
+          );
+          $description = get_posts($args);
+          if( $description ) :
+          // echo $description[0]->post_content;
+          endif;
+           ?>
         <!-- <div class="sort">
             <p>
               Filter:

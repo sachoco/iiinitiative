@@ -1,30 +1,61 @@
 (function() {
   jQuery(function($) {
-    var $grid;
+    var $container, $grid, defaultOptions, hashChanged, isOptionLinkClicked, isotopeOptions;
     $(".rslides").responsiveSlides({
       speed: 2000,
       random: true,
       timeout: 20000
     });
+    $container = $('.isotope');
+    isotopeOptions = {};
+    defaultOptions = {
+      itemSelector: "li",
+      layoutMode: "fitRows",
+      getSortData: {
+        name: '.name',
+        date: '.date'
+      }
+    };
     $grid = $('.isotope').imagesLoaded(function() {
-      return $grid.isotope({
-        itemSelector: "li",
-        layoutMode: "fitRows",
-        getSortData: {
-          name: '.name',
-          date: '.date'
-        }
-      });
+      return $grid.isotope(defaultOptions);
     });
-    $(".sort .button").on("click", function() {
-      var filterItem;
+    isOptionLinkClicked = false;
+    $('.sort .button').on("click", function() {
+      var $this, filterItem, href, option;
+      $this = $(this);
+      if ($this.hasClass('active')) {
+        return;
+      }
       filterItem = $(this).data("filter");
       $(".sort .button").removeClass("active");
       $(this).addClass("active");
-      return $(".isotope").isotope({
-        filter: "." + filterItem
-      });
+      href = $this.attr('href').replace(/^#/, '');
+      option = $.deparam(href, true);
+      $.extend(isotopeOptions, option);
+      $.bbq.pushState(isotopeOptions);
+      return isOptionLinkClicked = true;
     });
+    hashChanged = false;
+    $(window).bind("hashchange", function(event) {
+      var aniEngine, hashOptions, hrefObj, key, options;
+      hashOptions = window.location.hash ? $.deparam.fragment(window.location.hash, true) : {};
+      aniEngine = hashChanged ? 'best-available' : 'none';
+      options = $.extend({}, defaultOptions, hashOptions, {
+        animationEngine: aniEngine
+      });
+      $container.isotope(options);
+      isotopeOptions = hashOptions;
+      if (!isOptionLinkClicked) {
+        hrefObj = [];
+        for (key in hashOptions) {
+          hrefObj[key] = hashOptions[key];
+          $(".sort .button").removeClass("active");
+          $('.sort a[href="#filter=' + hrefObj["filter"] + '"]').addClass("active");
+        }
+      }
+      isOptionLinkClicked = false;
+      return hashChanged = true;
+    }).trigger('hashchange');
     $(".mobile-menu").on("click", function() {
       $(".mobile-nav").slideToggle();
       $("section.background").toggleClass("blur");

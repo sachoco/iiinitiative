@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
 <!-- <section class="background">
     <ul class="rslides">
-<?php 
+<?php
     $slides = get_field("slideshow", 65);
     if($slides){
         foreach($slides as $slide){
@@ -17,9 +17,21 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title">Residencies<?php //post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
+          <?php
+          $args = array(
+          'name'        => 'resicencies-description',
+          'post_type'   => 'page',
+          'post_status' => 'publish',
+          'numberposts' => 1
+          );
+          $description = get_posts($args);
+          if( $description ) :
+          // echo $description[0]->post_content;
+          endif;
+           ?>
 <!--         <div class="sort">
             <p>
-                Order: 
+                Order:
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
@@ -67,7 +79,7 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-        <?php 
+        <?php
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
                     $date_from = date_i18n("d/m/y", $unixtimestamp);
@@ -100,9 +112,9 @@
         ?>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -136,7 +148,7 @@
                     //      if(!empty($cats)) $cats = implode(" ", $cats);
 
 
-                ?>  
+                ?>
         <?php
                 endwhile;
         ?>
@@ -186,7 +198,7 @@
             </div>
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
-        <?php 
+        <?php
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
                     $date_from = date_i18n("d/m/y", $unixtimestamp);
@@ -219,9 +231,9 @@
         ?>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -255,7 +267,7 @@
                     //      if(!empty($cats)) $cats = implode(" ", $cats);
 
 
-                ?>  
+                ?>
         <?php
                 endwhile;
         ?>
@@ -311,7 +323,7 @@
             <div class="grid-7 align-left">
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
 
-        <?php 
+        <?php
             if(get_field('date_from')){
                     $unixtimestamp = strtotime(get_field('date_from'));
                     $date_from = date_i18n("d/m/y", $unixtimestamp);
@@ -344,9 +356,9 @@
         ?>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -380,7 +392,7 @@
                     //      if(!empty($cats)) $cats = implode(" ", $cats);
 
 
-                ?>  
+                ?>
         <?php
                 endwhile;
         ?>
@@ -407,12 +419,12 @@
 
 
     </div>
-    
+
 <!-- </div> -->
 
 <!-- <section class="main">
     <div class="wrap">
-        <?php //the_content(); ?>        
+        <?php //the_content(); ?>
     </div>
 </section> -->
 

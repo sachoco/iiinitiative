@@ -378,15 +378,17 @@ ul.view--list li h2 {
   text-align: center;
   margin-top: 2em;
 }
-.sort button {
+.sort button, .sort a {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 16px;
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  padding: 1px 7px 2px;
+  display: inline-block;
 }
-.sort button.active {
+.sort button.active, .sort a.active {
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   text-decoration: underline;
@@ -1134,6 +1136,15 @@ you can add resource intensive styles.
   section.page {
     width: calc(100% - 300px);
     min-width: 900px;
+  }
+
+  .sort {
+    font-size: 1.5em;
+    font-family: "Gafata", sans-serif;
+  }
+  .sort button, .sort a {
+    font-family: "Gafata", sans-serif;
+    font-size: 1em;
   }
 }
 /*********************

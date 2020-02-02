@@ -1,7 +1,7 @@
 <?php include('header.php') ?>
 <!-- <section class="background">
     <ul class="rslides">
-<?php 
+<?php
     $slides = get_field("slideshow", 65);
     if($slides){
         foreach($slides as $slide){
@@ -17,9 +17,21 @@
     <section class="page--single">
         <section class="page__header"><h2 class="title"><?php post_type_archive_title(); ?></h2></section>
         <section class="page__body container">
+          <?php
+          $args = array(
+          'name'        => 'productions-description',
+          'post_type'   => 'page',
+          'post_status' => 'publish',
+          'numberposts' => 1
+          );
+          $description = get_posts($args);
+          if( $description ) :
+          // echo $description[0]->post_content;
+          endif;
+           ?>
 <!--         <div class="sort">
             <p>
-                Order: 
+                Order:
                <button class="button" data-sort-by="date">chronologic</button> | <button class="button" data-sort-by="name">alphabetical</button>
             </p>
         </div> -->
@@ -36,7 +48,7 @@
                         array(
                             'taxonomy' => 'production_category',
                             'field'    => 'slug',
-                            'terms' => 'ongoing-series',                                    
+                            'terms' => 'ongoing-series',
                         ),
                     )
             );
@@ -60,9 +72,9 @@
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -89,7 +101,7 @@
                         array(
                             'taxonomy' => 'production_category',
                             'field'    => 'slug',
-                            'terms' => 'past-productions',                                    
+                            'terms' => 'past-productions',
                         ),
                     )
             );
@@ -113,9 +125,9 @@
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -129,7 +141,7 @@
             endif;
             wp_reset_postdata();
         ?>
-<!-- 
+<!--
 
         <ul class="view--list">
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -145,9 +157,9 @@
                 <a href="<?php the_permalink(); ?>"><h2 class="name"><?php the_title(); ?></h2></a>
                 <p>
                 <?php
-                    $excerpt = get_the_excerpt(); 
+                    $excerpt = get_the_excerpt();
                     $excerpt .= ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . "[&hellip;]" . '</a>';
-                    echo wpautop( $excerpt); 
+                    echo wpautop( $excerpt);
                 ?>
                 <?php //the_excerpt(); ?>
                 </p>
@@ -174,12 +186,12 @@
 
 
     </div>
-    
+
 <!-- </div>
  -->
 <!-- <section class="main">
     <div class="wrap">
-        <?php //the_content(); ?>        
+        <?php //the_content(); ?>
     </div>
 </section> -->
 

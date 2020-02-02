@@ -222,12 +222,14 @@ ul.view {
 .sort {
 	text-align: center;
 	margin-top: 2em;
-	button {
+	button, a {
 		background: none;
 		border: none;
 		cursor: pointer;
 		font-size: $base-font-size;
 		opacity: 0.5;
+		padding: 1px 7px 2px;
+		display: inline-block;
 		&.active {
 			opacity: 1;
 			text-decoration: underline;
