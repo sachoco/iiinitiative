@@ -1,20 +1,20 @@
-section.header {
+// section.header {
 
-	nav {
-		.mobile-menu {
-			display: none;
-		}
-		&.mobile-nav {
-			display: none !important;
-		}
-		ul {
-			display: block;
+// 	nav {
+// 		.mobile-menu {
+// 			display: none;
+// 		}
+// 		&.mobile-nav {
+// 			display: none !important;
+// 		}
+// 		ul {
+// 			display: block;
 
-			// list-style: none;
-		}
+// 			// list-style: none;
+// 		}
 
-	}
-}
+// 	}
+// }
 
 section.home {
 	width: calc(100% - 150px);

@@ -11,39 +11,25 @@ var plumber = require("gulp-plumber");
 var pleeease = require("gulp-pleeease");
 var coffee = require("gulp-coffee");
 
-gulp.task("server", function(){
-	browser({
-		server: {
-			baseDir: "./",
-			directory: true
-		}
-	});
-});
+// gulp.task("server", function(){
+// 	browser({
+// 		server: {
+// 			baseDir: "./",
+// 			directory: true
+// 		}
+// 	});
+// });
 
-gulp.task("js", function(){
+
+
+function js(done){
 	gulp.src(["js/**/*.js","!js/min/**/*.js"])
 		.pipe(plumber())
 		.pipe(uglify())
-		.pipe(gulp.dest("./js/min"))
-		// .pipe(browser.reload({stream:true}))
-});
-
-gulp.task("sass", function(){
-	gulp.src("sass/**/*.scss")
-		.pipe(plumber())
-		.pipe(frontnote({
-			css:'../css/style.css'
-		}))
-		.pipe(sass({
-	      includePaths: require('node-reset-scss').includePath
-	    }))
-		// .pipe(autoprefixer())
-		.pipe(gulp.dest("./css"))
-		// .pipe(browser.reload({stream:true}))
-});
-
-// compass
-gulp.task('compass', function(){
+		.pipe(gulp.dest("./js/min"));
+	done();
+}
+function run_compass(done){
     gulp.src('sass/**/*.scss')
     .pipe(plumber())
     .pipe(compass({
@@ -51,27 +37,36 @@ gulp.task('compass', function(){
         comments: false,
         css: 'css/',
         sass: 'sass/'
-    }))
-});
-
-gulp.task('ple', function() {
-  return gulp.src('css/*.css')
+    }));
+    done();
+}
+function run_coffee(done){
+	gulp.src('coffee/**/*.coffee')
+		.pipe(coffee())
+		.pipe(gulp.dest('js/'));	
+	done();
+}
+function ple(done){
+	gulp.src('css/*.css')
     .pipe(pleeease({
         autoprefixer: ['last 4 versions'], //ベンダープレフィックス
         minifier: false //圧縮の有無 true/false
     }))
     .pipe(gulp.dest('css/'));
-});
+    done();
+}
 
-gulp.task('coffee', function(){
-	gulp.src('coffee/**/*.coffee')
-		.pipe(coffee())
-		.pipe(gulp.dest('js/'));
-});
+gulp.task("js", js);
+// gulp.task("sass", sass);
+gulp.task("compass", run_compass);
+gulp.task("ple", ple);
+gulp.task("coffee", run_coffee);
 
-gulp.task("default", function(){
-	gulp.watch(["js/**/*.js","!js/min/**/*.js"],["js"]);
-	gulp.watch("sass/**/*.scss",["compass"]);
-	gulp.watch("coffee/**/*.coffee",["coffee"]);
-	return gulp.watch(['css/*.css'], ['ple']);
-});
+function watch_files(){
+	gulp.watch(["js/**/*.js","!js/min/**/*.js"], js);
+	gulp.watch("sass/**/*.scss", gulp.series('compass','ple'));
+	gulp.watch("coffee/**/*.coffee", run_coffee);
+}
+gulp.task("watch", watch_files);
+
+gulp.task("default", watch_files);

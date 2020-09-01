@@ -6,6 +6,7 @@
     nextPages = $("section.page");
     prevPages = nextPages.clone().addClass("page--clone prev").prependTo(pageWrapper).toArray();
     nextPages = nextPages.addClass("next").toArray();
+    // prevPages = clones.toArray()
     allPages = $("section.page");
     for (i = j = 0, len = nextPages.length; j < len; i = ++j) {
       page = nextPages[i];
@@ -199,8 +200,21 @@
         }
       }
     });
+    
+    // if curPage isnt null
+    // 	$(allPages[curPage]).removeClass("current").addClass("next")
+    // 	curPage = null
+    // 	prevPages.unshift( nextPages.pop() )
+    // 	$("section.page.next").last().removeClass("next").addClass("prev").prependTo( pageWrapper ).velocity("stop").velocity { translateX: (prevPages.length - 1) * -100 - 150 + "%" }, { duration: 0 }
+    // 	for page in nextPages
+    // 		$(page).velocity { translateX: "+=100%" }, { duration: 1000 }
+
+    // 	# nextPages.unshift( prevPages.pop() )		
+    // 	h = $("section.home").outerHeight();
+    // 	$(".viewport").velocity {height: h}, {duration: 1000}
     $(".overlay--right").on({
       'mouseenter': function() {
+        // console.log "test"
         if (curPage !== null) {
           return $(nextPages[1]).addClass("hover");
         } else {
@@ -252,6 +266,7 @@
         });
       }
       $(allPages[curPage]).addClass("current").removeClass("next").removeClass("hover");
+      // h = $(".page.current .page__header").outerHeight() + $(".page.current .page__body").outerHeight();
       h = $(".page.current").outerHeight();
       return $(".viewport").velocity({
         height: h
@@ -289,6 +304,7 @@
       nextPages.unshift(prevPages.pop());
       $("section.page.prev").last().removeClass("prev");
       $(allPages[curPage]).addClass("current").removeClass("prev").removeClass("hover");
+      // h = $(".page.current .page__header").outerHeight() + $(".page.current .page__body").outerHeight();
       h = $(".page.current").outerHeight();
       return $(".viewport").velocity({
         height: h
@@ -299,7 +315,9 @@
     resizeHandler = function() {
       var h, pageW, winW;
       if ($(".page.current").length > 0) {
+        // h = $(".page.current .page__header").height() + $(".page.current .page__body").height();
         h = $(".page.current").outerHeight();
+        // console.log h
         $(".viewport").velocity({
           height: h
         }, {

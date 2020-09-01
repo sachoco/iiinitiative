@@ -1,0 +1,28 @@
+section.header {
+
+	nav {
+		.mobile-menu {
+			display: none;
+		}
+		&.mobile-nav {
+			display: none !important;
+		}
+		ul {
+			display: block;
+
+			// list-style: none;
+		}
+
+	}
+}
+
+section.page {
+	&__header {
+		.title {
+			display: none;
+		}
+		&:before {
+			display: none;
+		}
+	}
+}

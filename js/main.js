@@ -26,6 +26,7 @@
       if ($this.hasClass('active')) {
         return;
       }
+      // sort = $(this).data("sort-by")
       filterItem = $(this).data("filter");
       $(".sort .button").removeClass("active");
       $(this).addClass("active");
@@ -35,6 +36,8 @@
       $.bbq.pushState(isotopeOptions);
       return isOptionLinkClicked = true;
     });
+    // $(".isotope").isotope({ sortBy : sort })
+    // $(".isotope").isotope({ filter : "."+filterItem })
     hashChanged = false;
     $(window).bind("hashchange", function(event) {
       var aniEngine, hashOptions, hrefObj, key, options;
