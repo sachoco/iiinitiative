@@ -47,6 +47,7 @@ jQuery ($) ->
 		$(".viewport").toggleClass("blur")
 		$("section.main").toggleClass("blur")
 		$("footer").toggleClass("blur")
+		$(".viewport .overlay").toggleClass("disable")
 
 	$(".iii-readmore").readmore
 		moreLink: '<a class="square-btn" href="#">show more</a>',

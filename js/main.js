@@ -64,7 +64,8 @@
       $("section.background").toggleClass("blur");
       $(".viewport").toggleClass("blur");
       $("section.main").toggleClass("blur");
-      return $("footer").toggleClass("blur");
+      $("footer").toggleClass("blur");
+      return $(".viewport .overlay").toggleClass("disable");
     });
     $(".iii-readmore").readmore({
       moreLink: '<a class="square-btn" href="#">show more</a>',

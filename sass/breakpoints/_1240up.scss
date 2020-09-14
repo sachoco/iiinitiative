@@ -1,3 +1,13 @@
+section.header_mobile {
+	.mobile-menu {
+		display: none;
+	}
+	nav {
+		&.mobile-nav {
+			display: none !important;
+		}
+	}
+}
 section.header {
 
 	nav {
