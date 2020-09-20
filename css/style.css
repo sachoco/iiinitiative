@@ -816,6 +816,9 @@ section.page--single .page__body {
 section.page--single .page__body h3 {
   font-size: 1.5em;
 }
+section.page--single .page__body .wp-caption {
+  max-width: 100%;
+}
 section.page--single .page__body img {
   width: 100%;
   height: auto;
