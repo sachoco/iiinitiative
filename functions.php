@@ -48,7 +48,7 @@ add_filter('widget_text', 'do_shortcode');
 
 		wp_register_script( 'front-page-script', get_stylesheet_directory_uri() . '/js/front-page.js', array('jquery'), '', true );
 		// register main stylesheet
-		wp_register_style( 'main-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
+		wp_register_style( 'main-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '1.1', 'all' );
 		wp_enqueue_style( 'main-css' );
 
 		wp_register_style( 'grid-css', get_stylesheet_directory_uri() . '/css/grid.css', array('main-css'), '', 'all' );
