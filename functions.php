@@ -1346,6 +1346,38 @@ add_filter('single_template', create_function(
 	return $the_template;' )
 );
 
+// define the wp_calculate_image_sizes callback 
+function filter_wp_calculate_image_sizes( $sizes, $size, $image_src ) { 
+    // make filter magic happen here... 
+    $width = 0;
+ 
+    if ( is_array( $size ) ) {
+        $width = absint( $size[0] );
+    } elseif ( is_string( $size ) ) {
+        if ( ! $image_meta && $attachment_id ) {
+            $image_meta = wp_get_attachment_metadata( $attachment_id );
+        }
+ 
+        if ( is_array( $image_meta ) ) {
+            $size_array = _wp_get_image_size_from_meta( $size, $image_meta );
+            if ( $size_array ) {
+                $width = absint( $size_array[0] );
+            }
+        }
+    }
+ 
+    if ( ! $width ) {
+        return false;
+    }
+ 
+    // Setup the default 'sizes' attribute.
+    $sizes = sprintf( '(max-width: %1$dpx) 100vw', $width );
+    return $sizes; 
+}; 
+         
+// add the filter 
+add_filter( 'wp_calculate_image_sizes', 'filter_wp_calculate_image_sizes', 10, 3 ); 
+
 // function new_excerpt_more($more) {
 //     return '';
 // }
