@@ -2,6 +2,12 @@ jQuery ($) ->
 
 	$(".rslides").responsiveSlides speed: 2000, random: true, timeout: 20000
 
+	$(".iii-readmore").readmore
+		moreLink: '<a class="square-btn" href="#">show more</a>',
+		lessLink: '<a class="square-btn" href="#">show less</a>',
+		embedCSS: true,
+		blockCSS: 'margin-bottom: 1em;'
+
 	$container = $('.isotope')
 	isotopeOptions = {}
 	defaultOptions = itemSelector: "li", layoutMode: "fitRows", getSortData: { name: '.name', date: '.date'}
@@ -49,10 +55,6 @@ jQuery ($) ->
 		$("footer").toggleClass("blur")
 		$(".viewport .overlay").toggleClass("disable")
 
-	$(".iii-readmore").readmore
-		moreLink: '<a class="square-btn" href="#">show more</a>',
-		lessLink: '<a class="square-btn" href="#">show less</a>',
-		embedCSS: true,
-		blockCSS: 'margin-bottom: 1em;'
+
 
 	@

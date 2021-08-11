@@ -261,6 +261,7 @@ a:hover {
 
 .iii-readmore {
   max-height: 5em;
+  overflow: hidden;
 }
 
 .page__body .text a, .page__body .wpb_wrapper p a, .page__body .press-content a {

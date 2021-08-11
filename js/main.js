@@ -6,6 +6,12 @@
       random: true,
       timeout: 20000
     });
+    $(".iii-readmore").readmore({
+      moreLink: '<a class="square-btn" href="#">show more</a>',
+      lessLink: '<a class="square-btn" href="#">show less</a>',
+      embedCSS: true,
+      blockCSS: 'margin-bottom: 1em;'
+    });
     $container = $('.isotope');
     isotopeOptions = {};
     defaultOptions = {
@@ -66,12 +72,6 @@
       $("section.main").toggleClass("blur");
       $("footer").toggleClass("blur");
       return $(".viewport .overlay").toggleClass("disable");
-    });
-    $(".iii-readmore").readmore({
-      moreLink: '<a class="square-btn" href="#">show more</a>',
-      lessLink: '<a class="square-btn" href="#">show less</a>',
-      embedCSS: true,
-      blockCSS: 'margin-bottom: 1em;'
     });
     return this;
   });
