@@ -455,8 +455,11 @@
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
-                foreach($locations as $location){
-                    echo $location.'</br>'; //''
+                if (is_array($values) || is_object($values))
+                {
+                    foreach($locations as $location){
+                        echo $location.'</br>'; //''
+                    }
                 }
             }
 
@@ -621,8 +624,11 @@
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
-                foreach($locations as $location){
-                    echo $location.'</br>'; //''
+                if (is_array($values) || is_object($values))
+                {
+                    foreach($locations as $location){
+                        echo $location.'</br>'; //''
+                    }
                 }
             }
 
