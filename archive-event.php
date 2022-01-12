@@ -95,7 +95,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -137,7 +137,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -221,7 +221,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -304,7 +304,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -422,7 +422,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -463,7 +463,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -545,7 +545,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
@@ -628,7 +628,7 @@
             $locations = get_field('location');
             if($locations) {
                 foreach($locations as $location){
-                    echo $location[location].'</br>'; //''
+                    echo $location['location'].'</br>'; //''
                 }
             }else{
                 $locations = rwmb_meta( 'event_location');
